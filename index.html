@@ -1118,7 +1118,7 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
         </div>
         <h3 data-i18n="ct2">Reporting Certification</h3>
         <div class="issuer">HubSpot Academy</div>
-        <button class="cert-link" data-cert="" data-i18n="certView2">View certificate</button>
+        <button class="cert-link" data-cert="" data-i18n="certView" onclick="document.getElementById('cert-toast').classList.add('show');setTimeout(function(){document.getElementById('cert-toast').classList.remove('show');},3000)">View certificate</button>>
       </div>
 
       <!-- AI Agents PSUT - IN PROGRESS -->
@@ -1130,7 +1130,7 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
         </div>
         <h3 data-i18n="ct3">AI Agents for Marketing and Automation</h3>
         <div class="issuer">Princess Sumaya University for Technology</div>
-        <button class="cert-link" data-cert="" data-i18n="certView3">View certificate</button>
+        <button class="cert-link" data-cert="" data-i18n="certView" onclick="document.getElementById('cert-toast').classList.add('show');setTimeout(function(){document.getElementById('cert-toast').classList.remove('show');},3000)">View certificate</button>
       </div>
 
       <!-- UVA Project Planning - IN PROGRESS -->
@@ -1142,7 +1142,7 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
         </div>
         <h3 data-i18n="ct4">Fundamentals of Project Planning and Management</h3>
         <div class="issuer">University of Virginia</div>
-        <button class="cert-link" data-cert="" data-i18n="certView4">View certificate</button>
+        <button class="cert-link" data-cert="" data-i18n="certView" onclick="document.getElementById('cert-toast').classList.add('show');setTimeout(function(){document.getElementById('cert-toast').classList.remove('show');},3000)">View certificate</button>
       </div>
 
       <!-- Conflict Management - COMPLETED -->
@@ -1168,11 +1168,11 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
           </div>
           <span class="cert-badge done" data-i18n="bDone2">Completed</span>
         </div>
-        <h3 data-i18n="ct6">Google Data Analytics: Foundations, Ask, Prepare</h3>
+        <h3 data-i18n="ct6">Google Data Analytics: Foundations, Data Preparation &amp; Decision-Making</h3>
         <div class="issuer">Google</div>
         <!-- Files: Foundations_Data__Data__Everywhere.pdf | Ask_Questions_to_Make_Data-Driven_Decisions.pdf | Prepare_Data_for_Exploration.pdf -->
         <!-- TO ADD: change data-cert to point to another file, or duplicate this card -->
-        <button class="cert-link" data-cert="Foundations_Data__Data__Everywhere.pdf" data-i18n="certView6">View certificate</button>
+        <button class="cert-link" data-cert="Google_Data_Analytics.pdf" data-i18n="certView6">View certificate</button>
       </div>
 
       <!-- Meta Ads Training - ONGOING -->
@@ -1335,7 +1335,7 @@ en: {
   ct3:"AI Agents for Marketing and Automation",
   ct4:"Fundamentals of Project Planning and Management",
   ct5:"Conflict Management Strategies",
-  ct6:"Google Data Analytics: Foundations, Ask, Prepare",
+  ct6:"Google Data Analytics: Foundations, Data Preparation & Decision-Making",
   ct7:"Meta Ads Specialist Training", ct7i:"Monthly sessions, Meta marketing specialist",
   certView:"View certificate", certView2:"View certificate", certView3:"View certificate",
   certView4:"View certificate", certView5:"View certificate", certView6:"View certificate",
@@ -1415,7 +1415,7 @@ de: {
   ct3:"KI-Agenten für Marketing und Automatisierung",
   ct4:"Grundlagen des Projektplanens und -managements",
   ct5:"Konfliktmanagement-Strategien",
-  ct6:"Google Data Analytics: Grundlagen, Fragen, Vorbereitung",
+  ct6:"ct6:"Google Data Analytics: Grundlagen, Datenvorbereitung & Entscheidungsfindung",",
   ct7:"Meta Ads Spezialist Training", ct7i:"Monatliche Sessions, Meta Marketing Spezialist",
   certView:"Zertifikat ansehen", certView2:"Zertifikat ansehen", certView3:"Zertifikat ansehen",
   certView4:"Zertifikat ansehen", certView5:"Zertifikat ansehen", certView6:"Zertifikat ansehen",
