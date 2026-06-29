@@ -1,0 +1,67 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "hero"
+        label: "Hero Section"
+        file: "cms/hero.json"
+        fields:
+          - { label: "Your Name", name: "name", widget: "string" }
+          - { label: "Tagline (eyebrow)", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Subheadline", name: "sub", widget: "text" }
+          - { label: "Contact Email", name: "email", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+
+      - name: "about"
+        label: "About Section"
+        file: "cms/about.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Paragraph 1", name: "p1", widget: "text" }
+          - { label: "Paragraph 2", name: "p2", widget: "text" }
+          - { label: "Paragraph 3", name: "p3", widget: "text" }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "cms/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Project Number", name: "number", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - label: "Bullet Points"
+        name: "bullets"
+        widget: "list"
+        field: { label: "Point", name: "point", widget: "string" }
+      - label: "Tools Used"
+        name: "tools"
+        widget: "list"
+        field: { label: "Tool", name: "tool", widget: "string" }
+      - { label: "Metric 1 Value", name: "metric1value", widget: "string" }
+      - { label: "Metric 1 Label", name: "metric1label", widget: "string" }
+      - { label: "Metric 2 Value", name: "metric2value", widget: "string" }
+      - { label: "Metric 2 Label", name: "metric2label", widget: "string" }
+
+  - name: "certificates"
+    label: "Certificates"
+    folder: "cms/certificates"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Certificate Title", name: "title", widget: "string" }
+      - { label: "Issuer", name: "issuer", widget: "string" }
+      - { label: "Year", name: "year", widget: "string" }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["In progress", "Completed", "Ongoing"]
+      - { label: "PDF File (upload to GitHub and enter filename)", name: "pdf", widget: "string", required: false }
