@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mohammad Almumani - Marketing Operations and Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+<style>
+/* ============================================================
+   DESIGN TOKENS - Edit here to retheme the whole site
+   ============================================================ */
+:root {
+  /* Backgrounds */
+  --ink:          #0E1F33;
+  --navy:         #142F4A;
+  --light:        #F3F4F6;
+
+  /* Text */
+  --cloud:        #B8C8D8;
+  --muted:        #6F8193;
+  --body-dark:    #1a2a38;   /* dark text on light backgrounds */
+
+  /* Accent */
+  --gold:         #CBA052;
+  --gold-hover:   #D4A853;
+  --gold-bright:  #E0C070;
+
+  /* Case accent colours */
+  --c1-accent:    #D4874A;   /* amber  - case 01 */
+  --c1-bg:        rgba(212,135,74,0.06);
+  --c2-accent:    #4A7FC1;   /* blue   - case 02 */
+  --c2-bg:        rgba(74,127,193,0.06);
+  --c3-accent:    #2A8A9A;   /* teal   - case 03 */
+  --c3-bg:        rgba(42,138,154,0.06);
+  --c4-accent:    #B85C3A;   /* rust   - case 04 */
+  --c4-bg:        rgba(184,92,58,0.06);
+
+  /* Borders */
+  --line-dark:    rgba(255,255,255,0.09);
+  --line-light:   rgba(38,52,66,0.13);
+
+  /* Typography */
+  --display: 'Space Grotesk', system-ui, sans-serif;
+  --body:    'Inter', system-ui, sans-serif;
+  --mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Layout */
+  --maxw:   1120px;
+  --pad:    clamp(20px, 5vw, 60px);
+  --radius: 13px;
+}
+
+
+/* ============================================================
+   RESET AND BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  font-family: var(--body);
+  background: var(--ink);
+  color: var(--cloud);
+  line-height: 1.65;
+  font-size: 16.5px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; border-radius: 4px; }
+
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-block;
+}
+h1, h2, h3 { font-family: var(--display); color: #fff; line-height: 1.05; letter-spacing: -0.01em; font-weight: 700; }
+.section-title { font-size: clamp(36px, 5.5vw, 62px); margin-top: 12px; }
+.on-light h2, .on-light h3 { color: var(--ink); }
+.on-light .eyebrow { color: #8a6a25; }
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+header.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(14,31,51,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-dark);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+.brand { font-family: var(--display); font-weight: 700; color: #fff; font-size: 17px; flex-shrink: 0; }
+.brand span { color: var(--gold); }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { font-size: 13.5px; color: var(--cloud); transition: color 0.18s; }
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+/* Language toggle */
+.lang { display: flex; font-family: var(--mono); border: 1px solid var(--line-dark); border-radius: 999px; overflow: hidden; }
+.lang button { background: none; border: none; color: var(--muted); padding: 5px 10px; cursor: pointer; font-family: var(--mono); font-size: 11.5px; transition: all 0.18s; }
+.lang button.on { background: var(--gold); color: var(--ink); font-weight: 500; }
+
+/* Buttons */
+.btn { font-family: var(--body); font-weight: 500; font-size: 13.5px; border: 1px solid var(--gold); color: var(--ink); background: var(--gold); padding: 7px 14px; border-radius: 999px; cursor: pointer; transition: all 0.18s; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+.btn:hover { background: var(--gold-hover); border-color: var(--gold-hover); }
+.btn.ghost { background: none; color: #fff; border-color: rgba(255,255,255,0.22); }
+.btn.ghost:hover { border-color: #fff; }
+
+/* Nav icon buttons */
+.nav-icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line-dark); color: var(--cloud); transition: all 0.18s; }
+.nav-icon-btn:hover { border-color: var(--gold); color: var(--gold); }
+@media (max-width: 860px) { .nav-links { display: none; } }
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero { padding-top: clamp(52px,8vw,100px); padding-bottom: clamp(52px,8vw,100px); }
+.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px,5.5vw,68px); align-items: center; }
+@media (max-width: 880px) { .hero-grid { grid-template-columns: 1fr; gap: 44px; } }
+.hero h1 { font-size: clamp(38px,6.2vw,72px); margin: 16px 0 0; }
+.hero .sub { margin-top: 22px; font-size: clamp(16px,1.9vw,19px); color: var(--cloud); max-width: 34ch; line-height: 1.6; }
+.hero-cta { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+.statstrip { display: flex; gap: 24px; margin-top: 38px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid var(--line-dark); }
+.stat .n { font-family: var(--mono); color: #fff; font-size: 18px; font-weight: 500; }
+.stat .l { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+
+/* ============================================================
+   HERO SYNC PANEL
+   ============================================================ */
+.panel { background: linear-gradient(155deg,var(--navy),var(--ink) 85%); border: 1px solid var(--line-dark); border-radius: 16px; padding: 20px; box-shadow: 0 28px 64px -36px rgba(0,0,0,0.75); }
+.panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.panel-tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.sync-badge { font-family: var(--mono); font-size: 10.5px; color: var(--gold); border: 1px solid rgba(203,160,82,0.38); border-radius: 999px; padding: 3px 9px; display: inline-flex; gap: 6px; align-items: center; opacity: 0; transform: translateY(-4px); transition: opacity 0.5s ease 0.8s, transform 0.5s ease 0.8s; }
+.sync-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.panel.synced .sync-badge { opacity: 1; transform: translateY(0); }
+.panel-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--line-dark); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; opacity: 0.45; filter: grayscale(0.9); transition: transform 0.55s cubic-bezier(0.2,0.7,0.2,1), opacity 0.55s ease, filter 0.55s ease; }
+.panel-row:nth-child(1) { transform: translateX(14px); }
+.panel-row:nth-child(2) { transform: translateX(-9px); }
+.panel-row:nth-child(3) { transform: translateX(20px); }
+.panel-row:nth-child(4) { transform: translateX(-6px); }
+.panel-row:nth-child(5) { transform: translateX(11px); }
+.panel.synced .panel-row { opacity: 1; filter: none; transform: translateX(0) !important; }
+.panel.synced .panel-row:nth-child(1) { transition-delay: 0ms; }
+.panel.synced .panel-row:nth-child(2) { transition-delay: 70ms; }
+.panel.synced .panel-row:nth-child(3) { transition-delay: 140ms; }
+.panel.synced .panel-row:nth-child(4) { transition-delay: 210ms; }
+.panel.synced .panel-row:nth-child(5) { transition-delay: 280ms; }
+.panel-row .rl { font-size: 13px; color: var(--cloud); }
+.pill { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; opacity: 0; transition: opacity 0.35s ease 0.6s; }
+.panel.synced .pill { opacity: 1; }
+.pill.high   { background: rgba(203,160,82,0.15); color: var(--gold-bright); border: 1px solid rgba(203,160,82,0.32); }
+.pill.queued { background: rgba(184,200,216,0.08); color: var(--cloud); border: 1px solid var(--line-dark); }
+.pill.live   { background: rgba(95,200,140,0.11); color: #7fd6a3; border: 1px solid rgba(95,200,140,0.28); }
+
+
+/* ============================================================
+   SCROLL REVEAL (bidirectional)
+   ============================================================ */
+section { padding-top: clamp(60px,8.5vw,112px); padding-bottom: clamp(60px,8.5vw,112px); }
+.light { background: var(--light); color: var(--body-dark); }
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.2,0.7,0.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+
+/* ============================================================
+   PROJECTS SECTION
+   Each case gets its own accent colour via CSS variables
+   ============================================================ */
+.projects-section { background: var(--light); }
+
+/* Case wrapper - accent colour set inline via style attribute */
+.case {
+  border-left: 4px solid var(--case-accent, var(--gold));
+  background: var(--case-bg, transparent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: clamp(24px,3.5vw,40px);
+  margin-bottom: 28px;
+  /* entrance animation */
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2,0.7,0.2,1), border-color 0.3s;
+}
+.case.in { opacity: 1; transform: translateX(0); }
+.case:nth-child(2) { transition-delay: 80ms; }
+.case:nth-child(3) { transition-delay: 160ms; }
+.case:nth-child(4) { transition-delay: 240ms; }
+
+/* Border draw animation: the left border grows from top */
+.case::before {
+  content: "";
+  position: absolute;
+  left: -4px; top: 0;
+  width: 4px; height: 0;
+  background: var(--case-accent, var(--gold));
+  border-radius: 4px 0 0 4px;
+  transition: height 0.6s cubic-bezier(0.2,0.7,0.2,1) 0.1s;
+}
+.case { position: relative; }
+.case.in::before { height: 100%; }
+
+.case-inner { display: grid; grid-template-columns: 1fr 0.88fr; gap: clamp(20px,4vw,52px); align-items: start; }
+@media (max-width: 840px) { .case-inner { grid-template-columns: 1fr; } .case .media { order: -1; } }
+
+.case-index { font-family: var(--mono); font-size: 18px; letter-spacing: 0.1em; color: var(--case-accent, var(--gold)); font-weight: 500; }
+.case h3 { font-size: clamp(20px,2.6vw,30px); margin: 9px 0 0; color: var(--case-accent, var(--ink)); line-height: 1.15; }
+.case .summary { margin-top: 12px; color: var(--body-dark); max-width: 48ch; font-size: 15px; line-height: 1.65; }
+.case ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.case ul li { position: relative; padding-left: 18px; font-size: 14.5px; color: var(--body-dark); }
+.case ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 7px; height: 2px; background: var(--case-accent, var(--gold)); }
+.tools { margin-top: 18px; display: flex; gap: 7px; flex-wrap: wrap; }
+.tool { font-family: var(--mono); font-size: 10.5px; color: #5d6e7c; border: 1px solid var(--line-light); border-radius: 999px; padding: 3px 9px; }
+
+/* Metrics */
+.metric-row { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 18px; }
+.metric .v { font-family: var(--mono); font-weight: 500; font-size: clamp(22px,2.8vw,34px); color: var(--case-accent, var(--ink)); line-height: 1; }
+.metric .k { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #7a8898; margin-top: 6px; }
+
+/* Image placeholder */
+.media-ph { background: #dde1e7; border: 1px dashed #b0b8c2; border-radius: var(--radius); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+.media-ph span { font-family: var(--mono); font-size: 11.5px; color: #7a8898; max-width: 28ch; line-height: 1.55; }
+.media-img { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-light); box-shadow: 0 8px 30px -10px rgba(0,0,0,0.15); }
+.media-img img { width: 100%; display: block; }
+
+
+/* ============================================================
+   HOW I WORK - pipeline with nodes and travelling dot
+   ============================================================ */
+.process-outer {
+  position: relative;
+  padding-top: 48px;  /* space for the pipeline above the cards */
+  margin-top: 8px;
+}
+
+/* The horizontal pipeline line */
+.pipeline-track {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(203,160,82,0.18);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Nodes - one per card, positioned by JS */
+.pipeline-node {
+  position: absolute;
+  top: 20px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid rgba(203,160,82,0.45);
+  transform: translate(-50%, -50%);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  pointer-events: none;
+}
+.pipeline-node.active {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 5px rgba(203,160,82,0.22), 0 0 0 9px rgba(203,160,82,0.08);
+}
+
+/* The travelling dot */
+.pipeline-dot {
+  position: absolute;
+  top: 20px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px 3px rgba(203,160,82,0.5);
+  transform: translate(-50%, -50%);
+  transition: left 0.9s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  position: relative;
+}
+@media (max-width: 740px) { .process-grid { grid-template-columns: 1fr; } }
+
+.process-card {
+  border: 2px solid var(--line-dark);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease, transform 0.25s ease;
+}
+.process-card:hover { transform: translateY(-3px); }
+
+/* Highlighted state when dot arrives */
+.process-card.node-active {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(203,160,82,0.25), 0 8px 24px -8px rgba(203,160,82,0.3);
+}
+
+.pnum { font-family: var(--mono); font-size: 26px; font-weight: 400; color: var(--gold); line-height: 1; }
+.process-card h3 { font-size: 17px; margin: 11px 0 7px; color: #fff; }
+.process-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+
+/* ============================================================
+   SKILLS SECTION - redesigned
+   ============================================================ */
+.skills-section {
+  background: var(--light);
+  position: relative;
+  overflow: hidden;
+}
+/* Faint dot-grid background */
+.skills-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(38,52,66,0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.skill-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 8px; position: relative; }
+@media (max-width: 720px) { .skill-grid { grid-template-columns: 1fr; } }
+
+.skill-card { border: 1px solid var(--line-light); border-radius: var(--radius); padding: 22px; background: rgba(255,255,255,0.92); backdrop-filter: blur(4px); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.skill-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px -8px rgba(38,52,66,0.18); }
+
+/* Wide card spans both columns */
+.skill-card.wide { grid-column: 1 / -1; }
+
+.skill-card h3 { font-size: 11.5px; font-family: var(--mono); font-weight: 500; letter-spacing: 0.08em; color: #4a5d6e; text-transform: uppercase; margin-bottom: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip { font-size: 13px; background: var(--light); border: 1px solid var(--line-light); border-radius: 7px; padding: 4px 10px; color: var(--body-dark); transition: all 0.18s; }
+/* Highlighted chips */
+.chip.key { background: rgba(203,160,82,0.12); border-color: rgba(203,160,82,0.38); color: #7a5c1e; font-weight: 500; }
+.chip.key:hover { background: rgba(203,160,82,0.22); }
+
+/* Currently building tags inside skill card */
+.build-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 12px; }
+.build-tag { font-size: 12px; border: 1px solid rgba(203,160,82,0.38); border-radius: 999px; padding: 4px 11px; color: #9a7a2e; background: rgba(203,160,82,0.07); }
+
+/* Language card - distinct styling */
+.skill-card.lang-card { background: linear-gradient(135deg, rgba(20,47,74,0.06), rgba(203,160,82,0.05)); border-color: rgba(203,160,82,0.22); }
+.lang-items { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+.lang-item { display: flex; align-items: center; justify-content: space-between; }
+.lang-item .ln { font-size: 16px; color: var(--ink); font-weight: 600; font-family: var(--display); }
+.lang-item .ll { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lang-bar { height: 3px; background: var(--line-light); border-radius: 999px; margin-top: 5px; overflow: hidden; }
+.lang-bar-fill { height: 100%; background: var(--gold); border-radius: 999px; transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(0.2,0.7,0.2,1); }
+.lang-card.in .lang-bar-fill { transform: scaleX(1); }
+
+
+/* ============================================================
+   CERTIFICATIONS - staggered masonry layout
+   ============================================================ */
+.certs-section { background: var(--ink); }
+
+.cert-masonry {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 8px;
+  align-items: start;
+}
+@media (max-width: 900px) { .cert-masonry { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 520px)  { .cert-masonry { grid-template-columns: 1fr; } }
+
+/* Stagger heights to break grid monotony */
+.cert-masonry .cert:nth-child(2) { margin-top: 24px; }
+.cert-masonry .cert:nth-child(3) { margin-top: 10px; }
+.cert-masonry .cert:nth-child(4) { margin-top: 36px; }
+.cert-masonry .cert:nth-child(5) { margin-top: -10px; }
+.cert-masonry .cert:nth-child(7) { margin-top: 18px; }
+
+.cert {
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  background: var(--navy);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cert:hover { transform: translateY(-4px); box-shadow: 0 14px 32px -10px rgba(0,0,0,0.5); }
+
+/* In-progress cards slightly larger */
+.cert.progress-card { padding: 22px 18px; }
+
+.cert-badge { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; align-self: flex-start; }
+.cert-badge.done     { background: rgba(255,255,255,0.07); color: #8898a4; }
+.cert-badge.progress { background: rgba(203,160,82,0.15); color: var(--gold-bright); border: 1px solid rgba(203,160,82,0.32); }
+.cert-badge.training { background: rgba(255,255,255,0.05); color: #6F8193; }
+
+/* Logo mark */
+.cert-logo { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11px; font-weight: 500; flex-shrink: 0; }
+.cert-top { display: flex; align-items: center; gap: 10px; }
+
+.cert h3 { font-size: 13.5px; color: #e8edf2; font-family: var(--body); font-weight: 600; line-height: 1.35; }
+.cert .issuer { font-size: 11.5px; color: #5d7080; }
+.cert .year { font-family: var(--mono); font-size: 10px; color: #3d5060; position: absolute; top: 14px; right: 12px; }
+
+/* View certificate link */
+.cert-link { font-family: var(--mono); font-size: 10.5px; color: var(--gold); letter-spacing: 0.04em; margin-top: 2px; display: inline-block; opacity: 0.65; cursor: pointer; background: none; border: none; padding: 0; text-align: left; }
+.cert-link:hover { opacity: 1; color: var(--gold-hover); }
+
+
+
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
+.about-section { background: var(--light); }
+.about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(32px,6vw,72px); align-items: center; }
+@media (max-width: 840px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* Photo placeholder */
+.photo-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.photo-actual {
+  width: 260px;
+  height: 340px;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border: 1px solid var(--line-light);
+  box-shadow: 0 24px 60px -20px rgba(0,0,0,0.25);
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-10px) rotate(0.5deg); }
+}
+/* Gold ring decoration */
+.photo-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  right: calc(50% - 145px);
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+/* About text */
+.about-text h2 { font-size: clamp(30px,4.5vw,52px); color: var(--ink); margin-bottom: 20px; }
+/* Typewriter cursor */
+.typewriter-cursor { display: inline-block; width: 3px; height: 0.85em; background: var(--gold); margin-left: 3px; vertical-align: middle; animation: blink 1s step-end infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+.about-text p { color: var(--body-dark); font-size: 15.5px; line-height: 1.7; margin-bottom: 16px; }
+.about-text p:last-child { margin-bottom: 0; }
+
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+.contact-wrap { text-align: center; max-width: 560px; margin: 0 auto; }
+.contact-wrap h2 { font-size: clamp(28px,4.5vw,50px); max-width: 20ch; margin: 12px auto 0; }
+.contact-wrap .sub { margin: 20px auto 0; color: var(--cloud); max-width: 42ch; font-size: 15.5px; }
+.contact-cta { display: flex; gap: 12px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+.contact-meta { margin-top: 28px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); letter-spacing: 0.04em; }
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
+.foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.foot-inner p { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+
+
+
+/* ============================================================
+   SLOT MACHINE NUMBER ANIMATION
+   ============================================================ */
+.slot { display: inline-block; overflow: hidden; vertical-align: bottom; }
+.slot-inner { display: flex; flex-direction: column; transition: transform 0.7s cubic-bezier(0.15,0.85,0.3,1); }
+
+
+/* ============================================================
+   REDUCED MOTION OVERRIDE
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .panel-row, .pill, .sync-badge, .case,
+  .photo-actual, .lang-bar-fill,
+  .process-card, .proj01-row, .proj01-ln, .proj03-card, .proj03-lp, .proj04-stage, .proj04-mcard { transition: none !important; animation: none !important;
+    opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* ============================================================
+   ANIMATED PROJECT VISUALS
+   ============================================================ */
+
+/* PROJECT 01 */
+.proj01-wrap{background:#1a2332;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 12px 40px -12px rgba(0,0,0,0.5);font-family:var(--mono);}
+.proj01-topbar{background:#141e2b;padding:8px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.proj01-dots span{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;}
+.proj01-dots span:nth-child(1){background:#ff5f57;}.proj01-dots span:nth-child(2){background:#febc2e;}.proj01-dots span:nth-child(3){background:#28c840;}
+.proj01-title{font-size:10px;color:#5d7a8a;letter-spacing:0.05em;}
+.proj01-body{display:grid;grid-template-columns:1fr 1fr;}
+.proj01-sheet{padding:10px;border-right:1px solid rgba(255,255,255,0.05);}
+.proj01-sheet-header{display:grid;grid-template-columns:2fr 1.2fr 1fr 1.1fr;gap:4px;margin-bottom:6px;font-size:8px;color:#4a6070;text-transform:uppercase;letter-spacing:0.06em;}
+.proj01-row{display:grid;grid-template-columns:2fr 1.2fr 1fr 1.1fr;gap:4px;margin-bottom:5px;align-items:center;opacity:0;transform:translateX(-8px);transition:opacity 0.4s ease,transform 0.4s ease;}
+.proj01-row.show{opacity:1;transform:none;}
+.proj01-cell{font-size:8.5px;color:#8aabb8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.proj01-pill{font-size:7.5px;padding:2px 5px;border-radius:4px;display:inline-block;font-weight:500;white-space:nowrap;}
+.proj01-pill.high{background:rgba(203,160,82,0.2);color:#d4a84a;}.proj01-pill.queue{background:rgba(100,140,180,0.15);color:#7aabcc;}.proj01-pill.pub{background:rgba(80,190,120,0.18);color:#5dc890;}
+.proj01-code{padding:10px;background:#111b27;}
+.proj01-ln{display:flex;gap:8px;margin-bottom:3px;opacity:0;transition:opacity 0.3s ease;}
+.proj01-ln.show{opacity:1;}
+.proj01-lnum{font-size:7.5px;color:#2d4455;min-width:14px;text-align:right;}
+.proj01-lcode{font-size:7.5px;white-space:nowrap;}
+.co-comment{color:#3d5a6a;}.co-keyword{color:#C792EA;}.co-fn{color:#82AAFF;}.co-str{color:#C3E88D;}.co-num{color:#F78C6C;}.co-plain{color:#8aabb8;}
+.proj01-cursor{display:inline-block;width:5px;height:10px;background:var(--gold);animation:blink 1s step-end infinite;vertical-align:text-bottom;}
+
+/* PROJECT 02 */
+.proj02-wrap{background:#0d1526;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 12px 40px -12px rgba(0,0,0,0.6);padding:14px;}
+.proj02-charts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.proj02-chart-box{background:#111d30;border-radius:8px;border:1px solid rgba(255,255,255,0.06);padding:10px;}
+.proj02-chart-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;}
+.proj02-chart-name{font-family:var(--mono);font-size:13px;font-weight:600;color:#fff;}
+.proj02-chart-sub{font-family:var(--mono);font-size:9px;color:#4a6070;margin-top:2px;}
+.proj02-badge{font-family:var(--mono);font-size:10px;font-weight:600;padding:3px 8px;border-radius:6px;}
+.proj02-badge.up{background:rgba(203,160,82,0.15);color:#d4a84a;border:1px solid rgba(203,160,82,0.3);}
+.proj02-badge.down{background:rgba(74,127,193,0.15);color:#7aaad4;border:1px solid rgba(74,127,193,0.3);}
+.proj02-svg-wrap{width:100%;height:70px;}
+.proj02-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.proj02-metric-card{background:#111d30;border-radius:8px;padding:10px 12px;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:10px;}
+.proj02-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.proj02-icon.gold{background:rgba(203,160,82,0.12);border:1px solid rgba(203,160,82,0.25);}
+.proj02-icon.blue{background:rgba(74,127,193,0.12);border:1px solid rgba(74,127,193,0.25);}
+.proj02-icon.teal{background:rgba(42,138,154,0.12);border:1px solid rgba(42,138,154,0.25);}
+.proj02-num{font-family:var(--mono);font-size:22px;font-weight:600;line-height:1;}
+.proj02-num.gold{color:#d4a84a;}.proj02-num.blue{color:#5a90cc;}.proj02-num.teal{color:#3aacbc;}
+.proj02-mlabel{font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:0.08em;color:#4a6070;margin-top:3px;}
+.proj02-vsub{font-family:var(--mono);font-size:7.5px;color:#2d4050;margin-top:1px;}
+
+/* PROJECT 03 */
+.proj03-wrap{background:#f0f2f5;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.08);padding:14px 14px 10px;}
+.proj03-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px;}
+.proj03-card{background:#0f2040;border-radius:8px;padding:10px 8px;opacity:0;transform:translateY(12px) rotate(-2deg);transition:opacity 0.5s ease,transform 0.5s cubic-bezier(0.2,0.7,0.2,1);}
+.proj03-card.show{opacity:1;transform:translateY(0) rotate(0deg);}
+.proj03-card:nth-child(2){transition-delay:0.12s;}.proj03-card:nth-child(3){transition-delay:0.24s;}
+.proj03-card-title{font-family:var(--display);font-size:10px;font-weight:700;color:#fff;text-transform:uppercase;line-height:1.2;}
+.proj03-card-body{font-size:7.5px;color:#8aabb8;margin-top:5px;line-height:1.5;}
+.proj03-card-cta{margin-top:7px;font-size:7.5px;color:#8aabb8;border-top:1px solid rgba(255,255,255,0.1);padding-top:6px;display:flex;align-items:center;justify-content:space-between;}
+.proj03-lp{background:#fff;border-radius:8px;border:1px solid #dde1e7;padding:10px 12px;opacity:0;transform:translateY(10px);transition:opacity 0.5s ease 0.4s,transform 0.5s ease 0.4s;}
+.proj03-lp.show{opacity:1;transform:none;}
+.proj03-lp-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.proj03-lp-h{font-family:var(--display);font-size:10px;font-weight:700;color:#0f2040;line-height:1.3;max-width:18ch;}
+.proj03-lp-sub{font-size:7px;color:#6080a0;margin-top:4px;line-height:1.5;}
+.proj03-props{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:8px;}
+.proj03-prop{font-size:6.5px;color:#3060a0;font-weight:600;line-height:1.4;}
+.proj03-cta-bar{margin-top:8px;background:#f5f7fa;border-radius:5px;padding:6px 10px;display:flex;align-items:center;justify-content:space-between;border:1px solid #e0e5ec;}
+.proj03-cta-text{font-size:7px;color:#0f2040;font-weight:600;}
+.proj03-cta-btn{background:#d4a84a;color:#fff;font-size:7px;font-weight:700;padding:3px 7px;border-radius:4px;white-space:nowrap;}
+
+/* PROJECT 04 */
+.proj04-wrap{background:#f8f9fc;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.08);padding:12px;font-family:var(--mono);}
+.proj04-title{font-family:var(--display);font-size:11px;font-weight:700;color:#0f2040;text-align:center;margin-bottom:8px;}
+.proj04-pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:10px;}
+.proj04-stage{opacity:0;transform:translateY(8px);transition:opacity 0.4s ease,transform 0.4s ease;}
+.proj04-stage.show{opacity:1;transform:none;}
+.proj04-stage-num{width:18px;height:18px;background:#0f2040;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;font-weight:700;margin:0 auto 4px;}
+.proj04-stage-label{font-size:6.5px;color:#d4a84a;text-transform:uppercase;letter-spacing:0.06em;text-align:center;margin-bottom:5px;}
+.proj04-box{background:#fff;border:1px solid #dde1ea;border-radius:6px;padding:6px 7px;}
+.proj04-box-title{font-size:7.5px;color:#0f2040;font-weight:600;margin-bottom:4px;}
+.proj04-box-row{display:flex;justify-content:space-between;font-size:7px;color:#4a6080;padding:2px 0;border-bottom:1px solid #eef0f4;}
+.proj04-box-row:last-child{border-bottom:none;}
+.proj04-val{font-weight:600;}.proj04-val.ok{color:#28a065;}.proj04-val.warn{color:#e07020;}.proj04-val.info{color:#3070c0;}
+.proj04-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:4px;}
+.proj04-mcard{background:#fff;border:1px solid #dde1ea;border-radius:6px;padding:7px 6px;text-align:center;opacity:0;transition:opacity 0.5s ease;}
+.proj04-mcard.show{opacity:1;}
+.proj04-mnum{font-size:14px;font-weight:700;color:#0f2040;line-height:1;}
+.proj04-mlabel{font-size:6.5px;color:#6080a0;margin-top:3px;line-height:1.3;}
+
+/* TOAST */
+#cert-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);border:1px solid rgba(203,160,82,0.35);color:var(--cloud);font-family:var(--mono);font-size:12px;padding:10px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,0.4);opacity:0;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease;z-index:999;white-space:nowrap;}
+#cert-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* PHOTO ACTUAL */
+.photo-actual{width:260px;height:340px;border-radius:20px;object-fit:cover;object-position:center top;display:block;border:1px solid var(--line-light);box-shadow:0 24px 60px -20px rgba(0,0,0,0.25);animation:float 4s ease-in-out infinite;}
+
+/* Mobile fix for --pad */
+@media (max-width:540px){.nav-right .nav-icon-btn{display:none;}.nav-right{gap:6px;}.btn{font-size:12px;padding:6px 11px;}}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ============================================================
+     NAVIGATION
+     To add CV: replace href="#" on the CV button with "cv-mohammad.pdf"
+     ============================================================ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">Mohammad <span>Almumani</span></a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#projects"     data-i18n="navProjects">Projects</a>
+      <a href="#how-i-work"   data-i18n="navProcess">How I work</a>
+      <a href="#skills"       data-i18n="navSkills">Skills</a>
+      <a href="#certificates" data-i18n="navCerts">Certificates</a>
+      <a href="#about"        data-i18n="navAbout">About</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="on">EN</button>
+        <button data-lang="de">DE</button>
+      </div>
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/in/almumani" target="_blank" rel="noopener" class="nav-icon-btn" aria-label="LinkedIn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <!-- Email -->
+      <a href="mailto:mohammadalmumani97@gmail.com" class="nav-icon-btn" aria-label="Email">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      </a>
+      <!-- CV: switches between EN and DE file via JS -->
+      <a href="Mohammad Almumani CV.pdf" id="navCvBtn" class="btn" download data-i18n="navCV">Download CV</a>
+    </div>
+  </div>
+</header>
+
+
+<main id="top">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" data-i18n="heroEye">Marketing Operations · RevOps · Automation</span>
+      <h1 data-i18n="heroH1">I build the systems behind the campaigns.</h1>
+      <p class="sub" data-i18n="heroSub">I run paid campaigns and then automate the workflows behind them, so growth is repeatable and not improvised.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn"      data-i18n="heroBtn1">View projects</a>
+        <a href="Mohammad Almumani CV.pdf" id="heroCvBtn" class="btn ghost" download data-i18n="heroBtn2">Download CV</a>
+      </div>
+      <div class="statstrip">
+        <div class="stat"><div class="n">5+</div><div class="l" data-i18n="s1">Years in marketing ops</div></div>
+        <div class="stat"><div class="n">60-85</div><div class="l" data-i18n="s2">Projects per year</div></div>
+        <div class="stat"><div class="n">Apps Script</div><div class="l" data-i18n="s3">Custom automation</div></div>
+      </div>
+    </div>
+    <!-- Animated sync panel -->
+    <div class="panel" id="syncPanel" aria-hidden="true">
+      <div class="panel-head">
+        <span class="panel-tag"  data-i18n="panelTag">Marketing ops</span>
+        <span class="sync-badge" data-i18n="panelBadge">Auto-synced · 60-day</span>
+      </div>
+      <div class="panel-row"><span class="rl" data-i18n="r1">Campaign · Paid social</span>     <span class="pill high"   data-i18n="ph1">High priority</span></div>
+      <div class="panel-row"><span class="rl" data-i18n="r2">Workflow · Email sequence</span>  <span class="pill queued" data-i18n="pq1">Queued</span></div>
+      <div class="panel-row"><span class="rl" data-i18n="r3">Automation · Countdown</span>     <span class="pill high"   data-i18n="ph2">High priority</span></div>
+      <div class="panel-row"><span class="rl" data-i18n="r4">CRM · Lead score update</span>    <span class="pill queued" data-i18n="pq2">Queued</span></div>
+      <div class="panel-row"><span class="rl" data-i18n="r5">Report · Weekly KPIs</span>       <span class="pill live"   data-i18n="pl">Published</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PROJECTS
+     Each .case has --case-accent and --case-bg set inline
+     to give per-project colour theming.
+     ============================================================ -->
+<section id="projects" class="projects-section on-light">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="projEye">Selected projects</span>
+      <h2 class="section-title" data-i18n="projH2">Systems that made the work repeatable.</h2>
+    </div>
+
+    <!-- CASE 01: amber -->
+    <div class="case" id="case01"
+         style="--case-accent:var(--c1-accent);--case-bg:var(--c1-bg)">
+      <div class="case-inner">
+        <div>
+          <span class="case-index">01</span>
+          <h3 data-i18n="c1h">Marketing automation engine: 60-day self-updating content system</h3>
+          <p class="summary" data-i18n="c1s">Designed and built a content operations system that automatically pulls campaigns, calculates priority scores, generates a 60-day calendar, avoids repetitive patterns, and distributes tasks. Core logic in Apps Script; full architecture designed for n8n.</p>
+          <ul>
+            <li data-i18n="c1b1">Daily trigger: pulls data, normalizes, calculates days-until-deadline and priority score</li>
+            <li data-i18n="c1b2">Fixed Reel and Story taxonomy prevents repetition across channels</li>
+            <li data-i18n="c1b3">60-day slot generator respects no-same-campaign and no-same-content-type rules</li>
+            <li data-i18n="c1b4">AI brief per task: hook, caption, CTA and asset notes pushed to Asana automatically</li>
+            <li data-i18n="c1b5">Recurring planning reduced from hours to seconds</li>
+          </ul>
+          <div class="tools"><span class="tool">Google Apps Script</span><span class="tool">Google Sheets</span><span class="tool">n8n</span><span class="tool">Asana</span><span class="tool">AI brief generation</span></div>
+        </div>
+        <div class="media">
+          <div class="metric-row">
+            <div class="metric"><div class="v">60-day</div><div class="k" data-i18n="c1m1">Auto-planned</div></div>
+            <div class="metric"><div class="v">Hours to sec</div><div class="k" data-i18n="c1m2">Time saved</div></div>
+          </div>
+          <!-- ANIMATED PROJECT 01 VISUAL -->
+          <div class="proj01-wrap" id="proj01anim" aria-hidden="true">
+            <div class="proj01-topbar">
+              <div class="proj01-dots"><span></span><span></span><span></span></div>
+              <span class="proj01-title">Organic Marketing Calendar &nbsp;|&nbsp; syncCalendar.js</span>
+            </div>
+            <div class="proj01-body">
+              <div class="proj01-sheet">
+                <div class="proj01-sheet-header"><div>Content Title</div><div>Channel</div><div>Date</div><div>Status</div></div>
+                <div class="proj01-row"><div class="proj01-cell">Brand Trust 2024</div><div class="proj01-cell">Website</div><div class="proj01-cell">May 20</div><div><span class="proj01-pill high">HIGH</span></div></div>
+                <div class="proj01-row"><div class="proj01-cell">Behind the Scenes</div><div class="proj01-cell">LinkedIn</div><div class="proj01-cell">May 21</div><div><span class="proj01-pill high">HIGH</span></div></div>
+                <div class="proj01-row"><div class="proj01-cell">Customer Story</div><div class="proj01-cell">Website</div><div class="proj01-cell">May 22</div><div><span class="proj01-pill queue">QUEUED</span></div></div>
+                <div class="proj01-row"><div class="proj01-cell">Industry Trends</div><div class="proj01-cell">Website</div><div class="proj01-cell">May 24</div><div><span class="proj01-pill high">HIGH</span></div></div>
+                <div class="proj01-row"><div class="proj01-cell">Weekly Tips</div><div class="proj01-cell">Instagram</div><div class="proj01-cell">May 28</div><div><span class="proj01-pill queue">QUEUED</span></div></div>
+                <div class="proj01-row"><div class="proj01-cell">June Preview</div><div class="proj01-cell">Email</div><div class="proj01-cell">Jun 3</div><div><span class="proj01-pill pub">LIVE</span></div></div>
+              </div>
+              <div class="proj01-code">
+                <div class="proj01-ln"><span class="proj01-lnum">1</span><span class="proj01-lcode co-comment">// ORGANIC MARKETING CALENDAR</span></div>
+                <div class="proj01-ln"><span class="proj01-lnum">2</span><span class="proj01-lcode co-comment">// 60-DAY ROLLING SYNC</span></div>
+                <div class="proj01-ln"><span class="proj01-lnum">3</span><span class="proj01-lcode co-plain">&nbsp;</span></div>
+                <div class="proj01-ln"><span class="proj01-lnum">4</span><span class="proj01-lcode"><span class="co-keyword">const</span> <span class="co-plain">{ google } = </span><span class="co-fn">require</span><span class="co-plain">(</span><span class="co-str">'googleapis'</span><span class="co-plain">);</span></span></div>
+                <div class="proj01-ln"><span class="proj01-lnum">5</span><span class="proj01-lcode"><span class="co-keyword">const</span> <span class="co-plain">SYNC_DAYS = </span><span class="co-num">60</span><span class="co-plain">;</span></span></div>
+                <div class="proj01-ln"><span class="proj01-lnum">6</span><span class="proj01-lcode co-plain">&nbsp;</span></div>
+                <div class="proj01-ln"><span class="proj01-lnum">7</span><span class="proj01-lcode"><span class="co-keyword">async function</span> <span class="co-fn">syncCalendar</span><span class="co-plain">() {</span></span></div>
+                <div class="proj01-ln"><span class="proj01-lnum">8</span><span class="proj01-lcode"><span class="co-plain">&nbsp;&nbsp;</span><span class="co-keyword">const</span> <span class="co-plain">auth = </span><span class="co-keyword">await</span> <span class="co-fn">getAuthClient</span><span class="co-plain">();</span></span></div>
+                <div class="proj01-ln"><span class="proj01-lnum">9</span><span class="proj01-lcode"><span class="co-plain">&nbsp;&nbsp;</span><span class="co-keyword">const</span> <span class="co-plain">rows = </span><span class="co-keyword">await</span> <span class="co-fn">fetchRows</span><span class="co-plain">(auth);</span></span></div>
+                <div class="proj01-ln"><span class="proj01-lnum">10</span><span class="proj01-lcode"><span class="co-plain">&nbsp;&nbsp;</span><span class="co-fn">pushToCalendar</span><span class="co-plain">(rows);</span></span></div>
+                <div class="proj01-ln"><span class="proj01-lnum">11</span><span class="proj01-lcode"><span class="co-plain">}</span><span class="proj01-cursor"></span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 02: blue + slot machine numbers -->
+    <div class="case" id="case02"
+         style="--case-accent:var(--c2-accent);--case-bg:var(--c2-bg)">
+      <div class="case-inner">
+        <div>
+          <span class="case-index">02</span>
+          <h3 data-i18n="c2h">Paid channel performance: measurement, optimization and expansion</h3>
+          <p class="summary" data-i18n="c2s">Rebuilt paid campaign measurement from scratch, diversified beyond a single channel, and delivered consistent year-over-year efficiency gains tracked in a custom reporting dashboard.</p>
+          <ul>
+            <li data-i18n="c2b1">Reporting framework: CTR, CPC, link clicks, reach, spend with year-over-year view</li>
+            <li data-i18n="c2b2">Expanded from Meta-only to Meta and Google Ads for search intent coverage</li>
+            <li data-i18n="c2b3">Monthly optimization cycle backed by Meta specialist training since 2022</li>
+            <li data-i18n="c2b4">Coordinated GTM implementation for accurate conversion tracking</li>
+          </ul>
+          <div class="tools"><span class="tool">Meta Ads</span><span class="tool">Google Ads</span><span class="tool">GA4</span><span class="tool">Google Tag Manager</span><span class="tool">Google Sheets</span></div>
+        </div>
+        <div class="media">
+          <!-- Slot machine metrics: data-slot triggers animation -->
+          <div class="metric-row">
+            <div class="metric">
+              <div class="v" data-slot="+64.3%" data-slot-suffix="%">+64.3%</div>
+              <div class="k" data-i18n="c2m1">Link CTR</div>
+            </div>
+            <div class="metric">
+              <div class="v" data-slot="-20.1%" data-slot-suffix="%">-20.1%</div>
+              <div class="k" data-i18n="c2m2">Cost per click</div>
+            </div>
+            <div class="metric">
+              <div class="v" data-slot="+39.1%" data-slot-suffix="%">+39.1%</div>
+              <div class="k" data-i18n="c2m3">Daily clicks</div>
+            </div>
+          </div>
+          <!-- ANIMATED PROJECT 02: CTR/CPC dashboard -->
+          <div class="proj02-wrap" id="proj02anim" aria-hidden="true">
+            <div class="proj02-charts">
+              <div class="proj02-chart-box">
+                <div class="proj02-chart-head">
+                  <div><div class="proj02-chart-name"><span class="p2dot" style="background:#d4a84a;width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;"></span>CTR</div><div class="proj02-chart-sub">Click-Through Rate</div></div>
+                  <span class="proj02-badge up">&#8593; 64%</span>
+                </div>
+                <svg class="proj02-svg-wrap" viewBox="0 0 200 70" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="ctrGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4a84a" stop-opacity="0.35"/><stop offset="100%" stop-color="#d4a84a" stop-opacity="0.02"/></linearGradient>
+                    <clipPath id="ctrClip"><rect id="ctrClipRect" x="0" y="0" width="0" height="70"/></clipPath>
+                  </defs>
+                  <path d="M10,58 L43,48 L76,43 L109,34 L142,26 L175,10" fill="none" stroke="#d4a84a" stroke-width="2" stroke-linecap="round" clip-path="url(#ctrClip)"/>
+                  <path d="M10,58 L43,48 L76,43 L109,34 L142,26 L175,10 L175,70 L10,70 Z" fill="url(#ctrGrad)" clip-path="url(#ctrClip)"/>
+                  <circle cx="10"  cy="58" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
+                  <circle cx="43"  cy="48" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
+                  <circle cx="76"  cy="43" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
+                  <circle cx="109" cy="34" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
+                  <circle cx="142" cy="26" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
+                  <circle cx="175" cy="10" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
+                </svg>
+              </div>
+              <div class="proj02-chart-box">
+                <div class="proj02-chart-head">
+                  <div><div class="proj02-chart-name"><span class="p2dot" style="background:#5a90cc;width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;"></span>CPC</div><div class="proj02-chart-sub">Cost Per Click</div></div>
+                  <span class="proj02-badge down">&#8595; 20%</span>
+                </div>
+                <svg class="proj02-svg-wrap" viewBox="0 0 200 70" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="cpcGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5a90cc" stop-opacity="0.3"/><stop offset="100%" stop-color="#5a90cc" stop-opacity="0.02"/></linearGradient>
+                    <clipPath id="cpcClip"><rect id="cpcClipRect" x="0" y="0" width="0" height="70"/></clipPath>
+                  </defs>
+                  <path d="M10,12 L43,22 L76,30 L109,38 L142,48 L175,56" fill="none" stroke="#5a90cc" stroke-width="2" stroke-linecap="round" clip-path="url(#cpcClip)"/>
+                  <path d="M10,12 L43,22 L76,30 L109,38 L142,48 L175,56 L175,70 L10,70 Z" fill="url(#cpcGrad)" clip-path="url(#cpcClip)"/>
+                  <circle cx="10"  cy="12" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
+                  <circle cx="43"  cy="22" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
+                  <circle cx="76"  cy="30" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
+                  <circle cx="109" cy="38" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
+                  <circle cx="142" cy="48" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
+                  <circle cx="175" cy="56" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
+                </svg>
+              </div>
+            </div>
+            <div class="proj02-metrics">
+              <div class="proj02-metric-card">
+                <div class="proj02-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="#d4a84a" stroke-width="2" style="width:16px;height:16px"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+                <div><div class="proj02-num gold" data-countup="64" data-prefix="+">+0%</div><div class="proj02-mlabel">CTR INCREASE</div><div class="proj02-vsub">vs. previous period</div></div>
+              </div>
+              <div class="proj02-metric-card">
+                <div class="proj02-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="#5a90cc" stroke-width="2" style="width:16px;height:16px"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
+                <div><div class="proj02-num blue" data-countup="20" data-prefix="-">-0%</div><div class="proj02-mlabel">CPC DECREASE</div><div class="proj02-vsub">vs. previous period</div></div>
+              </div>
+              <div class="proj02-metric-card">
+                <div class="proj02-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="#3aacbc" stroke-width="2" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div><div class="proj02-num teal" data-countup="39" data-prefix="+">+0%</div><div class="proj02-mlabel">CONVERSIONS</div><div class="proj02-vsub">vs. previous period</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 03: green -->
+    <div class="case" id="case03"
+         style="--case-accent:var(--c3-accent);--case-bg:var(--c3-bg)">
+      <div class="case-inner">
+        <div>
+          <span class="case-index">03</span>
+          <h3 data-i18n="c3h">B2B funnel strategy: CFO-audience campaign and landing page system</h3>
+          <p class="summary" data-i18n="c3s">Built a full B2B campaign package for a BI and analytics company targeting CFOs: three ad concepts, three funnel-mapped landing pages, a video ad and a Loom walkthrough, all written in finance language.</p>
+          <ul>
+            <li data-i18n="c3b1">Persona research: margin pressure, board reporting pain, month-end stress</li>
+            <li data-i18n="c3b2">Three Meta ad concepts: Margin Drop, Conflicting Numbers, Board Question</li>
+            <li data-i18n="c3b3">Three landing pages mapped to funnel stages with matching messaging</li>
+            <li data-i18n="c3b4">9:16 video mockup (5 scenes, 16 seconds) and a Loom strategy walkthrough</li>
+            <li data-i18n="c3b5">Strong positive feedback, invited to interview</li>
+          </ul>
+          <div class="tools"><span class="tool">B2B strategy</span><span class="tool">Funnel design</span><span class="tool">Canva</span><span class="tool">Loom</span><span class="tool">AI-assisted</span></div>
+        </div>
+        <div class="media">
+          <div class="metric-row">
+            <div class="metric"><div class="v">3 + 3</div><div class="k" data-i18n="c3m1">Ads and landing pages</div></div>
+            <div class="metric"><div class="v">CFO</div><div class="k" data-i18n="c3m2">Target persona</div></div>
+          </div>
+          <!-- ANIMATED PROJECT 03: B2B ad cards + landing page -->
+          <div class="proj03-wrap" id="proj03anim" aria-hidden="true">
+            <div class="proj03-cards">
+              <div class="proj03-card"><div class="proj03-card-title">MARGIN<br><span style="color:#d4a84a">DROP</span></div><div class="proj03-card-body">Costs are up. Margins are down. Do you know why?</div><div class="proj03-card-cta"><span>Uncover what's driving your margin erosion.</span><span style="color:#d4a84a">&#8250;</span></div></div>
+              <div class="proj03-card"><div class="proj03-card-title">CONFLICTING<br><span style="color:#d4a84a">NUMBERS</span></div><div class="proj03-card-body">Different reports. Different answers. Same business?</div><div class="proj03-card-cta"><span>Align your data. Trust your numbers.</span><span style="color:#d4a84a">&#8250;</span></div></div>
+              <div class="proj03-card"><div class="proj03-card-title">BOARD<br><span style="color:#d4a84a">QUESTION</span></div><div class="proj03-card-body">When the board asks, you need clarity, not confusion.</div><div class="proj03-card-cta"><span>Deliver the insights the board can trust.</span><span style="color:#d4a84a">&#8250;</span></div></div>
+            </div>
+            <div class="proj03-lp">
+              <div class="proj03-lp-top">
+                <div>
+                  <div class="proj03-lp-h">Turn Financial Complexity into Confident Decisions</div>
+                  <div class="proj03-lp-sub">Unify your data, understand what's driving performance, and deliver insights your leadership can trust.</div>
+                </div>
+                <div style="flex-shrink:0"><svg viewBox="0 0 60 40" width="60" height="40"><polyline points="4,30 12,24 20,26 28,18 36,20 44,12 52,8" fill="none" stroke="#2A8A9A" stroke-width="1.5" stroke-linecap="round"/><circle cx="52" cy="8" r="2.5" fill="#d4a84a"/></svg></div>
+              </div>
+              <div class="proj03-props">
+                <div class="proj03-prop">Uncover What Drives Performance</div>
+                <div class="proj03-prop">Align and Trust Your Data</div>
+                <div class="proj03-prop">Make Confident Decisions</div>
+                <div class="proj03-prop">Deliver Board-Ready Insights</div>
+              </div>
+              <div class="proj03-cta-bar"><div class="proj03-cta-text">Ready to bring clarity to your numbers?</div><div class="proj03-cta-btn">REQUEST A DEMO &#8594;</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 04: purple -->
+    <div class="case" id="case04"
+         style="--case-accent:var(--c4-accent);--case-bg:var(--c4-bg)">
+      <div class="case-inner">
+        <div>
+          <span class="case-index">04</span>
+          <h3 data-i18n="c4h">Operational data pipeline: automated participant and resource allocation system</h3>
+          <p class="summary" data-i18n="c4s">Replaced a fully manual multi-step data process with an Apps Script pipeline: ingests participant records, applies allocation logic, validates outputs and generates ready-to-use documents across 60 to 85 operational projects per year.</p>
+          <ul>
+            <li data-i18n="c4b1">Normalizes raw records: deduplication, missing fields, status flags</li>
+            <li data-i18n="c4b2">Rule-based allocation logic across capacity constraints and attributes</li>
+            <li data-i18n="c4b3">Structured output documents for partner handoff, zero manual reformatting</li>
+            <li data-i18n="c4b4">Core script approximately 800 lines; second supporting script approximately 200 lines</li>
+          </ul>
+          <div class="tools"><span class="tool">Google Apps Script</span><span class="tool">Google Sheets</span><span class="tool">Data validation</span><span class="tool">Process automation</span></div>
+        </div>
+        <div class="media">
+          <div class="metric-row">
+            <div class="metric"><div class="v">800 lines</div><div class="k" data-i18n="c4m1">Core script</div></div>
+            <div class="metric"><div class="v">Hours to sec</div><div class="k" data-i18n="c4m2">Per run</div></div>
+          </div>
+          <!-- ANIMATED PROJECT 04: data pipeline diagram -->
+          <div class="proj04-wrap" id="proj04anim" aria-hidden="true">
+            <div class="proj04-title">Operational Data Pipeline</div>
+            <div class="proj04-pipeline">
+              <div class="proj04-stage"><div class="proj04-stage-num">1</div><div class="proj04-stage-label">Input Data</div><div class="proj04-box"><div class="proj04-box-title">Raw Records</div><div class="proj04-box-row"><span>P-1001 Active</span><span class="proj04-val">Type A</span></div><div class="proj04-box-row"><span>P-1002 Pending</span><span class="proj04-val">Type B</span></div><div class="proj04-box-row"><span>P-1003 Active</span><span class="proj04-val">Type A</span></div><div class="proj04-box-row"><span>Total</span><span class="proj04-val info">1,248</span></div></div></div>
+              <div class="proj04-stage"><div class="proj04-stage-num">2</div><div class="proj04-stage-label">Normalization</div><div class="proj04-box"><div class="proj04-box-title">Processing</div><div class="proj04-box-row"><span>Deduplication</span><span class="proj04-val warn">18</span></div><div class="proj04-box-row"><span>Missing fields</span><span class="proj04-val warn">32</span></div><div class="proj04-box-row"><span>Valid records</span><span class="proj04-val ok">1,248</span></div></div></div>
+              <div class="proj04-stage"><div class="proj04-stage-num">3</div><div class="proj04-stage-label">Allocation</div><div class="proj04-box"><div class="proj04-box-title">Engine</div><div class="proj04-box-row"><span>Matched</span><span class="proj04-val ok">1,186</span></div><div class="proj04-box-row"><span>Exceptions</span><span class="proj04-val warn">62</span></div><div class="proj04-box-row"><span>Invalid</span><span class="proj04-val warn">14</span></div></div></div>
+              <div class="proj04-stage"><div class="proj04-stage-num">4</div><div class="proj04-stage-label">Output Docs</div><div class="proj04-box"><div class="proj04-box-title">Results</div><div class="proj04-box-row"><span>P-1001</span><span class="proj04-val ok">READY</span></div><div class="proj04-box-row"><span>P-1002</span><span class="proj04-val ok">READY</span></div><div class="proj04-box-row"><span>P-1004</span><span class="proj04-val warn">REVIEW</span></div></div></div>
+            </div>
+            <div class="proj04-metrics">
+              <div class="proj04-mcard"><div class="proj04-mnum" data-countup4="1248">0</div><div class="proj04-mlabel">Raw records normalized</div></div>
+              <div class="proj04-mcard"><div class="proj04-mnum" data-countup4="1186">0</div><div class="proj04-mlabel">Rule-based allocation</div></div>
+              <div class="proj04-mcard"><div class="proj04-mnum" data-countup4="1124">0</div><div class="proj04-mlabel">Ready-to-use outputs</div></div>
+              <div class="proj04-mcard"><div class="proj04-mnum">100<span style="font-size:8px;color:#d4a84a">%</span></div><div class="proj04-mlabel">Zero manual reformatting</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     HOW I WORK - pipeline with nodes and travelling dot
+     ============================================================ -->
+<section id="how-i-work">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="procEye">How I work</span>
+      <h2 class="section-title" data-i18n="procH2">Spot it. Build it. Measure it.</h2>
+    </div>
+    <div class="process-outer reveal" id="processOuter">
+      <!-- Pipeline track (full width line) -->
+      <div class="pipeline-track" id="pipelineTrack"></div>
+      <!-- Nodes and dot inserted by JS -->
+      <div class="process-grid" id="processGrid">
+        <div class="process-card" id="pc1">
+          <div class="pnum">01</div>
+          <h3 data-i18n="p1h">Find the friction</h3>
+          <p data-i18n="p1b">I notice when a process is manual, slow or leaking data, and I surface it before it becomes a larger problem.</p>
+        </div>
+        <div class="process-card" id="pc2">
+          <div class="pnum">02</div>
+          <h3 data-i18n="p2h">Build the system</h3>
+          <p data-i18n="p2b">I design the fix as a repeatable workflow. Sheets, Apps Script, AI tools: whatever fits and runs without me.</p>
+        </div>
+        <div class="process-card" id="pc3">
+          <div class="pnum">03</div>
+          <h3 data-i18n="p3h">Measure and hand off</h3>
+          <p data-i18n="p3b">I track whether it worked, document it clearly, and make sure the team can run it without my help.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SKILLS AND STACK
+     ============================================================ -->
+<section id="skills" class="skills-section on-light">
+  <div class="wrap" style="position:relative;">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="skillsEye">Skills and stack</span>
+      <h2 class="section-title" data-i18n="skillsH2">What I work with.</h2>
+    </div>
+
+    <div class="skill-grid reveal">
+
+      <!-- Card 1: Marketing ops -->
+      <div class="skill-card">
+        <h3 data-i18n="sk1">Marketing ops and automation</h3>
+        <div class="chips">
+          <span class="chip key">Google Apps Script</span>
+          <span class="chip key">Google Sheets</span>
+          <span class="chip">n8n</span>
+          <span class="chip">Google Forms</span>
+          <span class="chip">Workflow building</span>
+          <span class="chip">Marketing calendars</span>
+        </div>
+        <div class="build-row">
+          <span class="build-tag">Make</span>
+          <span class="build-tag">Zapier</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Paid media -->
+      <div class="skill-card">
+        <h3 data-i18n="sk2">Paid media and campaigns</h3>
+        <div class="chips">
+          <span class="chip key">Meta Ads</span>
+          <span class="chip key">Google Ads</span>
+          <span class="chip">GA4</span>
+          <span class="chip">Google Tag Manager</span>
+          <span class="chip">Budget management</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Project management -->
+      <div class="skill-card">
+        <h3 data-i18n="sk3">Project management and leadership</h3>
+        <div class="chips">
+          <span class="chip key">Team lead</span>
+          <span class="chip key">25-35 people trained</span>
+          <span class="chip">Cross-functional coordination</span>
+          <span class="chip">Asana</span>
+          <span class="chip">Process documentation</span>
+        </div>
+      </div>
+
+      <!-- Card 4: AI workflows -->
+      <div class="skill-card">
+        <h3 data-i18n="sk4">AI-assisted workflows</h3>
+        <div class="chips">
+          <span class="chip key">ChatGPT</span>
+          <span class="chip key">Claude</span>
+          <span class="chip">Gemini</span>
+          <span class="chip">Kimi AI</span>
+          <span class="chip">AI content systems</span>
+        </div>
+        <div class="build-row">
+          <span class="build-tag">AI agents</span>
+        </div>
+      </div>
+
+      <!-- Language card: wide, distinct -->
+      <div class="skill-card lang-card wide reveal">
+        <h3 data-i18n="skLang">Languages</h3>
+        <div class="lang-items">
+          <div>
+            <div class="lang-item">
+              <span class="ln" data-i18n="lang1">English</span>
+              <span class="ll" data-i18n="lang1l">Fluent</span>
+            </div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="width:95%"></div></div>
+          </div>
+          <div>
+            <div class="lang-item">
+              <span class="ln" data-i18n="lang2">German</span>
+              <span class="ll" data-i18n="lang2l">B2</span>
+            </div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="width:70%"></div></div>
+          </div>
+          <div>
+            <div class="lang-item">
+              <span class="ln" data-i18n="lang3">Arabic</span>
+              <span class="ll" data-i18n="lang3l">Native</span>
+            </div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CERTIFICATIONS - staggered masonry, logos
+     ============================================================ -->
+<section id="certificates" class="certs-section">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="certsEye">Certifications and training</span>
+      <h2 class="section-title" data-i18n="certsH2">Always building.</h2>
+    </div>
+
+    <div class="cert-masonry reveal">
+
+      <!-- HubSpot RevOps -->
+      <div class="cert progress-card">
+        <span class="year">2026</span>
+        <div class="cert-top">
+          <div class="cert-logo" style="background:#FF7A59;color:#fff">Hs</div>
+          <span class="cert-badge progress" data-i18n="bProg">In progress</span>
+        </div>
+        <h3 data-i18n="ct1">Revenue Operations Certification</h3>
+        <div class="issuer">HubSpot Academy</div>
+        <button class="cert-link" data-cert="" data-i18n="certView" onclick="document.getElementById('cert-toast').classList.add('show');setTimeout(function(){document.getElementById('cert-toast').classList.remove('show');},3000)">View certificate</button>
+      </div>
+
+      <!-- HubSpot Reporting - IN PROGRESS -->
+      <div class="cert progress-card">
+        <span class="year">2026</span>
+        <div class="cert-top">
+          <div class="cert-logo" style="background:#FF7A59;color:#fff">Hs</div>
+          <span class="cert-badge progress" data-i18n="bProg2">In progress</span>
+        </div>
+        <h3 data-i18n="ct2">Reporting Certification</h3>
+        <div class="issuer">HubSpot Academy</div>
+        <button class="cert-link" data-cert="" data-i18n="certView2">View certificate</button>
+      </div>
+
+      <!-- AI Agents PSUT - IN PROGRESS -->
+      <div class="cert progress-card">
+        <span class="year">2026</span>
+        <div class="cert-top">
+          <div class="cert-logo" style="background:#1a3a5c;color:var(--gold);font-size:10px">PSU</div>
+          <span class="cert-badge progress" data-i18n="bProg3">In progress</span>
+        </div>
+        <h3 data-i18n="ct3">AI Agents for Marketing and Automation</h3>
+        <div class="issuer">Princess Sumaya University for Technology</div>
+        <button class="cert-link" data-cert="" data-i18n="certView3">View certificate</button>
+      </div>
+
+      <!-- UVA Project Planning - IN PROGRESS -->
+      <div class="cert progress-card">
+        <span class="year">2026</span>
+        <div class="cert-top">
+          <div class="cert-logo" style="background:#232D4B;color:#E57200;font-size:9px">UVA</div>
+          <span class="cert-badge progress" data-i18n="bProg4">In progress</span>
+        </div>
+        <h3 data-i18n="ct4">Fundamentals of Project Planning and Management</h3>
+        <div class="issuer">University of Virginia</div>
+        <button class="cert-link" data-cert="" data-i18n="certView4">View certificate</button>
+      </div>
+
+      <!-- Conflict Management - COMPLETED -->
+      <div class="cert">
+        <span class="year">2026</span>
+        <div class="cert-top">
+          <div class="cert-logo" style="background:#4a9d6e;color:#fff;font-size:9px">LK</div>
+          <span class="cert-badge done" data-i18n="bDone">Completed</span>
+        </div>
+        <h3 data-i18n="ct5">Conflict Management Strategies</h3>
+        <div class="issuer">LearnKartS</div>
+        <!-- File: Conflict_Management_Strategies.pdf -->
+        <button class="cert-link" data-cert="Conflict_Management_Strategies.pdf" data-i18n="certView5">View certificate</button>
+      </div>
+
+      <!-- Google Data Analytics - COMPLETED -->
+      <div class="cert">
+        <span class="year">2025</span>
+        <div class="cert-top">
+          <!-- Google G logo SVG -->
+          <div class="cert-logo" style="background:#fff;padding:3px;">
+            <svg width="22" height="22" viewBox="0 0 48 48"><path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          </div>
+          <span class="cert-badge done" data-i18n="bDone2">Completed</span>
+        </div>
+        <h3 data-i18n="ct6">Google Data Analytics: Foundations, Data Preparation &amp; Decision-Making</h3>
+        <div class="issuer">Google</div>
+        <!-- Files: Foundations_Data__Data__Everywhere.pdf | Ask_Questions_to_Make_Data-Driven_Decisions.pdf | Prepare_Data_for_Exploration.pdf -->
+        <!-- TO ADD: change data-cert to point to another file, or duplicate this card -->
+        <button class="cert-link" data-cert="Google_Data_Analytics.pdf" data-i18n="certView6">View certificate</button>
+      </div>
+
+      <!-- Meta Ads Training - ONGOING -->
+      <div class="cert">
+        <span class="year">Since 2022</span>
+        <div class="cert-top">
+          <div class="cert-logo" style="background:#1877F2;color:#fff;font-size:13px;font-weight:700">f</div>
+          <span class="cert-badge training" data-i18n="bTrain">Ongoing</span>
+        </div>
+        <h3 data-i18n="ct7">Meta Ads Specialist Training</h3>
+        <div class="issuer" data-i18n="ct7i">Monthly sessions, Meta marketing specialist</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT - photo placeholder + typewriter + floating animation
+     ============================================================ -->
+<section id="about" class="about-section on-light">
+  <div class="wrap about-grid">
+
+    <!-- Photo: drop CV_pic.JPG in the same Netlify folder as index.html -->
+    <div class="photo-wrap reveal">
+      <img src="CV_pic.JPG" alt="Mohammad Almumani" class="photo-actual" width="260" height="340"/>
+    </div>
+
+    <!-- Text -->
+    <div class="about-text reveal">
+      <span class="eyebrow on-light-eye" data-i18n="aboutEye" style="color:#8a6a25;margin-bottom:10px;display:inline-block;">About</span>
+      <h2 id="aboutHeading" data-i18n="aboutH2">The marketer who builds the systems.</h2>
+      <p data-i18n="aboutP1">I am a marketing operations and project manager based in Wuppertal, Germany. For the past five years I have run two jobs at once: executing marketing across paid channels, content and email, and building the systems and automations that keep it all organized, measurable and repeatable.</p>
+      <p data-i18n="aboutP2">When a process is manual, slow or error-prone, I build something to fix it. That instinct is what separates me from a marketer who only runs campaigns. I own the full cycle: strategy, execution, automation, reporting, and handing it off so the team can run it without me.</p>
+      <p data-i18n="aboutP3">I have trained and led 25 to 35 people, coordinated large-scale operational projects, and worked closely with founders and senior stakeholders. I work in English every day, speak German and Arabic, and I am actively building my RevOps and CRM skills.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-wrap reveal">
+      <span class="eyebrow" data-i18n="contactEye">Contact</span>
+      <h2 data-i18n="contactH2">Building something that needs clean systems behind it?</h2>
+      <p class="sub" data-i18n="contactSub">Open to marketing operations, RevOps and automation roles, remote across European time zones.</p>
+      <div class="contact-cta">
+        <a href="mailto:mohammadalmumani97@gmail.com" class="btn"   data-i18n="cBtn1">Email me</a>
+        <a href="https://linkedin.com/in/almumani"    class="btn ghost" target="_blank" rel="noopener" data-i18n="cBtn2">LinkedIn</a>
+      </div>
+      <div class="contact-meta">Wuppertal, Germany · mohammadalmumani97@gmail.com</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="wrap foot-inner">
+    <p>2026 Mohammad Almumani</p>
+    <p data-i18n="footNote">Marketing Operations · RevOps · Automation</p>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     1. i18n
+     2. Bidirectional scroll reveals
+     3. Sync panel (bidirectional)
+     4. Case card entrance animations (triggered at projects section)
+     5. Slot machine numbers (Case 02 metrics)
+     6. Process connector line animation
+     7. Language bars animation
+     8. About typewriter effect
+     9. Scrollspy
+     ============================================================ -->
+<script>
+(function () {
+"use strict";
+
+var REDUCE = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ==================================================
+   1. i18n
+   ================================================== */
+var T = {
+en: {
+  protoNote: "Design prototype. Placeholder images in use. German copy needs proofreading before publishing.",
+  navProjects:"Projects", navProcess:"How I work", navSkills:"Skills", navCerts:"Certificates", navAbout:"About", navCV:"Download CV",
+  heroEye:"Marketing Operations · RevOps · Automation",
+  heroH1:"I build the systems behind the campaigns.",
+  heroSub:"I run paid campaigns and then automate the workflows behind them, so growth is repeatable and not improvised.",
+  heroBtn1:"View projects", heroBtn2:"Download CV",
+  s1:"Years in marketing ops", s2:"Projects per year", s3:"Custom automation",
+  panelTag:"Marketing ops", panelBadge:"Auto-synced · 60-day",
+  r1:"Campaign · Paid social",     ph1:"High priority",
+  r2:"Workflow · Email sequence",  pq1:"Queued",
+  r3:"Automation · Countdown",     ph2:"High priority",
+  r4:"CRM · Lead score update",    pq2:"Queued",
+  r5:"Report · Weekly KPIs",       pl:"Published",
+  projEye:"Selected projects", projH2:"Systems that made the work repeatable.",
+  c1h:"Marketing automation engine: 60-day self-updating content system",
+  c1s:"Designed and built a content operations system that automatically pulls campaigns, calculates priority scores, generates a 60-day calendar, avoids repetitive patterns, and distributes tasks. Core logic in Apps Script; full architecture designed for n8n.",
+  c1b1:"Daily trigger: pulls data, normalizes, calculates days-until-deadline and priority score",
+  c1b2:"Fixed Reel and Story taxonomy prevents repetition across channels",
+  c1b3:"60-day slot generator respects no-same-campaign and no-same-content-type rules",
+  c1b4:"AI brief per task: hook, caption, CTA and asset notes pushed to Asana automatically",
+  c1b5:"Recurring planning reduced from hours to seconds",
+  c1m1:"Auto-planned", c1m2:"Time saved",
+  c1ph:"Add: Apps Script code header + color-coded priority sheet screenshot",
+  c2h:"Paid channel performance: measurement, optimization and expansion",
+  c2s:"Rebuilt paid campaign measurement from scratch, diversified beyond a single channel, and delivered consistent year-over-year efficiency gains tracked in a custom reporting dashboard.",
+  c2b1:"Reporting framework: CTR, CPC, link clicks, reach, spend with year-over-year view",
+  c2b2:"Expanded from Meta-only to Meta and Google Ads for search intent coverage",
+  c2b3:"Monthly optimization cycle backed by Meta specialist training since 2022",
+  c2b4:"Coordinated GTM implementation for accurate conversion tracking",
+  c2m1:"Link CTR", c2m2:"Cost per click", c2m3:"Daily clicks",
+  c2ph:"Add: anonymized campaign reporting dashboard screenshot",
+  c3h:"B2B funnel strategy: CFO-audience campaign and landing page system",
+  c3s:"Built a full B2B campaign package for a BI and analytics company targeting CFOs: three ad concepts, three funnel-mapped landing pages, a video ad and a Loom walkthrough, all written in finance language.",
+  c3b1:"Persona research: margin pressure, board reporting pain, month-end stress",
+  c3b2:"Three Meta ad concepts: Margin Drop, Conflicting Numbers, Board Question",
+  c3b3:"Three landing pages mapped to funnel stages with matching messaging",
+  c3b4:"9:16 video mockup (5 scenes, 16 seconds) and a Loom strategy walkthrough",
+  c3b5:"Strong positive feedback, invited to interview",
+  c3m1:"Ads and landing pages", c3m2:"Target persona",
+  c3ph:"Add: ad concept or landing page mockup from the MultiBase case",
+  c4h:"Operational data pipeline: automated participant and resource allocation system",
+  c4s:"Replaced a fully manual multi-step data process with an Apps Script pipeline: ingests participant records, applies allocation logic, validates outputs and generates ready-to-use documents.",
+  c4b1:"Normalizes raw records: deduplication, missing fields, status flags",
+  c4b2:"Rule-based allocation logic across capacity constraints and attributes",
+  c4b3:"Structured output documents for partner handoff, zero manual reformatting",
+  c4b4:"Core script approximately 800 lines; second supporting script approximately 200 lines",
+  c4m1:"Core script", c4m2:"Per run",
+  c4ph:"Add: anonymized allocation output sheet (names as Participant A, B, C)",
+  procEye:"How I work", procH2:"Spot it. Build it. Measure it.",
+  p1h:"Find the friction", p1b:"I notice when a process is manual, slow or leaking data, and I surface it before it becomes a larger problem.",
+  p2h:"Build the system",  p2b:"I design the fix as a repeatable workflow. Sheets, Apps Script, AI tools: whatever fits and runs without me.",
+  p3h:"Measure and hand off", p3b:"I track whether it worked, document it clearly, and make sure the team can run it without my help.",
+  skillsEye:"Skills and stack", skillsH2:"What I work with.",
+  sk1:"Marketing ops and automation", sk2:"Paid media and campaigns",
+  sk3:"Project management and leadership", sk4:"AI-assisted workflows",
+  skLang:"Languages",
+  lang1:"English", lang1l:"Fluent", lang2:"German", lang2l:"B2", lang3:"Arabic", lang3l:"Native",
+  certsEye:"Certifications and training", certsH2:"Always building.",
+  bProg:"In progress", bProg2:"In progress", bProg3:"In progress", bProg4:"In progress",
+  bDone:"Completed", bDone2:"Completed", bTrain:"Ongoing",
+  ct1:"Revenue Operations Certification", ct2:"Reporting Certification",
+  ct3:"AI Agents for Marketing and Automation",
+  ct4:"Fundamentals of Project Planning and Management",
+  ct5:"Conflict Management Strategies",
+  ct6:"Google Data Analytics: Foundations, Data Preparation & Decision-Making",
+  ct7:"Meta Ads Specialist Training", ct7i:"Monthly sessions, Meta marketing specialist",
+  certView:"View certificate", certView2:"View certificate", certView3:"View certificate",
+  certView4:"View certificate", certView5:"View certificate", certView6:"View certificate",
+  aboutH2:"The marketer who builds the systems.",
+  aboutEye:"About",
+  aboutP1:"I am a marketing operations and project manager based in Wuppertal, Germany. For the past five years I have run two jobs at once: executing marketing across paid channels, content and email, and building the systems and automations that keep it all organized, measurable and repeatable.",
+  aboutP2:"When a process is manual, slow or error-prone, I build something to fix it. That instinct is what separates me from a marketer who only runs campaigns. I own the full cycle: strategy, execution, automation, reporting, and handing it off so the team can run it without me.",
+  aboutP3:"I have trained and led 25 to 35 people, coordinated large-scale operational projects, and worked closely with founders and senior stakeholders. I work in English every day, speak German and Arabic, and I am actively building my RevOps and CRM skills.",
+  contactEye:"Contact",
+  contactH2:"Building something that needs clean systems behind it?",
+  contactSub:"Open to marketing operations, RevOps and automation roles, remote across European time zones.",
+  cBtn1:"Email me", cBtn2:"LinkedIn",
+  footNote:"Marketing Operations · RevOps · Automation"
+},
+de: {
+  protoNote:"Design-Prototyp. Platzhalterbilder in Verwendung. Deutsch muss vor der Veröffentlichung Korrektur gelesen werden.",
+  navProjects:"Projekte", navProcess:"Wie ich arbeite", navSkills:"Fähigkeiten", navCerts:"Zertifikate", navAbout:"Über mich", navCV:"Lebenslauf",
+  heroEye:"Marketing Operations · RevOps · Automatisierung",
+  heroH1:"Ich baue die Systeme hinter den Kampagnen.",
+  heroSub:"Ich steuere Paid-Kampagnen und automatisiere die Workflows dahinter, damit Wachstum wiederholbar wird.",
+  heroBtn1:"Projekte ansehen", heroBtn2:"Lebenslauf",
+  s1:"Jahre in Marketing Ops", s2:"Projekte pro Jahr", s3:"Eigene Automatisierung",
+  panelTag:"Marketing Ops", panelBadge:"Auto-synchronisiert · 60 Tage",
+  r1:"Kampagne · Paid Social",     ph1:"Hohe Priorität",
+  r2:"Workflow · E-Mail-Sequenz",  pq1:"Geplant",
+  r3:"Automatisierung · Countdown",ph2:"Hohe Priorität",
+  r4:"CRM · Lead-Score-Update",    pq2:"Geplant",
+  r5:"Report · Wöchentliche KPIs", pl:"Veröffentlicht",
+  projEye:"Ausgewählte Projekte", projH2:"Systeme, die die Arbeit wiederholbar gemacht haben.",
+  c1h:"Marketing-Automatisierungs-Engine: 60-Tage-Content-System",
+  c1s:"Entwicklung eines Content-Operations-Systems das automatisch Kampagnen abruft, Prioritäten berechnet, einen 60-Tage-Kalender erstellt und Aufgaben verteilt.",
+  c1b1:"Täglicher Trigger: Daten abrufen, bereinigen, Tage bis Deadline und Priorität berechnen",
+  c1b2:"Feste Reel- und Story-Taxonomie verhindert Wiederholungen",
+  c1b3:"60-Tage-Generator respektiert Regeln für keine Wiederholung von Trip oder Inhaltstyp",
+  c1b4:"KI-Brief pro Aufgabe: Hook, Caption, CTA und Asset-Notizen in Asana",
+  c1b5:"Wiederkehrende Planung von Stunden auf Sekunden reduziert",
+  c1m1:"Automatisch geplant", c1m2:"Zeitersparnis",
+  c1ph:"Hinzufügen: Apps-Script-Code-Header und farbiges Prioritäts-Sheet",
+  c2h:"Paid-Kanal-Performance: Messung, Optimierung und Erweiterung",
+  c2s:"Paid-Kampagnen-Messung neu aufgebaut, Kanal-Mix diversifiziert und konsistente Jahresverbesserungen erzielt.",
+  c2b1:"Reporting-Framework mit CTR, CPC, Klicks, Reichweite, Ausgaben im Jahresvergleich",
+  c2b2:"Von Meta-only auf Meta und Google Ads erweitert",
+  c2b3:"Monatlicher Optimierungszyklus mit Meta-Spezialist-Training seit 2022",
+  c2b4:"GTM-Implementierung für genaues Conversion-Tracking koordiniert",
+  c2m1:"Link-CTR", c2m2:"Kosten pro Klick", c2m3:"Tägliche Klicks",
+  c2ph:"Hinzufügen: anonymisierter Kampagnen-Reporting-Screenshot",
+  c3h:"B2B-Funnel-Strategie: Kampagnen- und Landing-Page-System für CFO-Zielgruppe",
+  c3s:"Vollständiges B2B-Kampagnenpaket für ein BI-Unternehmen mit CFO-Zielgruppe: drei Anzeigenkonzepte, drei Landing-Pages, Video und Loom-Walkthrough in Finanzsprache.",
+  c3b1:"Persona: Margen-Druck, Board-Reporting-Schmerz, Monatsabschluss-Stress",
+  c3b2:"Drei Meta-Anzeigenkonzepte: Margin Drop, Conflicting Numbers, Board Question",
+  c3b3:"Drei Landing-Pages nach Funnel-Stufen mit passenden Botschaften",
+  c3b4:"9:16-Video-Mockup (5 Szenen, 16 Sekunden) und Loom-Strategie-Walkthrough",
+  c3b5:"Starkes positives Feedback, zum Interview eingeladen",
+  c3m1:"Anzeigen und Landing-Pages", c3m2:"Ziel-Persona",
+  c3ph:"Hinzufügen: Anzeigenkonzept oder Landing-Page-Mockup aus dem Case",
+  c4h:"Operative Datenpipeline: automatisiertes Zuteilungssystem",
+  c4s:"Manuellen Mehrstufen-Prozess durch Apps-Script-Pipeline ersetzt: liest Datensätze ein, wendet Zuteilungslogik an und generiert fertige Dokumente.",
+  c4b1:"Normalisiert Rohdaten: Deduplizierung, fehlende Felder, Status-Flags",
+  c4b2:"Regelbasierte Zuteilungslogik bei Kapazitätsgrenzen und Attributen",
+  c4b3:"Strukturierte Ausgabedokumente ohne manuelles Nachformatieren",
+  c4b4:"Hauptskript ca. 800 Zeilen; Hilfsskript ca. 200 Zeilen",
+  c4m1:"Hauptskript", c4m2:"Pro Durchlauf",
+  c4ph:"Hinzufügen: anonymisierter Zuteilungs-Screenshot",
+  procEye:"Wie ich arbeite", procH2:"Erkennen. Bauen. Messen.",
+  p1h:"Reibung finden",         p1b:"Ich erkenne wenn ein Prozess manuell, langsam oder datenleckend ist, und mache es sichtbar.",
+  p2h:"Das System bauen",       p2b:"Ich designe die Lösung als wiederholbaren Workflow. Was auch immer passt und ohne mich läuft.",
+  p3h:"Messen und übergeben",   p3b:"Ich messe ob es funktioniert, dokumentiere klar und stelle sicher dass das Team es selbst nutzen kann.",
+  skillsEye:"Fähigkeiten und Stack", skillsH2:"Womit ich arbeite.",
+  sk1:"Marketing Ops und Automatisierung", sk2:"Paid Media und Kampagnen",
+  sk3:"Projektmanagement und Führung", sk4:"KI-gestützte Workflows",
+  skLang:"Sprachen",
+  lang1:"Englisch", lang1l:"Fließend", lang2:"Deutsch", lang2l:"B2", lang3:"Arabisch", lang3l:"Muttersprache",
+  certsEye:"Zertifikate und Weiterbildung", certsH2:"Immer im Aufbau.",
+  bProg:"In Bearbeitung", bProg2:"In Bearbeitung", bProg3:"In Bearbeitung", bProg4:"In Bearbeitung",
+  bDone:"Abgeschlossen", bDone2:"Abgeschlossen", bTrain:"Laufend",
+  ct1:"Revenue Operations Zertifizierung", ct2:"Reporting Zertifizierung",
+  ct3:"KI-Agenten für Marketing und Automatisierung",
+  ct4:"Grundlagen des Projektplanens und -managements",
+  ct5:"Konfliktmanagement-Strategien",
+  ct6:"Google Data Analytics: Grundlagen, Datenvorbereitung & Entscheidungsfindung",
+  ct7:"Meta Ads Spezialist Training", ct7i:"Monatliche Sessions, Meta Marketing Spezialist",
+  certView:"Zertifikat ansehen", certView2:"Zertifikat ansehen", certView3:"Zertifikat ansehen",
+  certView4:"Zertifikat ansehen", certView5:"Zertifikat ansehen", certView6:"Zertifikat ansehen",
+  aboutH2:"Der Marketer, der die Systeme baut.",
+  aboutEye:"Über mich",
+  aboutP1:"Ich bin Marketing-Operations- und Projektmanager mit Sitz in Wuppertal. Seit fünf Jahren erledige ich zwei Aufgaben gleichzeitig: Marketing über Paid-Kanäle steuern und die Systeme bauen, die alles organisiert und wiederholbar halten.",
+  aboutP2:"Wenn ein Prozess manuell, langsam oder fehleranfällig ist, baue ich etwas das ihn löst. Das ist mein Unterschied. Ich besitze den vollen Zyklus: Strategie, Ausführung, Automatisierung, Reporting und Übergabe.",
+  aboutP3:"Ich habe 25 bis 35 Personen ausgebildet und geführt, operative Projekte koordiniert und eng mit Gründern zusammengearbeitet. Ich baue aktiv meine RevOps- und CRM-Kenntnisse aus.",
+  contactEye:"Kontakt",
+  contactH2:"Baust du etwas das saubere Systeme im Hintergrund braucht?",
+  contactSub:"Offen für Marketing-Operations-, RevOps- und Automatisierungs-Rollen, remote in europäischen Zeitzonen.",
+  cBtn1:"Schreib mir", cBtn2:"LinkedIn",
+  footNote:"Marketing Operations · RevOps · Automatisierung"
+}};
+
+function setLang(l) {
+  var d = T[l]; if (!d) return;
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i18n]").forEach(function(el) {
+    var k = el.getAttribute("data-i18n");
+    if (d[k] !== undefined) el.textContent = d[k];
+  });
+  document.querySelectorAll(".lang button").forEach(function(b) {
+    b.classList.toggle("on", b.getAttribute("data-lang") === l);
+  });
+}
+document.querySelectorAll(".lang button").forEach(function(b) {
+  b.addEventListener("click", function() { setLang(b.getAttribute("data-lang")); });
+});
+
+/* ==================================================
+   2. BIDIRECTIONAL SCROLL REVEALS
+   ================================================== */
+function initReveals() {
+  if (REDUCE) {
+    document.querySelectorAll(".reveal").forEach(function(el) { el.classList.add("in"); });
+    return;
+  }
+  if (!("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal").forEach(function(el) { el.classList.add("in"); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+      } else {
+        if (e.boundingClientRect.top > 0) {
+          e.target.classList.remove("in");
+        }
+      }
+    });
+  }, { threshold: 0.13, rootMargin: "0px 0px -6% 0px" });
+  document.querySelectorAll(".reveal").forEach(function(el) { obs.observe(el); });
+}
+initReveals();
+
+/* ==================================================
+   3. SYNC PANEL (bidirectional)
+   ================================================== */
+var panel = document.getElementById("syncPanel");
+if (panel && !REDUCE && "IntersectionObserver" in window) {
+  var pTimer = null;
+  new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      pTimer = setTimeout(function() { panel.classList.add("synced"); }, 200);
+    } else {
+      clearTimeout(pTimer);
+      panel.classList.remove("synced");
+    }
+  }, { threshold: 0.35 }).observe(panel);
+} else if (panel) {
+  panel.classList.add("synced");
+}
+
+/* ==================================================
+   4. CASE CARD ENTRANCE ANIMATIONS
+   Triggered only when the #projects section enters view
+   ================================================== */
+var cases = document.querySelectorAll(".case");
+if (!REDUCE && "IntersectionObserver" in window) {
+  var caseObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+      } else {
+        if (e.boundingClientRect.top > 0) {
+          e.target.classList.remove("in");
+        }
+      }
+    });
+  }, { threshold: 0.12 });
+  cases.forEach(function(c) { caseObs.observe(c); });
+} else {
+  cases.forEach(function(c) { c.classList.add("in"); });
+}
+
+/* ==================================================
+   5. SLOT MACHINE NUMBERS (Case 02 metrics)
+   ================================================== */
+var digits = "0123456789".split("");
+function shuffleStr() {
+  return (Math.random() > 0.5 ? "+" : "") + (Math.floor(Math.random()*90)+10) + "." + Math.floor(Math.random()*9) + "%";
+}
+
+function runSlot(el) {
+  if (REDUCE) return;
+  var final = el.getAttribute("data-slot");
+  var steps = 12;
+  var interval = 120;
+  for (var i = 0; i < steps; i++) {
+    (function(idx) {
+      setTimeout(function() {
+        if (idx < steps - 1) {
+          el.textContent = shuffleStr();
+        } else {
+          el.textContent = final;
+        }
+      }, idx * interval);
+    })(i);
+  }
+}
+
+if ("IntersectionObserver" in window && !REDUCE) {
+  var slotObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        runSlot(e.target);
+      } else {
+        e.target.textContent = e.target.getAttribute("data-slot");
+      }
+    });
+  }, { threshold: 0.8 });
+  document.querySelectorAll("[data-slot]").forEach(function(el) { slotObs.observe(el); });
+}
+
+/* ==================================================
+   6. PIPELINE NODE AND TRAVELLING DOT (How I work)
+   A dot loops from node 1 to 2 to 3 along the
+   horizontal pipeline line. Each card gets a gold
+   border highlight when the dot arrives.
+   ================================================== */
+(function() {
+  if (REDUCE) return;
+  var outer = document.getElementById("processOuter");
+  var grid  = document.getElementById("processGrid");
+  if (!outer || !grid) return;
+
+  var cards = [
+    document.getElementById("pc1"),
+    document.getElementById("pc2"),
+    document.getElementById("pc3")
+  ];
+
+  /* Create the three nodes and one dot */
+  var nodes = [];
+  var dot = document.createElement("div");
+  dot.className = "pipeline-dot";
+  outer.appendChild(dot);
+
+  cards.forEach(function(card) {
+    var node = document.createElement("div");
+    node.className = "pipeline-node";
+    outer.appendChild(node);
+    nodes.push(node);
+  });
+
+  var isVisible = false;
+  var stepIndex = 0;
+  var stepTimer = null;
+
+  function getNodeXPercent(idx) {
+    var card = cards[idx];
+    var outerRect = outer.getBoundingClientRect();
+    var cardRect  = card.getBoundingClientRect();
+    var cx = cardRect.left + cardRect.width / 2;
+    return ((cx - outerRect.left) / outerRect.width * 100).toFixed(2) + "%";
+  }
+
+  function positionNodes() {
+    nodes.forEach(function(node, i) {
+      node.style.left = getNodeXPercent(i);
+    });
+  }
+
+  function activateStep(idx) {
+    /* Remove active from all */
+    nodes.forEach(function(n, i) {
+      n.classList.toggle("active", i === idx);
+    });
+    cards.forEach(function(c, i) {
+      c.classList.toggle("node-active", i === idx);
+    });
+    /* Move dot */
+    dot.style.left = getNodeXPercent(idx);
+  }
+
+  function tick() {
+    if (!isVisible) return;
+    activateStep(stepIndex);
+    stepIndex = (stepIndex + 1) % 3;
+    /* Pause at each node for 1.8s, travel time is in the CSS transition (0.9s) */
+    stepTimer = setTimeout(tick, 1000);
+  }
+
+  function startLoop() {
+    if (stepTimer) clearTimeout(stepTimer);
+    stepIndex = 0;
+    positionNodes();
+    /* Start dot at node 0 instantly (no transition), then begin loop */
+    dot.style.transition = "none";
+    dot.style.left = getNodeXPercent(0);
+    setTimeout(function() {
+      dot.style.transition = "";
+      tick();
+    }, 50);
+  }
+
+  function stopLoop() {
+    if (stepTimer) clearTimeout(stepTimer);
+    nodes.forEach(function(n) { n.classList.remove("active"); });
+    cards.forEach(function(c) { c.classList.remove("node-active"); });
+  }
+
+  window.addEventListener("resize", positionNodes);
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        isVisible = true;
+        positionNodes();
+        startLoop();
+      } else {
+        isVisible = false;
+        stopLoop();
+      }
+    }, { threshold: 0.35 }).observe(outer);
+  } else {
+    isVisible = true;
+    positionNodes();
+    startLoop();
+  }
+})();
+
+
+/* ==================================================
+   7. LANGUAGE BAR ANIMATION
+   ================================================== */
+if ("IntersectionObserver" in window && !REDUCE) {
+  var lc = document.querySelector(".lang-card");
+  if (lc) {
+    new IntersectionObserver(function(entries) {
+      lc.classList.toggle("in", entries[0].isIntersecting);
+    }, { threshold: 0.4 }).observe(lc);
+  }
+} else {
+  var lc = document.querySelector(".lang-card");
+  if (lc) lc.classList.add("in");
+}
+
+
+/* ==================================================
+   8. ABOUT TYPEWRITER EFFECT
+   ================================================== */
+var aboutDone = false;
+function typeWrite(el, text, speed) {
+  el.textContent = "";
+  var cursor = document.createElement("span");
+  cursor.className = "typewriter-cursor";
+  el.appendChild(cursor);
+  var i = 0;
+  var iv = setInterval(function() {
+    if (i < text.length) {
+      el.insertBefore(document.createTextNode(text[i]), cursor);
+      i++;
+    } else {
+      clearInterval(iv);
+      setTimeout(function() {
+        if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+      }, 2000);
+    }
+  }, speed);
+}
+
+if ("IntersectionObserver" in window && !REDUCE) {
+  var aboutSection = document.getElementById("about");
+  var aboutHeading = document.getElementById("aboutHeading");
+  if (aboutSection && aboutHeading) {
+    new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting && !aboutDone) {
+        aboutDone = true;
+        var txt = T.en[aboutHeading.getAttribute("data-i18n")] || aboutHeading.textContent;
+        typeWrite(aboutHeading, txt, 38);
+      }
+    }, { threshold: 0.4 }).observe(aboutSection);
+  }
+}
+
+
+/* ==================================================
+   9. SCROLLSPY
+   ================================================== */
+var navMap = {};
+document.querySelectorAll(".nav-links a").forEach(function(a) {
+  var h = a.getAttribute("href");
+  if (h && h.startsWith("#")) navMap[h.slice(1)] = a;
+});
+if ("IntersectionObserver" in window) {
+  var spyObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && navMap[e.target.id]) {
+        Object.values(navMap).forEach(function(a) { a.classList.remove("active"); });
+        navMap[e.target.id].classList.add("active");
+      }
+    });
+  }, { threshold: 0.4 });
+  ["projects","how-i-work","skills","certificates","about","contact"].forEach(function(id) {
+    var el = document.getElementById(id); if (el) spyObs.observe(el);
+  });
+}
+
+/* CERT LINK HANDLER */
+var certToast=document.getElementById("cert-toast");
+var certToastTimer=null;
+function showCertToast(){
+  if(certToastTimer) clearTimeout(certToastTimer);
+  certToast.classList.add("show");
+  certToastTimer=setTimeout(function(){certToast.classList.remove("show");},3000);
+}
+document.querySelectorAll(".cert-link").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    var file=btn.getAttribute("data-cert");
+    if(file&&file.trim()!==""){window.open(file,"_blank","noopener");}
+    else{showCertToast();}
+  });
+});
+
+/* CV LANG SWITCH */
+function updateCvLinks(l){
+  var cvFile=(l==="de")?"Mohammad Almumani Lebenslauf.pdf":"Mohammad Almumani CV.pdf";
+  var nb=document.getElementById("navCvBtn");
+  var hb=document.getElementById("heroCvBtn");
+  if(nb){nb.href=cvFile;nb.setAttribute("download",cvFile);}
+  if(hb){hb.href=cvFile;hb.setAttribute("download",cvFile);}
+}
+document.querySelectorAll(".lang button").forEach(function(b){
+  b.addEventListener("click",function(){updateCvLinks(b.getAttribute("data-lang"));});
+});
+
+/* PROJECT 01 ANIMATION */
+(function(){
+  if(REDUCE) return;
+  var anim=document.getElementById("proj01anim");
+  if(!anim||!("IntersectionObserver" in window)) return;
+  var rows=anim.querySelectorAll(".proj01-row");
+  var lines=anim.querySelectorAll(".proj01-ln");
+  var triggered=false;
+  function run(){
+    rows.forEach(function(r,i){setTimeout(function(){r.classList.add("show");},i*180);});
+    lines.forEach(function(l,i){setTimeout(function(){l.classList.add("show");},i*120+200);});
+  }
+  new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){if(!triggered){triggered=true;run();}}
+    else{if(entries[0].boundingClientRect.top>0){triggered=false;rows.forEach(function(r){r.classList.remove("show");});lines.forEach(function(l){l.classList.remove("show");});}}
+  },{threshold:0.3}).observe(anim);
+})();
+
+/* PROJECT 02 ANIMATION */
+(function(){
+  if(REDUCE) return;
+  var anim=document.getElementById("proj02anim");
+  if(!anim||!("IntersectionObserver" in window)) return;
+  var triggered=false;
+  function countup(el){
+    var target=parseInt(el.getAttribute("data-countup"),10);
+    var prefix=el.getAttribute("data-prefix")||"";
+    var startTime=null;
+    function step(ts){
+      if(!startTime) startTime=ts;
+      var prog=Math.min((ts-startTime)/1200,1);
+      var e=1-Math.pow(1-prog,3);
+      el.textContent=prefix+Math.round(target*e)+"%";
+      if(prog<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function draw(){
+    var cr=document.getElementById("ctrClipRect");
+    var pr=document.getElementById("cpcClipRect");
+    if(cr){cr.style.transition="width 1.2s cubic-bezier(0.2,0.7,0.2,1)";setTimeout(function(){cr.setAttribute("width","200");},80);}
+    if(pr){pr.style.transition="width 1.2s cubic-bezier(0.2,0.7,0.2,1) 0.15s";setTimeout(function(){pr.setAttribute("width","200");},80);}
+    anim.querySelectorAll(".ctr-dot,.cpc-dot").forEach(function(d){d.style.transition="opacity 0.4s ease 0.8s";d.style.opacity="1";});
+    setTimeout(function(){anim.querySelectorAll("[data-countup]").forEach(function(el){countup(el);});},600);
+  }
+  function reset(){
+    var cr=document.getElementById("ctrClipRect");var pr=document.getElementById("cpcClipRect");
+    if(cr){cr.style.transition="none";cr.setAttribute("width","0");}
+    if(pr){pr.style.transition="none";pr.setAttribute("width","0");}
+    anim.querySelectorAll(".ctr-dot,.cpc-dot").forEach(function(d){d.style.transition="none";d.style.opacity="0";});
+    anim.querySelectorAll("[data-countup]").forEach(function(el){el.textContent=el.getAttribute("data-prefix")+"0%";});
+  }
+  new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){if(!triggered){triggered=true;draw();}}
+    else{if(entries[0].boundingClientRect.top>0){triggered=false;reset();}}
+  },{threshold:0.3}).observe(anim);
+})();
+
+/* PROJECT 03 ANIMATION */
+(function(){
+  if(REDUCE) return;
+  var anim=document.getElementById("proj03anim");
+  if(!anim||!("IntersectionObserver" in window)) return;
+  var cards=anim.querySelectorAll(".proj03-card");
+  var lp=anim.querySelector(".proj03-lp");
+  var triggered=false;
+  new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){
+      if(!triggered){triggered=true;cards.forEach(function(c){c.classList.add("show");});setTimeout(function(){if(lp)lp.classList.add("show");},300);}
+    }else{
+      if(entries[0].boundingClientRect.top>0){triggered=false;cards.forEach(function(c){c.classList.remove("show");});if(lp)lp.classList.remove("show");}
+    }
+  },{threshold:0.3}).observe(anim);
+})();
+
+/* PROJECT 04 ANIMATION */
+(function(){
+  if(REDUCE) return;
+  var anim=document.getElementById("proj04anim");
+  if(!anim||!("IntersectionObserver" in window)) return;
+  var stages=anim.querySelectorAll(".proj04-stage");
+  var mcards=anim.querySelectorAll(".proj04-mcard");
+  var triggered=false;
+  function countup4(el){
+    var target=parseInt(el.getAttribute("data-countup4"),10);
+    if(isNaN(target)) return;
+    var startTime=null;
+    function step(ts){
+      if(!startTime) startTime=ts;
+      var prog=Math.min((ts-startTime)/1400,1);
+      var e=1-Math.pow(1-prog,3);
+      el.textContent=Math.round(target*e).toLocaleString();
+      if(prog<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function run(){
+    stages.forEach(function(s,i){setTimeout(function(){s.classList.add("show");},i*180);});
+    mcards.forEach(function(m,i){setTimeout(function(){m.classList.add("show");var n=m.querySelector("[data-countup4]");if(n)countup4(n);},i*200+500);});
+  }
+  function reset(){
+    stages.forEach(function(s){s.classList.remove("show");});
+    mcards.forEach(function(m){m.classList.remove("show");var n=m.querySelector("[data-countup4]");if(n)n.textContent="0";});
+  }
+  new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){if(!triggered){triggered=true;run();}}
+    else{if(entries[0].boundingClientRect.top>0){triggered=false;reset();}}
+  },{threshold:0.3}).observe(anim);
+})();
+
+/* Init */
+setLang("en");
+
+})();
+</script>
+
+<!-- Toast popup -->
+<div id="cert-toast">Coming soon, check back shortly.</div>
+</body>
+</html>
