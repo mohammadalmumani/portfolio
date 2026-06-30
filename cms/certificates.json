@@ -1,0 +1,74 @@
+{
+  "certificates": [
+    {
+      "year": "2026",
+      "logoText": "Hs",
+      "logoStyle": "background:#FF7A59;color:#fff",
+      "logoType": "text",
+      "status": "progress",
+      "certFile": "",
+      "en": { "title": "Revenue Operations Certification", "issuer": "HubSpot Academy", "badge": "In progress", "viewLabel": "View certificate" },
+      "de": { "title": "Revenue Operations Zertifizierung",   "issuer": "HubSpot Academy", "badge": "In Bearbeitung", "viewLabel": "Zertifikat ansehen" }
+    },
+    {
+      "year": "2026",
+      "logoText": "Hs",
+      "logoStyle": "background:#FF7A59;color:#fff",
+      "logoType": "text",
+      "status": "progress",
+      "certFile": "",
+      "en": { "title": "Reporting Certification", "issuer": "HubSpot Academy", "badge": "In progress", "viewLabel": "View certificate" },
+      "de": { "title": "Reporting Zertifizierung",  "issuer": "HubSpot Academy", "badge": "In Bearbeitung", "viewLabel": "Zertifikat ansehen" }
+    },
+    {
+      "year": "2026",
+      "logoText": "PSU",
+      "logoStyle": "background:#1a3a5c;color:var(--gold);font-size:10px",
+      "logoType": "text",
+      "status": "progress",
+      "certFile": "",
+      "en": { "title": "AI Agents for Marketing and Automation", "issuer": "Princess Sumaya University for Technology", "badge": "In progress", "viewLabel": "View certificate" },
+      "de": { "title": "KI-Agenten für Marketing und Automatisierung", "issuer": "Princess Sumaya University for Technology", "badge": "In Bearbeitung", "viewLabel": "Zertifikat ansehen" }
+    },
+    {
+      "year": "2026",
+      "logoText": "UVA",
+      "logoStyle": "background:#232D4B;color:#E57200;font-size:9px",
+      "logoType": "text",
+      "status": "progress",
+      "certFile": "",
+      "en": { "title": "Fundamentals of Project Planning and Management", "issuer": "University of Virginia", "badge": "In progress", "viewLabel": "View certificate" },
+      "de": { "title": "Grundlagen des Projektplanens und -managements",  "issuer": "University of Virginia", "badge": "In Bearbeitung", "viewLabel": "Zertifikat ansehen" }
+    },
+    {
+      "year": "2026",
+      "logoText": "LK",
+      "logoStyle": "background:#4a9d6e;color:#fff;font-size:9px",
+      "logoType": "text",
+      "status": "done",
+      "certFile": "/uploads/Conflict_Management_Strategies.pdf",
+      "en": { "title": "Conflict Management Strategies", "issuer": "LearnKartS", "badge": "Completed", "viewLabel": "View certificate" },
+      "de": { "title": "Konfliktmanagement-Strategien",   "issuer": "LearnKartS", "badge": "Abgeschlossen", "viewLabel": "Zertifikat ansehen" }
+    },
+    {
+      "year": "2025",
+      "logoText": "",
+      "logoStyle": "background:#fff;padding:3px;",
+      "logoType": "google",
+      "status": "done",
+      "certFile": "/uploads/Google_Data_Analytics.pdf",
+      "en": { "title": "Google Data Analytics: Foundations, Data Preparation & Decision-Making", "issuer": "Google", "badge": "Completed", "viewLabel": "View certificate" },
+      "de": { "title": "Google Data Analytics: Grundlagen, Datenvorbereitung & Entscheidungsfindung", "issuer": "Google", "badge": "Abgeschlossen", "viewLabel": "Zertifikat ansehen" }
+    },
+    {
+      "year": "Since 2022",
+      "logoText": "f",
+      "logoStyle": "background:#1877F2;color:#fff;font-size:13px;font-weight:700",
+      "logoType": "text",
+      "status": "training",
+      "certFile": "",
+      "en": { "title": "Meta Ads Specialist Training", "issuer": "Meta", "issuerDetail": "Monthly sessions, Meta marketing specialist", "badge": "Ongoing", "viewLabel": "" },
+      "de": { "title": "Meta Ads Spezialist Training",  "issuer": "Meta", "issuerDetail": "Monatliche Sessions, Meta Marketing Spezialist", "badge": "Laufend", "viewLabel": "" }
+    }
+  ]
+}

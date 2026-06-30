@@ -1,0 +1,72 @@
+{
+  "en": {
+    "skillsEye": "Skills and stack",
+    "skillsH2": "What I work with.",
+    "skLang": "Languages"
+  },
+  "de": {
+    "skillsEye": "Fähigkeiten und Stack",
+    "skillsH2": "Womit ich arbeite.",
+    "skLang": "Sprachen"
+  },
+  "cards": [
+    {
+      "titleEn": "Marketing ops and automation",
+      "titleDe": "Marketing Ops und Automatisierung",
+      "titleKey": "sk1",
+      "chips": [
+        { "text": "Google Apps Script", "key": true },
+        { "text": "Google Sheets", "key": true },
+        { "text": "n8n", "key": false },
+        { "text": "Google Forms", "key": false },
+        { "text": "Workflow building", "key": false },
+        { "text": "Marketing calendars", "key": false }
+      ],
+      "building": ["Make", "Zapier"]
+    },
+    {
+      "titleEn": "Paid media and campaigns",
+      "titleDe": "Paid Media und Kampagnen",
+      "titleKey": "sk2",
+      "chips": [
+        { "text": "Meta Ads", "key": true },
+        { "text": "Google Ads", "key": true },
+        { "text": "GA4", "key": false },
+        { "text": "Google Tag Manager", "key": false },
+        { "text": "Budget management", "key": false }
+      ],
+      "building": []
+    },
+    {
+      "titleEn": "Project management and leadership",
+      "titleDe": "Projektmanagement und Führung",
+      "titleKey": "sk3",
+      "chips": [
+        { "text": "Team lead", "key": true },
+        { "text": "25-35 people trained", "key": true },
+        { "text": "Cross-functional coordination", "key": false },
+        { "text": "Asana", "key": false },
+        { "text": "Process documentation", "key": false }
+      ],
+      "building": []
+    },
+    {
+      "titleEn": "AI-assisted workflows",
+      "titleDe": "KI-gestützte Workflows",
+      "titleKey": "sk4",
+      "chips": [
+        { "text": "ChatGPT", "key": true },
+        { "text": "Claude", "key": true },
+        { "text": "Gemini", "key": false },
+        { "text": "Kimi AI", "key": false },
+        { "text": "AI content systems", "key": false }
+      ],
+      "building": ["AI agents"]
+    }
+  ],
+  "languages": [
+    { "nameKey": "lang1", "levelKey": "lang1l", "nameEn": "English", "levelEn": "Fluent", "nameDe": "Englisch", "levelDe": "Fließend", "pct": 95 },
+    { "nameKey": "lang2", "levelKey": "lang2l", "nameEn": "German",  "levelEn": "B2",     "nameDe": "Deutsch",  "levelDe": "B2",         "pct": 70 },
+    { "nameKey": "lang3", "levelKey": "lang3l", "nameEn": "Arabic",  "levelEn": "Native",  "nameDe": "Arabisch", "levelDe": "Muttersprache","pct": 100 }
+  ]
+}

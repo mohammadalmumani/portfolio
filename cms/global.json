@@ -1,0 +1,18 @@
+{
+  "photo": "/uploads/CV_pic.JPG",
+  "cvFileEn": "/uploads/Mohammad Almumani CV.pdf",
+  "cvFileDe": "/uploads/Mohammad Almumani Lebenslauf.pdf",
+  "email": "mohammadalmumani97@gmail.com",
+  "linkedin": "https://linkedin.com/in/almumani",
+  "location": "Wuppertal, Germany",
+  "footerYear": "2026",
+  "footerName": "Mohammad Almumani",
+  "en": {
+    "navCV": "Download CV",
+    "footNote": "Marketing Operations · RevOps · Automation"
+  },
+  "de": {
+    "navCV": "Lebenslauf",
+    "footNote": "Marketing Operations · RevOps · Automatisierung"
+  }
+}

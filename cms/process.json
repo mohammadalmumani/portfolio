@@ -1,0 +1,22 @@
+{
+  "en": {
+    "procEye": "How I work",
+    "procH2": "Spot it. Build it. Measure it.",
+    "p1h": "Find the friction",
+    "p1b": "I notice when a process is manual, slow or leaking data, and I surface it before it becomes a larger problem.",
+    "p2h": "Build the system",
+    "p2b": "I design the fix as a repeatable workflow. Sheets, Apps Script, AI tools: whatever fits and runs without me.",
+    "p3h": "Measure and hand off",
+    "p3b": "I track whether it worked, document it clearly, and make sure the team can run it without my help."
+  },
+  "de": {
+    "procEye": "Wie ich arbeite",
+    "procH2": "Erkennen. Bauen. Messen.",
+    "p1h": "Reibung finden",
+    "p1b": "Ich erkenne wenn ein Prozess manuell, langsam oder datenleckend ist, und mache es sichtbar.",
+    "p2h": "Das System bauen",
+    "p2b": "Ich designe die Lösung als wiederholbaren Workflow. Was auch immer passt und ohne mich läuft.",
+    "p3h": "Messen und übergeben",
+    "p3b": "Ich messe ob es funktioniert, dokumentiere klar und stelle sicher dass das Team es selbst nutzen kann."
+  }
+}
