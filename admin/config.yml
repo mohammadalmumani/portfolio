@@ -2,66 +2,414 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images"
-public_folder: "/images"
+media_folder: "uploads"
+public_folder: "/uploads"
 
 collections:
+
+  # ──────────────────────────────────────────────────────────────
+  #  SITE SETTINGS
+  # ──────────────────────────────────────────────────────────────
   - name: "settings"
     label: "Site Settings"
     files:
-      - name: "hero"
-        label: "Hero Section"
-        file: "cms/hero.json"
+
+      - name: "global"
+        label: "Global (Photo, CV files, Contact links)"
+        file: "cms/global.json"
+        format: json
         fields:
-          - { label: "Your Name", name: "name", widget: "string" }
-          - { label: "Tagline (eyebrow)", name: "eyebrow", widget: "string" }
-          - { label: "Headline", name: "headline", widget: "string" }
-          - { label: "Subheadline", name: "sub", widget: "text" }
-          - { label: "Contact Email", name: "email", widget: "string" }
-          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - label: "Profile photo"
+            name: "photo"
+            widget: "image"
+            hint: "Shown in the About section. Recommended: portrait, at least 520x680 px."
+          - label: "CV file – English"
+            name: "cvFileEn"
+            widget: "file"
+            hint: "Upload the English CV PDF then select it here."
+          - label: "CV file – German (Lebenslauf)"
+            name: "cvFileDe"
+            widget: "file"
+            hint: "Upload the German CV PDF then select it here."
+          - label: "Email address"
+            name: "email"
+            widget: "string"
+          - label: "LinkedIn URL"
+            name: "linkedin"
+            widget: "string"
+          - label: "Location"
+            name: "location"
+            widget: "string"
+            hint: "Shown in the contact section footer line."
+          - label: "Footer year"
+            name: "footerYear"
+            widget: "string"
+          - label: "Footer name"
+            name: "footerName"
+            widget: "string"
+          - label: "English labels"
+            name: "en"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "CV button label", name: "navCV",    widget: "string" }
+              - { label: "Footer tagline",  name: "footNote", widget: "string" }
+          - label: "German labels"
+            name: "de"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "CV button label (DE)", name: "navCV",    widget: "string" }
+              - { label: "Footer tagline (DE)",  name: "footNote", widget: "string" }
+
+  # ──────────────────────────────────────────────────────────────
+  #  CONTENT SECTIONS
+  # ──────────────────────────────────────────────────────────────
+  - name: "content"
+    label: "Page Content"
+    files:
+
+      - name: "hero"
+        label: "Hero section"
+        file: "cms/hero.json"
+        format: json
+        fields:
+          - label: "Stat strip values (language-independent)"
+            name: "statsValues"
+            widget: "list"
+            max: 3
+            min: 3
+            field: { label: "Value", name: "value", widget: "string" }
+            hint: "Exactly 3 values, in order: Years, Projects/year, Automation label."
+          - label: "English"
+            name: "en"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Eyebrow",      name: "heroEye",   widget: "string" }
+              - { label: "Headline H1",  name: "heroH1",    widget: "string" }
+              - { label: "Subheading",   name: "heroSub",   widget: "text" }
+              - { label: "Button 1 label", name: "heroBtn1", widget: "string" }
+              - { label: "Button 2 label (CV)", name: "heroBtn2", widget: "string" }
+              - { label: "Stat 1 label", name: "s1", widget: "string" }
+              - { label: "Stat 2 label", name: "s2", widget: "string" }
+              - { label: "Stat 3 label", name: "s3", widget: "string" }
+              - { label: "Panel tag",    name: "panelTag",   widget: "string" }
+              - { label: "Panel badge",  name: "panelBadge", widget: "string" }
+              - { label: "Panel row 1 text",   name: "r1",  widget: "string" }
+              - { label: "Panel row 2 text",   name: "r2",  widget: "string" }
+              - { label: "Panel row 3 text",   name: "r3",  widget: "string" }
+              - { label: "Panel row 4 text",   name: "r4",  widget: "string" }
+              - { label: "Panel row 5 text",   name: "r5",  widget: "string" }
+              - { label: "Panel badge: High priority (row 1&3)", name: "ph1", widget: "string" }
+              - { label: "Panel badge: Queued (row 2&4)",       name: "pq1", widget: "string" }
+              - { label: "Panel badge: High priority (row 3)",  name: "ph2", widget: "string" }
+              - { label: "Panel badge: Queued (row 4)",         name: "pq2", widget: "string" }
+              - { label: "Panel badge: Published (row 5)",      name: "pl",  widget: "string" }
+              - { label: "Projects section eyebrow", name: "projEye", widget: "string" }
+              - { label: "Projects section headline", name: "projH2", widget: "string" }
+          - label: "German"
+            name: "de"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Eyebrow (DE)",      name: "heroEye",   widget: "string" }
+              - { label: "Headline H1 (DE)",  name: "heroH1",    widget: "string" }
+              - { label: "Subheading (DE)",   name: "heroSub",   widget: "text" }
+              - { label: "Button 1 label (DE)", name: "heroBtn1", widget: "string" }
+              - { label: "Button 2 label (DE)", name: "heroBtn2", widget: "string" }
+              - { label: "Stat 1 label (DE)", name: "s1", widget: "string" }
+              - { label: "Stat 2 label (DE)", name: "s2", widget: "string" }
+              - { label: "Stat 3 label (DE)", name: "s3", widget: "string" }
+              - { label: "Panel tag (DE)",    name: "panelTag",   widget: "string" }
+              - { label: "Panel badge (DE)",  name: "panelBadge", widget: "string" }
+              - { label: "Panel row 1 (DE)",  name: "r1",  widget: "string" }
+              - { label: "Panel row 2 (DE)",  name: "r2",  widget: "string" }
+              - { label: "Panel row 3 (DE)",  name: "r3",  widget: "string" }
+              - { label: "Panel row 4 (DE)",  name: "r4",  widget: "string" }
+              - { label: "Panel row 5 (DE)",  name: "r5",  widget: "string" }
+              - { label: "Badge: High (DE)",  name: "ph1", widget: "string" }
+              - { label: "Badge: Queued (DE)", name: "pq1", widget: "string" }
+              - { label: "Badge: High 2 (DE)", name: "ph2", widget: "string" }
+              - { label: "Badge: Queued 2 (DE)", name: "pq2", widget: "string" }
+              - { label: "Badge: Published (DE)", name: "pl", widget: "string" }
+              - { label: "Projects eyebrow (DE)", name: "projEye", widget: "string" }
+              - { label: "Projects headline (DE)", name: "projH2", widget: "string" }
+
+      - name: "process"
+        label: "How I work section"
+        file: "cms/process.json"
+        format: json
+        fields:
+          - label: "English"
+            name: "en"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Section eyebrow", name: "procEye", widget: "string" }
+              - { label: "Section headline", name: "procH2", widget: "string" }
+              - { label: "Step 1 title", name: "p1h", widget: "string" }
+              - { label: "Step 1 body",  name: "p1b", widget: "text" }
+              - { label: "Step 2 title", name: "p2h", widget: "string" }
+              - { label: "Step 2 body",  name: "p2b", widget: "text" }
+              - { label: "Step 3 title", name: "p3h", widget: "string" }
+              - { label: "Step 3 body",  name: "p3b", widget: "text" }
+          - label: "German"
+            name: "de"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Section eyebrow (DE)", name: "procEye", widget: "string" }
+              - { label: "Section headline (DE)", name: "procH2", widget: "string" }
+              - { label: "Step 1 title (DE)", name: "p1h", widget: "string" }
+              - { label: "Step 1 body (DE)",  name: "p1b", widget: "text" }
+              - { label: "Step 2 title (DE)", name: "p2h", widget: "string" }
+              - { label: "Step 2 body (DE)",  name: "p2b", widget: "text" }
+              - { label: "Step 3 title (DE)", name: "p3h", widget: "string" }
+              - { label: "Step 3 body (DE)",  name: "p3b", widget: "text" }
+
+      - name: "skills"
+        label: "Skills section"
+        file: "cms/skills.json"
+        format: json
+        fields:
+          - label: "English section labels"
+            name: "en"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Eyebrow",          name: "skillsEye", widget: "string" }
+              - { label: "Headline",          name: "skillsH2",  widget: "string" }
+              - { label: "Languages heading", name: "skLang",    widget: "string" }
+          - label: "German section labels"
+            name: "de"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Eyebrow (DE)",          name: "skillsEye", widget: "string" }
+              - { label: "Headline (DE)",          name: "skillsH2",  widget: "string" }
+              - { label: "Languages heading (DE)", name: "skLang",    widget: "string" }
+          - label: "Skill cards"
+            name: "cards"
+            widget: "list"
+            allow_add: true
+            fields:
+              - { label: "Internal key (do not change)", name: "titleKey", widget: "string", hint: "sk1, sk2, sk3, sk4 for the original four cards. Use sk5 etc. for new cards." }
+              - { label: "Card heading (English)", name: "titleEn", widget: "string" }
+              - { label: "Card heading (German)",  name: "titleDe", widget: "string" }
+              - label: "Skill chips"
+                name: "chips"
+                widget: "list"
+                allow_add: true
+                fields:
+                  - { label: "Chip text",       name: "text", widget: "string" }
+                  - { label: "Highlight chip?", name: "key",  widget: "boolean", default: false, hint: "Highlighted chips appear with a stronger border." }
+              - label: "Building / learning tags"
+                name: "building"
+                widget: "list"
+                allow_add: true
+                field: { label: "Tag", name: "tag", widget: "string" }
+                hint: "Shown in a separate row below the chips as tools being learned."
+          - label: "Language bars"
+            name: "languages"
+            widget: "list"
+            allow_add: true
+            fields:
+              - { label: "Name key (do not change)", name: "nameKey",  widget: "string", hint: "lang1, lang2, lang3 for existing. lang4 for new." }
+              - { label: "Level key (do not change)", name: "levelKey", widget: "string", hint: "lang1l, lang2l, lang3l etc." }
+              - { label: "Language name (English)",  name: "nameEn",  widget: "string" }
+              - { label: "Level label (English)",    name: "levelEn", widget: "string" }
+              - { label: "Language name (German)",   name: "nameDe",  widget: "string" }
+              - { label: "Level label (German)",     name: "levelDe", widget: "string" }
+              - { label: "Bar fill %",               name: "pct",     widget: "number", min: 0, max: 100, hint: "0–100 controls how full the bar appears." }
 
       - name: "about"
-        label: "About Section"
+        label: "About section"
         file: "cms/about.json"
+        format: json
         fields:
-          - { label: "Heading", name: "heading", widget: "string" }
-          - { label: "Paragraph 1", name: "p1", widget: "text" }
-          - { label: "Paragraph 2", name: "p2", widget: "text" }
-          - { label: "Paragraph 3", name: "p3", widget: "text" }
+          - label: "English"
+            name: "en"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Eyebrow",      name: "aboutEye", widget: "string" }
+              - { label: "Heading",      name: "aboutH2",  widget: "string" }
+              - { label: "Paragraph 1", name: "aboutP1",  widget: "text" }
+              - { label: "Paragraph 2", name: "aboutP2",  widget: "text" }
+              - { label: "Paragraph 3", name: "aboutP3",  widget: "text" }
+          - label: "German"
+            name: "de"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Eyebrow (DE)",      name: "aboutEye", widget: "string" }
+              - { label: "Heading (DE)",      name: "aboutH2",  widget: "string" }
+              - { label: "Paragraph 1 (DE)", name: "aboutP1",  widget: "text" }
+              - { label: "Paragraph 2 (DE)", name: "aboutP2",  widget: "text" }
+              - { label: "Paragraph 3 (DE)", name: "aboutP3",  widget: "text" }
 
+      - name: "contact"
+        label: "Contact section"
+        file: "cms/contact.json"
+        format: json
+        fields:
+          - label: "English"
+            name: "en"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Eyebrow",         name: "contactEye", widget: "string" }
+              - { label: "Headline",        name: "contactH2",  widget: "string" }
+              - { label: "Subtext",         name: "contactSub", widget: "text" }
+              - { label: "Email button",    name: "cBtn1",      widget: "string" }
+              - { label: "LinkedIn button", name: "cBtn2",      widget: "string" }
+          - label: "German"
+            name: "de"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Eyebrow (DE)",         name: "contactEye", widget: "string" }
+              - { label: "Headline (DE)",        name: "contactH2",  widget: "string" }
+              - { label: "Subtext (DE)",         name: "contactSub", widget: "text" }
+              - { label: "Email button (DE)",    name: "cBtn1",      widget: "string" }
+              - { label: "LinkedIn button (DE)", name: "cBtn2",      widget: "string" }
+
+  # ──────────────────────────────────────────────────────────────
+  #  PROJECTS  (add / remove / reorder from here)
+  # ──────────────────────────────────────────────────────────────
   - name: "projects"
     label: "Projects"
-    folder: "cms/projects"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Project Number", name: "number", widget: "string" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Summary", name: "summary", widget: "text" }
-      - label: "Bullet Points"
-        name: "bullets"
-        widget: "list"
-        field: { label: "Point", name: "point", widget: "string" }
-      - label: "Tools Used"
-        name: "tools"
-        widget: "list"
-        field: { label: "Tool", name: "tool", widget: "string" }
-      - { label: "Metric 1 Value", name: "metric1value", widget: "string" }
-      - { label: "Metric 1 Label", name: "metric1label", widget: "string" }
-      - { label: "Metric 2 Value", name: "metric2value", widget: "string" }
-      - { label: "Metric 2 Label", name: "metric2label", widget: "string" }
+    files:
+      - name: "projects"
+        label: "Projects list"
+        file: "cms/projects.json"
+        format: json
+        fields:
+          - name: "projects"
+            label: "Projects (drag to reorder)"
+            widget: "list"
+            allow_add: true
+            fields:
+              - { label: "Display number (e.g. 01)", name: "id",        widget: "string" }
+              - label: "Animation slot"
+                name: "animSlot"
+                widget: "select"
+                options: ["proj01", "proj02", "proj03", "proj04", "none"]
+                default: "none"
+                hint: "proj01–proj04 use built-in animated visuals. New projects use 'none' (generic placeholder)."
+              - label: "Accent colour variable"
+                name: "accentVar"
+                widget: "select"
+                options:
+                  - { label: "Amber  (project 1)", value: "var(--c1-accent)" }
+                  - { label: "Blue   (project 2)", value: "var(--c2-accent)" }
+                  - { label: "Teal   (project 3)", value: "var(--c3-accent)" }
+                  - { label: "Rust   (project 4)", value: "var(--c4-accent)" }
+                  - { label: "Gold   (default)",   value: "var(--gold)" }
+              - label: "Accent background variable"
+                name: "bgVar"
+                widget: "select"
+                options:
+                  - { label: "Amber bg  (project 1)", value: "var(--c1-bg)" }
+                  - { label: "Blue bg   (project 2)", value: "var(--c2-bg)" }
+                  - { label: "Teal bg   (project 3)", value: "var(--c3-bg)" }
+                  - { label: "Rust bg   (project 4)", value: "var(--c4-bg)" }
+                  - { label: "Transparent",           value: "transparent" }
+              - label: "Tools / tech stack"
+                name: "tools"
+                widget: "list"
+                allow_add: true
+                field: { label: "Tool", name: "tool", widget: "string" }
+              - label: "Metrics"
+                name: "metrics"
+                widget: "list"
+                allow_add: true
+                fields:
+                  - { label: "Display value (e.g. +64.3%)", name: "value",   widget: "string" }
+                  - { label: "Slot-machine animation?",      name: "slot",    widget: "boolean", default: false }
+                  - { label: "Label (English)",              name: "enLabel", widget: "string" }
+                  - { label: "Label (German)",               name: "deLabel", widget: "string" }
+              - label: "English content"
+                name: "en"
+                widget: "object"
+                collapsed: false
+                fields:
+                  - { label: "Title",   name: "title",   widget: "string" }
+                  - { label: "Summary", name: "summary", widget: "text" }
+                  - label: "Bullet points"
+                    name: "bullets"
+                    widget: "list"
+                    allow_add: true
+                    field: { label: "Bullet", name: "bullet", widget: "string" }
+              - label: "German content"
+                name: "de"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Title (DE)",   name: "title",   widget: "string" }
+                  - { label: "Summary (DE)", name: "summary", widget: "text" }
+                  - label: "Bullet points (DE)"
+                    name: "bullets"
+                    widget: "list"
+                    allow_add: true
+                    field: { label: "Bullet", name: "bullet", widget: "string" }
 
+  # ──────────────────────────────────────────────────────────────
+  #  CERTIFICATES  (add / remove / reorder from here)
+  # ──────────────────────────────────────────────────────────────
   - name: "certificates"
     label: "Certificates"
-    folder: "cms/certificates"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Certificate Title", name: "title", widget: "string" }
-      - { label: "Issuer", name: "issuer", widget: "string" }
-      - { label: "Year", name: "year", widget: "string" }
-      - label: "Status"
-        name: "status"
-        widget: "select"
-        options: ["In progress", "Completed", "Ongoing"]
-      - { label: "PDF File (upload to GitHub and enter filename)", name: "pdf", widget: "string", required: false }
+    files:
+      - name: "certificates"
+        label: "Certificates list"
+        file: "cms/certificates.json"
+        format: json
+        fields:
+          - name: "certificates"
+            label: "Certificates (drag to reorder)"
+            widget: "list"
+            allow_add: true
+            fields:
+              - { label: "Year / period", name: "year",  widget: "string", hint: "e.g. 2026 or Since 2022" }
+              - label: "Logo type"
+                name: "logoType"
+                widget: "select"
+                options:
+                  - { label: "Text initials", value: "text" }
+                  - { label: "Google G (built-in SVG)", value: "google" }
+                default: "text"
+              - { label: "Logo text (initials, ignored for Google)",  name: "logoText",  widget: "string" }
+              - { label: "Logo inline style (background, color, font-size etc.)", name: "logoStyle", widget: "string" }
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options:
+                  - { label: "In progress", value: "progress" }
+                  - { label: "Completed",   value: "done" }
+                  - { label: "Ongoing training (no certificate button)", value: "training" }
+              - label: "Certificate file"
+                name: "certFile"
+                widget: "file"
+                required: false
+                hint: "Upload the PDF via the media panel. Leave empty to show a 'coming soon' toast on click."
+              - label: "English"
+                name: "en"
+                widget: "object"
+                collapsed: false
+                fields:
+                  - { label: "Certificate title", name: "title",       widget: "string" }
+                  - { label: "Issuer",            name: "issuer",      widget: "string" }
+                  - { label: "Issuer detail (optional extra line)", name: "issuerDetail", widget: "string", required: false }
+                  - { label: "Badge text",        name: "badge",       widget: "string" }
+                  - { label: "Button label",      name: "viewLabel",   widget: "string", required: false, hint: "Leave empty if status is 'training'." }
+              - label: "German"
+                name: "de"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Certificate title (DE)", name: "title",       widget: "string" }
+                  - { label: "Issuer (DE)",            name: "issuer",      widget: "string", required: false }
+                  - { label: "Issuer detail (DE, optional)", name: "issuerDetail", widget: "string", required: false }
+                  - { label: "Badge text (DE)",        name: "badge",       widget: "string" }
+                  - { label: "Button label (DE)",      name: "viewLabel",   widget: "string", required: false }
