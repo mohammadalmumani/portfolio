@@ -669,10 +669,10 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
         <a href="#projects" class="btn"      data-i18n="heroBtn1">View projects</a>
         <a href="Mohammad Almumani CV.pdf" id="heroCvBtn" class="btn ghost" download data-i18n="heroBtn2">Download CV</a>
       </div>
-      <div class="statstrip">
-        <div class="stat"><div class="n">5+</div><div class="l" data-i18n="s1">Years in marketing ops</div></div>
-        <div class="stat"><div class="n">60-85</div><div class="l" data-i18n="s2">Projects per year</div></div>
-        <div class="stat"><div class="n">Apps Script</div><div class="l" data-i18n="s3">Custom automation</div></div>
+      <div class="statstrip" id="statStrip">
+        <div class="stat"><div class="n" data-stat-val="0">5+</div><div class="l" data-i18n="s1">Years in marketing ops</div></div>
+        <div class="stat"><div class="n" data-stat-val="1">60-85</div><div class="l" data-i18n="s2">Projects per year</div></div>
+        <div class="stat"><div class="n" data-stat-val="2">Apps Script</div><div class="l" data-i18n="s3">Custom automation</div></div>
       </div>
     </div>
     <!-- Animated sync panel -->
@@ -703,248 +703,7 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
       <h2 class="section-title" data-i18n="projH2">Systems that made the work repeatable.</h2>
     </div>
 
-    <!-- CASE 01: amber -->
-    <div class="case" id="case01"
-         style="--case-accent:var(--c1-accent);--case-bg:var(--c1-bg)">
-      <div class="case-inner">
-        <div>
-          <span class="case-index">01</span>
-          <h3 data-i18n="c1h">Marketing automation engine: 60-day self-updating content system</h3>
-          <p class="summary" data-i18n="c1s">Designed and built a content operations system that automatically pulls campaigns, calculates priority scores, generates a 60-day calendar, avoids repetitive patterns, and distributes tasks. Core logic in Apps Script; full architecture designed for n8n.</p>
-          <ul>
-            <li data-i18n="c1b1">Daily trigger: pulls data, normalizes, calculates days-until-deadline and priority score</li>
-            <li data-i18n="c1b2">Fixed Reel and Story taxonomy prevents repetition across channels</li>
-            <li data-i18n="c1b3">60-day slot generator respects no-same-campaign and no-same-content-type rules</li>
-            <li data-i18n="c1b4">AI brief per task: hook, caption, CTA and asset notes pushed to Asana automatically</li>
-            <li data-i18n="c1b5">Recurring planning reduced from hours to seconds</li>
-          </ul>
-          <div class="tools"><span class="tool">Google Apps Script</span><span class="tool">Google Sheets</span><span class="tool">n8n</span><span class="tool">Asana</span><span class="tool">AI brief generation</span></div>
-        </div>
-        <div class="media">
-          <div class="metric-row">
-            <div class="metric"><div class="v">60-day</div><div class="k" data-i18n="c1m1">Auto-planned</div></div>
-            <div class="metric"><div class="v">Hours to sec</div><div class="k" data-i18n="c1m2">Time saved</div></div>
-          </div>
-          <!-- ANIMATED PROJECT 01 VISUAL -->
-          <div class="proj01-wrap" id="proj01anim" aria-hidden="true">
-            <div class="proj01-topbar">
-              <div class="proj01-dots"><span></span><span></span><span></span></div>
-              <span class="proj01-title">Organic Marketing Calendar &nbsp;|&nbsp; syncCalendar.js</span>
-            </div>
-            <div class="proj01-body">
-              <div class="proj01-sheet">
-                <div class="proj01-sheet-header"><div>Content Title</div><div>Channel</div><div>Date</div><div>Status</div></div>
-                <div class="proj01-row"><div class="proj01-cell">Brand Trust 2024</div><div class="proj01-cell">Website</div><div class="proj01-cell">May 20</div><div><span class="proj01-pill high">HIGH</span></div></div>
-                <div class="proj01-row"><div class="proj01-cell">Behind the Scenes</div><div class="proj01-cell">LinkedIn</div><div class="proj01-cell">May 21</div><div><span class="proj01-pill high">HIGH</span></div></div>
-                <div class="proj01-row"><div class="proj01-cell">Customer Story</div><div class="proj01-cell">Website</div><div class="proj01-cell">May 22</div><div><span class="proj01-pill queue">QUEUED</span></div></div>
-                <div class="proj01-row"><div class="proj01-cell">Industry Trends</div><div class="proj01-cell">Website</div><div class="proj01-cell">May 24</div><div><span class="proj01-pill high">HIGH</span></div></div>
-                <div class="proj01-row"><div class="proj01-cell">Weekly Tips</div><div class="proj01-cell">Instagram</div><div class="proj01-cell">May 28</div><div><span class="proj01-pill queue">QUEUED</span></div></div>
-                <div class="proj01-row"><div class="proj01-cell">June Preview</div><div class="proj01-cell">Email</div><div class="proj01-cell">Jun 3</div><div><span class="proj01-pill pub">LIVE</span></div></div>
-              </div>
-              <div class="proj01-code">
-                <div class="proj01-ln"><span class="proj01-lnum">1</span><span class="proj01-lcode co-comment">// ORGANIC MARKETING CALENDAR</span></div>
-                <div class="proj01-ln"><span class="proj01-lnum">2</span><span class="proj01-lcode co-comment">// 60-DAY ROLLING SYNC</span></div>
-                <div class="proj01-ln"><span class="proj01-lnum">3</span><span class="proj01-lcode co-plain">&nbsp;</span></div>
-                <div class="proj01-ln"><span class="proj01-lnum">4</span><span class="proj01-lcode"><span class="co-keyword">const</span> <span class="co-plain">{ google } = </span><span class="co-fn">require</span><span class="co-plain">(</span><span class="co-str">'googleapis'</span><span class="co-plain">);</span></span></div>
-                <div class="proj01-ln"><span class="proj01-lnum">5</span><span class="proj01-lcode"><span class="co-keyword">const</span> <span class="co-plain">SYNC_DAYS = </span><span class="co-num">60</span><span class="co-plain">;</span></span></div>
-                <div class="proj01-ln"><span class="proj01-lnum">6</span><span class="proj01-lcode co-plain">&nbsp;</span></div>
-                <div class="proj01-ln"><span class="proj01-lnum">7</span><span class="proj01-lcode"><span class="co-keyword">async function</span> <span class="co-fn">syncCalendar</span><span class="co-plain">() {</span></span></div>
-                <div class="proj01-ln"><span class="proj01-lnum">8</span><span class="proj01-lcode"><span class="co-plain">&nbsp;&nbsp;</span><span class="co-keyword">const</span> <span class="co-plain">auth = </span><span class="co-keyword">await</span> <span class="co-fn">getAuthClient</span><span class="co-plain">();</span></span></div>
-                <div class="proj01-ln"><span class="proj01-lnum">9</span><span class="proj01-lcode"><span class="co-plain">&nbsp;&nbsp;</span><span class="co-keyword">const</span> <span class="co-plain">rows = </span><span class="co-keyword">await</span> <span class="co-fn">fetchRows</span><span class="co-plain">(auth);</span></span></div>
-                <div class="proj01-ln"><span class="proj01-lnum">10</span><span class="proj01-lcode"><span class="co-plain">&nbsp;&nbsp;</span><span class="co-fn">pushToCalendar</span><span class="co-plain">(rows);</span></span></div>
-                <div class="proj01-ln"><span class="proj01-lnum">11</span><span class="proj01-lcode"><span class="co-plain">}</span><span class="proj01-cursor"></span></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CASE 02: blue + slot machine numbers -->
-    <div class="case" id="case02"
-         style="--case-accent:var(--c2-accent);--case-bg:var(--c2-bg)">
-      <div class="case-inner">
-        <div>
-          <span class="case-index">02</span>
-          <h3 data-i18n="c2h">Paid channel performance: measurement, optimization and expansion</h3>
-          <p class="summary" data-i18n="c2s">Rebuilt paid campaign measurement from scratch, diversified beyond a single channel, and delivered consistent year-over-year efficiency gains tracked in a custom reporting dashboard.</p>
-          <ul>
-            <li data-i18n="c2b1">Reporting framework: CTR, CPC, link clicks, reach, spend with year-over-year view</li>
-            <li data-i18n="c2b2">Expanded from Meta-only to Meta and Google Ads for search intent coverage</li>
-            <li data-i18n="c2b3">Monthly optimization cycle backed by Meta specialist training since 2022</li>
-            <li data-i18n="c2b4">Coordinated GTM implementation for accurate conversion tracking</li>
-          </ul>
-          <div class="tools"><span class="tool">Meta Ads</span><span class="tool">Google Ads</span><span class="tool">GA4</span><span class="tool">Google Tag Manager</span><span class="tool">Google Sheets</span></div>
-        </div>
-        <div class="media">
-          <!-- Slot machine metrics: data-slot triggers animation -->
-          <div class="metric-row">
-            <div class="metric">
-              <div class="v" data-slot="+64.3%" data-slot-suffix="%">+64.3%</div>
-              <div class="k" data-i18n="c2m1">Link CTR</div>
-            </div>
-            <div class="metric">
-              <div class="v" data-slot="-20.1%" data-slot-suffix="%">-20.1%</div>
-              <div class="k" data-i18n="c2m2">Cost per click</div>
-            </div>
-            <div class="metric">
-              <div class="v" data-slot="+39.1%" data-slot-suffix="%">+39.1%</div>
-              <div class="k" data-i18n="c2m3">Daily clicks</div>
-            </div>
-          </div>
-          <!-- ANIMATED PROJECT 02: CTR/CPC dashboard -->
-          <div class="proj02-wrap" id="proj02anim" aria-hidden="true">
-            <div class="proj02-charts">
-              <div class="proj02-chart-box">
-                <div class="proj02-chart-head">
-                  <div><div class="proj02-chart-name"><span class="p2dot" style="background:#d4a84a;width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;"></span>CTR</div><div class="proj02-chart-sub">Click-Through Rate</div></div>
-                  <span class="proj02-badge up">&#8593; 64%</span>
-                </div>
-                <svg class="proj02-svg-wrap" viewBox="0 0 200 70" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="ctrGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4a84a" stop-opacity="0.35"/><stop offset="100%" stop-color="#d4a84a" stop-opacity="0.02"/></linearGradient>
-                    <clipPath id="ctrClip"><rect id="ctrClipRect" x="0" y="0" width="0" height="70"/></clipPath>
-                  </defs>
-                  <path d="M10,58 L43,48 L76,43 L109,34 L142,26 L175,10" fill="none" stroke="#d4a84a" stroke-width="2" stroke-linecap="round" clip-path="url(#ctrClip)"/>
-                  <path d="M10,58 L43,48 L76,43 L109,34 L142,26 L175,10 L175,70 L10,70 Z" fill="url(#ctrGrad)" clip-path="url(#ctrClip)"/>
-                  <circle cx="10"  cy="58" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
-                  <circle cx="43"  cy="48" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
-                  <circle cx="76"  cy="43" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
-                  <circle cx="109" cy="34" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
-                  <circle cx="142" cy="26" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
-                  <circle cx="175" cy="10" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>
-                </svg>
-              </div>
-              <div class="proj02-chart-box">
-                <div class="proj02-chart-head">
-                  <div><div class="proj02-chart-name"><span class="p2dot" style="background:#5a90cc;width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;"></span>CPC</div><div class="proj02-chart-sub">Cost Per Click</div></div>
-                  <span class="proj02-badge down">&#8595; 20%</span>
-                </div>
-                <svg class="proj02-svg-wrap" viewBox="0 0 200 70" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="cpcGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5a90cc" stop-opacity="0.3"/><stop offset="100%" stop-color="#5a90cc" stop-opacity="0.02"/></linearGradient>
-                    <clipPath id="cpcClip"><rect id="cpcClipRect" x="0" y="0" width="0" height="70"/></clipPath>
-                  </defs>
-                  <path d="M10,12 L43,22 L76,30 L109,38 L142,48 L175,56" fill="none" stroke="#5a90cc" stroke-width="2" stroke-linecap="round" clip-path="url(#cpcClip)"/>
-                  <path d="M10,12 L43,22 L76,30 L109,38 L142,48 L175,56 L175,70 L10,70 Z" fill="url(#cpcGrad)" clip-path="url(#cpcClip)"/>
-                  <circle cx="10"  cy="12" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
-                  <circle cx="43"  cy="22" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
-                  <circle cx="76"  cy="30" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
-                  <circle cx="109" cy="38" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
-                  <circle cx="142" cy="48" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
-                  <circle cx="175" cy="56" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>
-                </svg>
-              </div>
-            </div>
-            <div class="proj02-metrics">
-              <div class="proj02-metric-card">
-                <div class="proj02-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="#d4a84a" stroke-width="2" style="width:16px;height:16px"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
-                <div><div class="proj02-num gold" data-countup="64" data-prefix="+">+0%</div><div class="proj02-mlabel">CTR INCREASE</div><div class="proj02-vsub">vs. previous period</div></div>
-              </div>
-              <div class="proj02-metric-card">
-                <div class="proj02-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="#5a90cc" stroke-width="2" style="width:16px;height:16px"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
-                <div><div class="proj02-num blue" data-countup="20" data-prefix="-">-0%</div><div class="proj02-mlabel">CPC DECREASE</div><div class="proj02-vsub">vs. previous period</div></div>
-              </div>
-              <div class="proj02-metric-card">
-                <div class="proj02-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="#3aacbc" stroke-width="2" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-                <div><div class="proj02-num teal" data-countup="39" data-prefix="+">+0%</div><div class="proj02-mlabel">CONVERSIONS</div><div class="proj02-vsub">vs. previous period</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CASE 03: green -->
-    <div class="case" id="case03"
-         style="--case-accent:var(--c3-accent);--case-bg:var(--c3-bg)">
-      <div class="case-inner">
-        <div>
-          <span class="case-index">03</span>
-          <h3 data-i18n="c3h">B2B funnel strategy: CFO-audience campaign and landing page system</h3>
-          <p class="summary" data-i18n="c3s">Built a full B2B campaign package for a BI and analytics company targeting CFOs: three ad concepts, three funnel-mapped landing pages, a video ad and a Loom walkthrough, all written in finance language.</p>
-          <ul>
-            <li data-i18n="c3b1">Persona research: margin pressure, board reporting pain, month-end stress</li>
-            <li data-i18n="c3b2">Three Meta ad concepts: Margin Drop, Conflicting Numbers, Board Question</li>
-            <li data-i18n="c3b3">Three landing pages mapped to funnel stages with matching messaging</li>
-            <li data-i18n="c3b4">9:16 video mockup (5 scenes, 16 seconds) and a Loom strategy walkthrough</li>
-            <li data-i18n="c3b5">Strong positive feedback, invited to interview</li>
-          </ul>
-          <div class="tools"><span class="tool">B2B strategy</span><span class="tool">Funnel design</span><span class="tool">Canva</span><span class="tool">Loom</span><span class="tool">AI-assisted</span></div>
-        </div>
-        <div class="media">
-          <div class="metric-row">
-            <div class="metric"><div class="v">3 + 3</div><div class="k" data-i18n="c3m1">Ads and landing pages</div></div>
-            <div class="metric"><div class="v">CFO</div><div class="k" data-i18n="c3m2">Target persona</div></div>
-          </div>
-          <!-- ANIMATED PROJECT 03: B2B ad cards + landing page -->
-          <div class="proj03-wrap" id="proj03anim" aria-hidden="true">
-            <div class="proj03-cards">
-              <div class="proj03-card"><div class="proj03-card-title">MARGIN<br><span style="color:#d4a84a">DROP</span></div><div class="proj03-card-body">Costs are up. Margins are down. Do you know why?</div><div class="proj03-card-cta"><span>Uncover what's driving your margin erosion.</span><span style="color:#d4a84a">&#8250;</span></div></div>
-              <div class="proj03-card"><div class="proj03-card-title">CONFLICTING<br><span style="color:#d4a84a">NUMBERS</span></div><div class="proj03-card-body">Different reports. Different answers. Same business?</div><div class="proj03-card-cta"><span>Align your data. Trust your numbers.</span><span style="color:#d4a84a">&#8250;</span></div></div>
-              <div class="proj03-card"><div class="proj03-card-title">BOARD<br><span style="color:#d4a84a">QUESTION</span></div><div class="proj03-card-body">When the board asks, you need clarity, not confusion.</div><div class="proj03-card-cta"><span>Deliver the insights the board can trust.</span><span style="color:#d4a84a">&#8250;</span></div></div>
-            </div>
-            <div class="proj03-lp">
-              <div class="proj03-lp-top">
-                <div>
-                  <div class="proj03-lp-h">Turn Financial Complexity into Confident Decisions</div>
-                  <div class="proj03-lp-sub">Unify your data, understand what's driving performance, and deliver insights your leadership can trust.</div>
-                </div>
-                <div style="flex-shrink:0"><svg viewBox="0 0 60 40" width="60" height="40"><polyline points="4,30 12,24 20,26 28,18 36,20 44,12 52,8" fill="none" stroke="#2A8A9A" stroke-width="1.5" stroke-linecap="round"/><circle cx="52" cy="8" r="2.5" fill="#d4a84a"/></svg></div>
-              </div>
-              <div class="proj03-props">
-                <div class="proj03-prop">Uncover What Drives Performance</div>
-                <div class="proj03-prop">Align and Trust Your Data</div>
-                <div class="proj03-prop">Make Confident Decisions</div>
-                <div class="proj03-prop">Deliver Board-Ready Insights</div>
-              </div>
-              <div class="proj03-cta-bar"><div class="proj03-cta-text">Ready to bring clarity to your numbers?</div><div class="proj03-cta-btn">REQUEST A DEMO &#8594;</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CASE 04: purple -->
-    <div class="case" id="case04"
-         style="--case-accent:var(--c4-accent);--case-bg:var(--c4-bg)">
-      <div class="case-inner">
-        <div>
-          <span class="case-index">04</span>
-          <h3 data-i18n="c4h">Operational data pipeline: automated participant and resource allocation system</h3>
-          <p class="summary" data-i18n="c4s">Replaced a fully manual multi-step data process with an Apps Script pipeline: ingests participant records, applies allocation logic, validates outputs and generates ready-to-use documents across 60 to 85 operational projects per year.</p>
-          <ul>
-            <li data-i18n="c4b1">Normalizes raw records: deduplication, missing fields, status flags</li>
-            <li data-i18n="c4b2">Rule-based allocation logic across capacity constraints and attributes</li>
-            <li data-i18n="c4b3">Structured output documents for partner handoff, zero manual reformatting</li>
-            <li data-i18n="c4b4">Core script approximately 800 lines; second supporting script approximately 200 lines</li>
-          </ul>
-          <div class="tools"><span class="tool">Google Apps Script</span><span class="tool">Google Sheets</span><span class="tool">Data validation</span><span class="tool">Process automation</span></div>
-        </div>
-        <div class="media">
-          <div class="metric-row">
-            <div class="metric"><div class="v">800 lines</div><div class="k" data-i18n="c4m1">Core script</div></div>
-            <div class="metric"><div class="v">Hours to sec</div><div class="k" data-i18n="c4m2">Per run</div></div>
-          </div>
-          <!-- ANIMATED PROJECT 04: data pipeline diagram -->
-          <div class="proj04-wrap" id="proj04anim" aria-hidden="true">
-            <div class="proj04-title">Operational Data Pipeline</div>
-            <div class="proj04-pipeline">
-              <div class="proj04-stage"><div class="proj04-stage-num">1</div><div class="proj04-stage-label">Input Data</div><div class="proj04-box"><div class="proj04-box-title">Raw Records</div><div class="proj04-box-row"><span>P-1001 Active</span><span class="proj04-val">Type A</span></div><div class="proj04-box-row"><span>P-1002 Pending</span><span class="proj04-val">Type B</span></div><div class="proj04-box-row"><span>P-1003 Active</span><span class="proj04-val">Type A</span></div><div class="proj04-box-row"><span>Total</span><span class="proj04-val info">1,248</span></div></div></div>
-              <div class="proj04-stage"><div class="proj04-stage-num">2</div><div class="proj04-stage-label">Normalization</div><div class="proj04-box"><div class="proj04-box-title">Processing</div><div class="proj04-box-row"><span>Deduplication</span><span class="proj04-val warn">18</span></div><div class="proj04-box-row"><span>Missing fields</span><span class="proj04-val warn">32</span></div><div class="proj04-box-row"><span>Valid records</span><span class="proj04-val ok">1,248</span></div></div></div>
-              <div class="proj04-stage"><div class="proj04-stage-num">3</div><div class="proj04-stage-label">Allocation</div><div class="proj04-box"><div class="proj04-box-title">Engine</div><div class="proj04-box-row"><span>Matched</span><span class="proj04-val ok">1,186</span></div><div class="proj04-box-row"><span>Exceptions</span><span class="proj04-val warn">62</span></div><div class="proj04-box-row"><span>Invalid</span><span class="proj04-val warn">14</span></div></div></div>
-              <div class="proj04-stage"><div class="proj04-stage-num">4</div><div class="proj04-stage-label">Output Docs</div><div class="proj04-box"><div class="proj04-box-title">Results</div><div class="proj04-box-row"><span>P-1001</span><span class="proj04-val ok">READY</span></div><div class="proj04-box-row"><span>P-1002</span><span class="proj04-val ok">READY</span></div><div class="proj04-box-row"><span>P-1004</span><span class="proj04-val warn">REVIEW</span></div></div></div>
-            </div>
-            <div class="proj04-metrics">
-              <div class="proj04-mcard"><div class="proj04-mnum" data-countup4="1248">0</div><div class="proj04-mlabel">Raw records normalized</div></div>
-              <div class="proj04-mcard"><div class="proj04-mnum" data-countup4="1186">0</div><div class="proj04-mlabel">Rule-based allocation</div></div>
-              <div class="proj04-mcard"><div class="proj04-mnum" data-countup4="1124">0</div><div class="proj04-mlabel">Ready-to-use outputs</div></div>
-              <div class="proj04-mcard"><div class="proj04-mnum">100<span style="font-size:8px;color:#d4a84a">%</span></div><div class="proj04-mlabel">Zero manual reformatting</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="projectsContainer"></div>
 
   </div>
 </section>
@@ -995,92 +754,8 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
       <h2 class="section-title" data-i18n="skillsH2">What I work with.</h2>
     </div>
 
-    <div class="skill-grid reveal">
-
-      <!-- Card 1: Marketing ops -->
-      <div class="skill-card">
-        <h3 data-i18n="sk1">Marketing ops and automation</h3>
-        <div class="chips">
-          <span class="chip key">Google Apps Script</span>
-          <span class="chip key">Google Sheets</span>
-          <span class="chip">n8n</span>
-          <span class="chip">Google Forms</span>
-          <span class="chip">Workflow building</span>
-          <span class="chip">Marketing calendars</span>
-        </div>
-        <div class="build-row">
-          <span class="build-tag">Make</span>
-          <span class="build-tag">Zapier</span>
-        </div>
-      </div>
-
-      <!-- Card 2: Paid media -->
-      <div class="skill-card">
-        <h3 data-i18n="sk2">Paid media and campaigns</h3>
-        <div class="chips">
-          <span class="chip key">Meta Ads</span>
-          <span class="chip key">Google Ads</span>
-          <span class="chip">GA4</span>
-          <span class="chip">Google Tag Manager</span>
-          <span class="chip">Budget management</span>
-        </div>
-      </div>
-
-      <!-- Card 3: Project management -->
-      <div class="skill-card">
-        <h3 data-i18n="sk3">Project management and leadership</h3>
-        <div class="chips">
-          <span class="chip key">Team lead</span>
-          <span class="chip key">25-35 people trained</span>
-          <span class="chip">Cross-functional coordination</span>
-          <span class="chip">Asana</span>
-          <span class="chip">Process documentation</span>
-        </div>
-      </div>
-
-      <!-- Card 4: AI workflows -->
-      <div class="skill-card">
-        <h3 data-i18n="sk4">AI-assisted workflows</h3>
-        <div class="chips">
-          <span class="chip key">ChatGPT</span>
-          <span class="chip key">Claude</span>
-          <span class="chip">Gemini</span>
-          <span class="chip">Kimi AI</span>
-          <span class="chip">AI content systems</span>
-        </div>
-        <div class="build-row">
-          <span class="build-tag">AI agents</span>
-        </div>
-      </div>
-
-      <!-- Language card: wide, distinct -->
-      <div class="skill-card lang-card wide reveal">
-        <h3 data-i18n="skLang">Languages</h3>
-        <div class="lang-items">
-          <div>
-            <div class="lang-item">
-              <span class="ln" data-i18n="lang1">English</span>
-              <span class="ll" data-i18n="lang1l">Fluent</span>
-            </div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width:95%"></div></div>
-          </div>
-          <div>
-            <div class="lang-item">
-              <span class="ln" data-i18n="lang2">German</span>
-              <span class="ll" data-i18n="lang2l">B2</span>
-            </div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width:70%"></div></div>
-          </div>
-          <div>
-            <div class="lang-item">
-              <span class="ln" data-i18n="lang3">Arabic</span>
-              <span class="ll" data-i18n="lang3l">Native</span>
-            </div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
-          </div>
-        </div>
-      </div>
-
+    <div class="skill-grid reveal" id="skillGrid">
+    </div>
     </div>
   </div>
 </section>
@@ -1096,97 +771,8 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
       <h2 class="section-title" data-i18n="certsH2">Always building.</h2>
     </div>
 
-    <div class="cert-masonry reveal">
-
-      <!-- HubSpot RevOps -->
-      <div class="cert progress-card">
-        <span class="year">2026</span>
-        <div class="cert-top">
-          <div class="cert-logo" style="background:#FF7A59;color:#fff">Hs</div>
-          <span class="cert-badge progress" data-i18n="bProg">In progress</span>
-        </div>
-        <h3 data-i18n="ct1">Revenue Operations Certification</h3>
-        <div class="issuer">HubSpot Academy</div>
-        <button class="cert-link" data-cert="" data-i18n="certView" onclick="document.getElementById('cert-toast').classList.add('show');setTimeout(function(){document.getElementById('cert-toast').classList.remove('show');},3000)">View certificate</button>
-      </div>
-
-      <!-- HubSpot Reporting - IN PROGRESS -->
-      <div class="cert progress-card">
-        <span class="year">2026</span>
-        <div class="cert-top">
-          <div class="cert-logo" style="background:#FF7A59;color:#fff">Hs</div>
-          <span class="cert-badge progress" data-i18n="bProg2">In progress</span>
-        </div>
-        <h3 data-i18n="ct2">Reporting Certification</h3>
-        <div class="issuer">HubSpot Academy</div>
-        <button class="cert-link" data-cert="" data-i18n="certView2">View certificate</button>
-      </div>
-
-      <!-- AI Agents PSUT - IN PROGRESS -->
-      <div class="cert progress-card">
-        <span class="year">2026</span>
-        <div class="cert-top">
-          <div class="cert-logo" style="background:#1a3a5c;color:var(--gold);font-size:10px">PSU</div>
-          <span class="cert-badge progress" data-i18n="bProg3">In progress</span>
-        </div>
-        <h3 data-i18n="ct3">AI Agents for Marketing and Automation</h3>
-        <div class="issuer">Princess Sumaya University for Technology</div>
-        <button class="cert-link" data-cert="" data-i18n="certView3">View certificate</button>
-      </div>
-
-      <!-- UVA Project Planning - IN PROGRESS -->
-      <div class="cert progress-card">
-        <span class="year">2026</span>
-        <div class="cert-top">
-          <div class="cert-logo" style="background:#232D4B;color:#E57200;font-size:9px">UVA</div>
-          <span class="cert-badge progress" data-i18n="bProg4">In progress</span>
-        </div>
-        <h3 data-i18n="ct4">Fundamentals of Project Planning and Management</h3>
-        <div class="issuer">University of Virginia</div>
-        <button class="cert-link" data-cert="" data-i18n="certView4">View certificate</button>
-      </div>
-
-      <!-- Conflict Management - COMPLETED -->
-      <div class="cert">
-        <span class="year">2026</span>
-        <div class="cert-top">
-          <div class="cert-logo" style="background:#4a9d6e;color:#fff;font-size:9px">LK</div>
-          <span class="cert-badge done" data-i18n="bDone">Completed</span>
-        </div>
-        <h3 data-i18n="ct5">Conflict Management Strategies</h3>
-        <div class="issuer">LearnKartS</div>
-        <!-- File: Conflict_Management_Strategies.pdf -->
-        <button class="cert-link" data-cert="Conflict_Management_Strategies.pdf" data-i18n="certView5">View certificate</button>
-      </div>
-
-      <!-- Google Data Analytics - COMPLETED -->
-      <div class="cert">
-        <span class="year">2025</span>
-        <div class="cert-top">
-          <!-- Google G logo SVG -->
-          <div class="cert-logo" style="background:#fff;padding:3px;">
-            <svg width="22" height="22" viewBox="0 0 48 48"><path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-          </div>
-          <span class="cert-badge done" data-i18n="bDone2">Completed</span>
-        </div>
-        <h3 data-i18n="ct6">Google Data Analytics: Foundations, Data Preparation &amp; Decision-Making</h3>
-        <div class="issuer">Google</div>
-        <!-- Files: Foundations_Data__Data__Everywhere.pdf | Ask_Questions_to_Make_Data-Driven_Decisions.pdf | Prepare_Data_for_Exploration.pdf -->
-        <!-- TO ADD: change data-cert to point to another file, or duplicate this card -->
-        <button class="cert-link" data-cert="Google_Data_Analytics.pdf" data-i18n="certView6">View certificate</button>
-      </div>
-
-      <!-- Meta Ads Training - ONGOING -->
-      <div class="cert">
-        <span class="year">Since 2022</span>
-        <div class="cert-top">
-          <div class="cert-logo" style="background:#1877F2;color:#fff;font-size:13px;font-weight:700">f</div>
-          <span class="cert-badge training" data-i18n="bTrain">Ongoing</span>
-        </div>
-        <h3 data-i18n="ct7">Meta Ads Specialist Training</h3>
-        <div class="issuer" data-i18n="ct7i">Monthly sessions, Meta marketing specialist</div>
-      </div>
-
+    <div class="cert-masonry reveal" id="certsContainer">
+    </div>
     </div>
 
   </div>
@@ -1201,7 +787,7 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 
     <!-- Photo: drop CV_pic.JPG in the same Netlify folder as index.html -->
     <div class="photo-wrap reveal">
-      <img src="CV_pic.JPG" alt="Mohammad Almumani" class="photo-actual" width="260" height="340"/>
+      <img src="CV_pic.JPG" id="aboutPhoto" alt="Mohammad Almumani" class="photo-actual" width="260" height="340"/>
     </div>
 
     <!-- Text -->
@@ -1267,171 +853,173 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 
 var REDUCE = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ==================================================
-   1. i18n
-   ================================================== */
-var T = {
-en: {
-  protoNote: "Design prototype. Placeholder images in use. German copy needs proofreading before publishing.",
-  navProjects:"Projects", navProcess:"How I work", navSkills:"Skills", navCerts:"Certificates", navAbout:"About", navCV:"Download CV",
-  heroEye:"Marketing Operations · RevOps · Automation",
-  heroH1:"I build the systems behind the campaigns.",
-  heroSub:"I run paid campaigns and then automate the workflows behind them, so growth is repeatable and not improvised.",
-  heroBtn1:"View projects", heroBtn2:"Download CV",
-  s1:"Years in marketing ops", s2:"Projects per year", s3:"Custom automation",
-  panelTag:"Marketing ops", panelBadge:"Auto-synced · 60-day",
-  r1:"Campaign · Paid social",     ph1:"High priority",
-  r2:"Workflow · Email sequence",  pq1:"Queued",
-  r3:"Automation · Countdown",     ph2:"High priority",
-  r4:"CRM · Lead score update",    pq2:"Queued",
-  r5:"Report · Weekly KPIs",       pl:"Published",
-  projEye:"Selected projects", projH2:"Systems that made the work repeatable.",
-  c1h:"Marketing automation engine: 60-day self-updating content system",
-  c1s:"Designed and built a content operations system that automatically pulls campaigns, calculates priority scores, generates a 60-day calendar, avoids repetitive patterns, and distributes tasks. Core logic in Apps Script; full architecture designed for n8n.",
-  c1b1:"Daily trigger: pulls data, normalizes, calculates days-until-deadline and priority score",
-  c1b2:"Fixed Reel and Story taxonomy prevents repetition across channels",
-  c1b3:"60-day slot generator respects no-same-campaign and no-same-content-type rules",
-  c1b4:"AI brief per task: hook, caption, CTA and asset notes pushed to Asana automatically",
-  c1b5:"Recurring planning reduced from hours to seconds",
-  c1m1:"Auto-planned", c1m2:"Time saved",
-  c1ph:"Add: Apps Script code header + color-coded priority sheet screenshot",
-  c2h:"Paid channel performance: measurement, optimization and expansion",
-  c2s:"Rebuilt paid campaign measurement from scratch, diversified beyond a single channel, and delivered consistent year-over-year efficiency gains tracked in a custom reporting dashboard.",
-  c2b1:"Reporting framework: CTR, CPC, link clicks, reach, spend with year-over-year view",
-  c2b2:"Expanded from Meta-only to Meta and Google Ads for search intent coverage",
-  c2b3:"Monthly optimization cycle backed by Meta specialist training since 2022",
-  c2b4:"Coordinated GTM implementation for accurate conversion tracking",
-  c2m1:"Link CTR", c2m2:"Cost per click", c2m3:"Daily clicks",
-  c2ph:"Add: anonymized campaign reporting dashboard screenshot",
-  c3h:"B2B funnel strategy: CFO-audience campaign and landing page system",
-  c3s:"Built a full B2B campaign package for a BI and analytics company targeting CFOs: three ad concepts, three funnel-mapped landing pages, a video ad and a Loom walkthrough, all written in finance language.",
-  c3b1:"Persona research: margin pressure, board reporting pain, month-end stress",
-  c3b2:"Three Meta ad concepts: Margin Drop, Conflicting Numbers, Board Question",
-  c3b3:"Three landing pages mapped to funnel stages with matching messaging",
-  c3b4:"9:16 video mockup (5 scenes, 16 seconds) and a Loom strategy walkthrough",
-  c3b5:"Strong positive feedback, invited to interview",
-  c3m1:"Ads and landing pages", c3m2:"Target persona",
-  c3ph:"Add: ad concept or landing page mockup from the MultiBase case",
-  c4h:"Operational data pipeline: automated participant and resource allocation system",
-  c4s:"Replaced a fully manual multi-step data process with an Apps Script pipeline: ingests participant records, applies allocation logic, validates outputs and generates ready-to-use documents.",
-  c4b1:"Normalizes raw records: deduplication, missing fields, status flags",
-  c4b2:"Rule-based allocation logic across capacity constraints and attributes",
-  c4b3:"Structured output documents for partner handoff, zero manual reformatting",
-  c4b4:"Core script approximately 800 lines; second supporting script approximately 200 lines",
-  c4m1:"Core script", c4m2:"Per run",
-  c4ph:"Add: anonymized allocation output sheet (names as Participant A, B, C)",
-  procEye:"How I work", procH2:"Spot it. Build it. Measure it.",
-  p1h:"Find the friction", p1b:"I notice when a process is manual, slow or leaking data, and I surface it before it becomes a larger problem.",
-  p2h:"Build the system",  p2b:"I design the fix as a repeatable workflow. Sheets, Apps Script, AI tools: whatever fits and runs without me.",
-  p3h:"Measure and hand off", p3b:"I track whether it worked, document it clearly, and make sure the team can run it without my help.",
-  skillsEye:"Skills and stack", skillsH2:"What I work with.",
-  sk1:"Marketing ops and automation", sk2:"Paid media and campaigns",
-  sk3:"Project management and leadership", sk4:"AI-assisted workflows",
-  skLang:"Languages",
-  lang1:"English", lang1l:"Fluent", lang2:"German", lang2l:"B2", lang3:"Arabic", lang3l:"Native",
-  certsEye:"Certifications and training", certsH2:"Always building.",
-  bProg:"In progress", bProg2:"In progress", bProg3:"In progress", bProg4:"In progress",
-  bDone:"Completed", bDone2:"Completed", bTrain:"Ongoing",
-  ct1:"Revenue Operations Certification", ct2:"Reporting Certification",
-  ct3:"AI Agents for Marketing and Automation",
-  ct4:"Fundamentals of Project Planning and Management",
-  ct5:"Conflict Management Strategies",
-  ct6:"Google Data Analytics: Foundations, Data Preparation & Decision-Making",
-  ct7:"Meta Ads Specialist Training", ct7i:"Monthly sessions, Meta marketing specialist",
-  certView:"View certificate", certView2:"View certificate", certView3:"View certificate",
-  certView4:"View certificate", certView5:"View certificate", certView6:"View certificate",
-  aboutH2:"The marketer who builds the systems.",
-  aboutEye:"About",
-  aboutP1:"I am a marketing operations and project manager based in Wuppertal, Germany. For the past five years I have run two jobs at once: executing marketing across paid channels, content and email, and building the systems and automations that keep it all organized, measurable and repeatable.",
-  aboutP2:"When a process is manual, slow or error-prone, I build something to fix it. That instinct is what separates me from a marketer who only runs campaigns. I own the full cycle: strategy, execution, automation, reporting, and handing it off so the team can run it without me.",
-  aboutP3:"I have trained and led 25 to 35 people, coordinated large-scale operational projects, and worked closely with founders and senior stakeholders. I work in English every day, speak German and Arabic, and I am actively building my RevOps and CRM skills.",
-  contactEye:"Contact",
-  contactH2:"Building something that needs clean systems behind it?",
-  contactSub:"Open to marketing operations, RevOps and automation roles, remote across European time zones.",
-  cBtn1:"Email me", cBtn2:"LinkedIn",
-  footNote:"Marketing Operations · RevOps · Automation"
-},
-de: {
-  protoNote:"Design-Prototyp. Platzhalterbilder in Verwendung. Deutsch muss vor der Veröffentlichung Korrektur gelesen werden.",
-  navProjects:"Projekte", navProcess:"Wie ich arbeite", navSkills:"Fähigkeiten", navCerts:"Zertifikate", navAbout:"Über mich", navCV:"Lebenslauf",
-  heroEye:"Marketing Operations · RevOps · Automatisierung",
-  heroH1:"Ich baue die Systeme hinter den Kampagnen.",
-  heroSub:"Ich steuere Paid-Kampagnen und automatisiere die Workflows dahinter, damit Wachstum wiederholbar wird.",
-  heroBtn1:"Projekte ansehen", heroBtn2:"Lebenslauf",
-  s1:"Jahre in Marketing Ops", s2:"Projekte pro Jahr", s3:"Eigene Automatisierung",
-  panelTag:"Marketing Ops", panelBadge:"Auto-synchronisiert · 60 Tage",
-  r1:"Kampagne · Paid Social",     ph1:"Hohe Priorität",
-  r2:"Workflow · E-Mail-Sequenz",  pq1:"Geplant",
-  r3:"Automatisierung · Countdown",ph2:"Hohe Priorität",
-  r4:"CRM · Lead-Score-Update",    pq2:"Geplant",
-  r5:"Report · Wöchentliche KPIs", pl:"Veröffentlicht",
-  projEye:"Ausgewählte Projekte", projH2:"Systeme, die die Arbeit wiederholbar gemacht haben.",
-  c1h:"Marketing-Automatisierungs-Engine: 60-Tage-Content-System",
-  c1s:"Entwicklung eines Content-Operations-Systems das automatisch Kampagnen abruft, Prioritäten berechnet, einen 60-Tage-Kalender erstellt und Aufgaben verteilt.",
-  c1b1:"Täglicher Trigger: Daten abrufen, bereinigen, Tage bis Deadline und Priorität berechnen",
-  c1b2:"Feste Reel- und Story-Taxonomie verhindert Wiederholungen",
-  c1b3:"60-Tage-Generator respektiert Regeln für keine Wiederholung von Trip oder Inhaltstyp",
-  c1b4:"KI-Brief pro Aufgabe: Hook, Caption, CTA und Asset-Notizen in Asana",
-  c1b5:"Wiederkehrende Planung von Stunden auf Sekunden reduziert",
-  c1m1:"Automatisch geplant", c1m2:"Zeitersparnis",
-  c1ph:"Hinzufügen: Apps-Script-Code-Header und farbiges Prioritäts-Sheet",
-  c2h:"Paid-Kanal-Performance: Messung, Optimierung und Erweiterung",
-  c2s:"Paid-Kampagnen-Messung neu aufgebaut, Kanal-Mix diversifiziert und konsistente Jahresverbesserungen erzielt.",
-  c2b1:"Reporting-Framework mit CTR, CPC, Klicks, Reichweite, Ausgaben im Jahresvergleich",
-  c2b2:"Von Meta-only auf Meta und Google Ads erweitert",
-  c2b3:"Monatlicher Optimierungszyklus mit Meta-Spezialist-Training seit 2022",
-  c2b4:"GTM-Implementierung für genaues Conversion-Tracking koordiniert",
-  c2m1:"Link-CTR", c2m2:"Kosten pro Klick", c2m3:"Tägliche Klicks",
-  c2ph:"Hinzufügen: anonymisierter Kampagnen-Reporting-Screenshot",
-  c3h:"B2B-Funnel-Strategie: Kampagnen- und Landing-Page-System für CFO-Zielgruppe",
-  c3s:"Vollständiges B2B-Kampagnenpaket für ein BI-Unternehmen mit CFO-Zielgruppe: drei Anzeigenkonzepte, drei Landing-Pages, Video und Loom-Walkthrough in Finanzsprache.",
-  c3b1:"Persona: Margen-Druck, Board-Reporting-Schmerz, Monatsabschluss-Stress",
-  c3b2:"Drei Meta-Anzeigenkonzepte: Margin Drop, Conflicting Numbers, Board Question",
-  c3b3:"Drei Landing-Pages nach Funnel-Stufen mit passenden Botschaften",
-  c3b4:"9:16-Video-Mockup (5 Szenen, 16 Sekunden) und Loom-Strategie-Walkthrough",
-  c3b5:"Starkes positives Feedback, zum Interview eingeladen",
-  c3m1:"Anzeigen und Landing-Pages", c3m2:"Ziel-Persona",
-  c3ph:"Hinzufügen: Anzeigenkonzept oder Landing-Page-Mockup aus dem Case",
-  c4h:"Operative Datenpipeline: automatisiertes Zuteilungssystem",
-  c4s:"Manuellen Mehrstufen-Prozess durch Apps-Script-Pipeline ersetzt: liest Datensätze ein, wendet Zuteilungslogik an und generiert fertige Dokumente.",
-  c4b1:"Normalisiert Rohdaten: Deduplizierung, fehlende Felder, Status-Flags",
-  c4b2:"Regelbasierte Zuteilungslogik bei Kapazitätsgrenzen und Attributen",
-  c4b3:"Strukturierte Ausgabedokumente ohne manuelles Nachformatieren",
-  c4b4:"Hauptskript ca. 800 Zeilen; Hilfsskript ca. 200 Zeilen",
-  c4m1:"Hauptskript", c4m2:"Pro Durchlauf",
-  c4ph:"Hinzufügen: anonymisierter Zuteilungs-Screenshot",
-  procEye:"Wie ich arbeite", procH2:"Erkennen. Bauen. Messen.",
-  p1h:"Reibung finden",         p1b:"Ich erkenne wenn ein Prozess manuell, langsam oder datenleckend ist, und mache es sichtbar.",
-  p2h:"Das System bauen",       p2b:"Ich designe die Lösung als wiederholbaren Workflow. Was auch immer passt und ohne mich läuft.",
-  p3h:"Messen und übergeben",   p3b:"Ich messe ob es funktioniert, dokumentiere klar und stelle sicher dass das Team es selbst nutzen kann.",
-  skillsEye:"Fähigkeiten und Stack", skillsH2:"Womit ich arbeite.",
-  sk1:"Marketing Ops und Automatisierung", sk2:"Paid Media und Kampagnen",
-  sk3:"Projektmanagement und Führung", sk4:"KI-gestützte Workflows",
-  skLang:"Sprachen",
-  lang1:"Englisch", lang1l:"Fließend", lang2:"Deutsch", lang2l:"B2", lang3:"Arabisch", lang3l:"Muttersprache",
-  certsEye:"Zertifikate und Weiterbildung", certsH2:"Immer im Aufbau.",
-  bProg:"In Bearbeitung", bProg2:"In Bearbeitung", bProg3:"In Bearbeitung", bProg4:"In Bearbeitung",
-  bDone:"Abgeschlossen", bDone2:"Abgeschlossen", bTrain:"Laufend",
-  ct1:"Revenue Operations Zertifizierung", ct2:"Reporting Zertifizierung",
-  ct3:"KI-Agenten für Marketing und Automatisierung",
-  ct4:"Grundlagen des Projektplanens und -managements",
-  ct5:"Konfliktmanagement-Strategien",
-  ct6:"Google Data Analytics: Grundlagen, Datenvorbereitung & Entscheidungsfindung",
-  ct7:"Meta Ads Spezialist Training", ct7i:"Monatliche Sessions, Meta Marketing Spezialist",
-  certView:"Zertifikat ansehen", certView2:"Zertifikat ansehen", certView3:"Zertifikat ansehen",
-  certView4:"Zertifikat ansehen", certView5:"Zertifikat ansehen", certView6:"Zertifikat ansehen",
-  aboutH2:"Der Marketer, der die Systeme baut.",
-  aboutEye:"Über mich",
-  aboutP1:"Ich bin Marketing-Operations- und Projektmanager mit Sitz in Wuppertal. Seit fünf Jahren erledige ich zwei Aufgaben gleichzeitig: Marketing über Paid-Kanäle steuern und die Systeme bauen, die alles organisiert und wiederholbar halten.",
-  aboutP2:"Wenn ein Prozess manuell, langsam oder fehleranfällig ist, baue ich etwas das ihn löst. Das ist mein Unterschied. Ich besitze den vollen Zyklus: Strategie, Ausführung, Automatisierung, Reporting und Übergabe.",
-  aboutP3:"Ich habe 25 bis 35 Personen ausgebildet und geführt, operative Projekte koordiniert und eng mit Gründern zusammengearbeitet. Ich baue aktiv meine RevOps- und CRM-Kenntnisse aus.",
-  contactEye:"Kontakt",
-  contactH2:"Baust du etwas das saubere Systeme im Hintergrund braucht?",
-  contactSub:"Offen für Marketing-Operations-, RevOps- und Automatisierungs-Rollen, remote in europäischen Zeitzonen.",
-  cBtn1:"Schreib mir", cBtn2:"LinkedIn",
-  footNote:"Marketing Operations · RevOps · Automatisierung"
-}};
+/* CV file references — overwritten from global.json */
+var CV_EN = "Mohammad Almumani CV.pdf";
+var CV_DE = "Mohammad Almumani Lebenslauf.pdf";
 
+/* i18n store — populated from JSON on load */
+var T = { en: {}, de: {} };
+
+/* ============================================================
+   ANIMATION HTML TEMPLATES (decorative visuals, not content)
+   ============================================================ */
+var ANIM = {};
+
+ANIM.proj01 = '<div class="proj01-wrap" id="proj01anim" aria-hidden="true">' +
+  '<div class="proj01-topbar">' +
+    '<div class="proj01-dots"><span></span><span></span><span></span></div>' +
+    '<span class="proj01-title">Organic Marketing Calendar &nbsp;|&nbsp; syncCalendar.js</span>' +
+  '</div>' +
+  '<div class="proj01-body">' +
+    '<div class="proj01-sheet">' +
+      '<div class="proj01-sheet-header"><div>Content Title</div><div>Channel</div><div>Date</div><div>Status</div></div>' +
+      '<div class="proj01-row"><div class="proj01-cell">Brand Trust 2024</div><div class="proj01-cell">Website</div><div class="proj01-cell">May 20</div><div><span class="proj01-pill high">HIGH</span></div></div>' +
+      '<div class="proj01-row"><div class="proj01-cell">Behind the Scenes</div><div class="proj01-cell">LinkedIn</div><div class="proj01-cell">May 21</div><div><span class="proj01-pill high">HIGH</span></div></div>' +
+      '<div class="proj01-row"><div class="proj01-cell">Customer Story</div><div class="proj01-cell">Website</div><div class="proj01-cell">May 22</div><div><span class="proj01-pill queue">QUEUED</span></div></div>' +
+      '<div class="proj01-row"><div class="proj01-cell">Industry Trends</div><div class="proj01-cell">Website</div><div class="proj01-cell">May 24</div><div><span class="proj01-pill high">HIGH</span></div></div>' +
+      '<div class="proj01-row"><div class="proj01-cell">Weekly Tips</div><div class="proj01-cell">Instagram</div><div class="proj01-cell">May 28</div><div><span class="proj01-pill queue">QUEUED</span></div></div>' +
+      '<div class="proj01-row"><div class="proj01-cell">June Preview</div><div class="proj01-cell">Email</div><div class="proj01-cell">Jun 3</div><div><span class="proj01-pill pub">LIVE</span></div></div>' +
+    '</div>' +
+    '<div class="proj01-code">' +
+      '<div class="proj01-ln"><span class="proj01-lnum">1</span><span class="proj01-lcode co-comment">// ORGANIC MARKETING CALENDAR</span></div>' +
+      '<div class="proj01-ln"><span class="proj01-lnum">2</span><span class="proj01-lcode co-comment">// 60-DAY ROLLING SYNC</span></div>' +
+      '<div class="proj01-ln"><span class="proj01-lnum">3</span><span class="proj01-lcode co-plain">&nbsp;</span></div>' +
+      '<div class="proj01-ln"><span class="proj01-lnum">4</span><span class="proj01-lcode"><span class="co-keyword">const</span> <span class="co-plain">{ google } = </span><span class="co-fn">require</span><span class="co-plain">(</span><span class="co-str">\'googleapis\'</span><span class="co-plain">);</span></span></div>' +
+      '<div class="proj01-ln"><span class="proj01-lnum">5</span><span class="proj01-lcode"><span class="co-keyword">const</span> <span class="co-plain">SYNC_DAYS = </span><span class="co-num">60</span><span class="co-plain">;</span></span></div>' +
+      '<div class="proj01-ln"><span class="proj01-lnum">6</span><span class="proj01-lcode co-plain">&nbsp;</span></div>' +
+      '<div class="proj01-ln"><span class="proj01-lnum">7</span><span class="proj01-lcode"><span class="co-keyword">async function</span> <span class="co-fn">syncCalendar</span><span class="co-plain">() {</span></span></div>' +
+      '<div class="proj01-ln"><span class="proj01-lnum">8</span><span class="proj01-lcode"><span class="co-plain">&nbsp;&nbsp;</span><span class="co-keyword">const</span> <span class="co-plain">auth = </span><span class="co-keyword">await</span> <span class="co-fn">getAuthClient</span><span class="co-plain">();</span></span></div>' +
+      '<div class="proj01-ln"><span class="proj01-lnum">9</span><span class="proj01-lcode"><span class="co-plain">&nbsp;&nbsp;</span><span class="co-keyword">const</span> <span class="co-plain">rows = </span><span class="co-keyword">await</span> <span class="co-fn">fetchRows</span><span class="co-plain">(auth);</span></span></div>' +
+      '<div class="proj01-ln"><span class="proj01-lnum">10</span><span class="proj01-lcode"><span class="co-plain">&nbsp;&nbsp;</span><span class="co-fn">pushToCalendar</span><span class="co-plain">(rows);</span></span></div>' +
+      '<div class="proj01-ln"><span class="proj01-lnum">11</span><span class="proj01-lcode"><span class="co-plain">}</span><span class="proj01-cursor"></span></span></div>' +
+    '</div>' +
+  '</div>' +
+'</div>';
+
+ANIM.proj02 = '<div class="proj02-wrap" id="proj02anim" aria-hidden="true">' +
+  '<div class="proj02-charts">' +
+    '<div class="proj02-chart-box">' +
+      '<div class="proj02-chart-head">' +
+        '<div><div class="proj02-chart-name"><span class="p2dot" style="background:#d4a84a;width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;"></span>CTR</div><div class="proj02-chart-sub">Click-Through Rate</div></div>' +
+        '<span class="proj02-badge up">&#8593; 64%</span>' +
+      '</div>' +
+      '<svg class="proj02-svg-wrap" viewBox="0 0 200 70" preserveAspectRatio="none">' +
+        '<defs>' +
+          '<linearGradient id="ctrGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4a84a" stop-opacity="0.35"/><stop offset="100%" stop-color="#d4a84a" stop-opacity="0.02"/></linearGradient>' +
+          '<clipPath id="ctrClip"><rect id="ctrClipRect" x="0" y="0" width="0" height="70"/></clipPath>' +
+        '</defs>' +
+        '<path d="M10,58 L43,48 L76,43 L109,34 L142,26 L175,10" fill="none" stroke="#d4a84a" stroke-width="2" stroke-linecap="round" clip-path="url(#ctrClip)"/>' +
+        '<path d="M10,58 L43,48 L76,43 L109,34 L142,26 L175,10 L175,70 L10,70 Z" fill="url(#ctrGrad)" clip-path="url(#ctrClip)"/>' +
+        '<circle cx="10" cy="58" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>' +
+        '<circle cx="43" cy="48" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>' +
+        '<circle cx="76" cy="43" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>' +
+        '<circle cx="109" cy="34" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>' +
+        '<circle cx="142" cy="26" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>' +
+        '<circle cx="175" cy="10" r="3" fill="#d4a84a" opacity="0" class="ctr-dot"/>' +
+      '</svg>' +
+    '</div>' +
+    '<div class="proj02-chart-box">' +
+      '<div class="proj02-chart-head">' +
+        '<div><div class="proj02-chart-name"><span class="p2dot" style="background:#5a90cc;width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;"></span>CPC</div><div class="proj02-chart-sub">Cost Per Click</div></div>' +
+        '<span class="proj02-badge down">&#8595; 20%</span>' +
+      '</div>' +
+      '<svg class="proj02-svg-wrap" viewBox="0 0 200 70" preserveAspectRatio="none">' +
+        '<defs>' +
+          '<linearGradient id="cpcGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5a90cc" stop-opacity="0.3"/><stop offset="100%" stop-color="#5a90cc" stop-opacity="0.02"/></linearGradient>' +
+          '<clipPath id="cpcClip"><rect id="cpcClipRect" x="0" y="0" width="0" height="70"/></clipPath>' +
+        '</defs>' +
+        '<path d="M10,12 L43,22 L76,30 L109,38 L142,48 L175,56" fill="none" stroke="#5a90cc" stroke-width="2" stroke-linecap="round" clip-path="url(#cpcClip)"/>' +
+        '<path d="M10,12 L43,22 L76,30 L109,38 L142,48 L175,56 L175,70 L10,70 Z" fill="url(#cpcGrad)" clip-path="url(#cpcClip)"/>' +
+        '<circle cx="10" cy="12" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>' +
+        '<circle cx="43" cy="22" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>' +
+        '<circle cx="76" cy="30" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>' +
+        '<circle cx="109" cy="38" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>' +
+        '<circle cx="142" cy="48" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>' +
+        '<circle cx="175" cy="56" r="3" fill="#5a90cc" opacity="0" class="cpc-dot"/>' +
+      '</svg>' +
+    '</div>' +
+  '</div>' +
+  '<div class="proj02-metrics">' +
+    '<div class="proj02-metric-card">' +
+      '<div class="proj02-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="#d4a84a" stroke-width="2" style="width:16px;height:16px"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>' +
+      '<div><div class="proj02-num gold" data-countup="64" data-prefix="+">+0%</div><div class="proj02-mlabel">CTR INCREASE</div><div class="proj02-vsub">vs. previous period</div></div>' +
+    '</div>' +
+    '<div class="proj02-metric-card">' +
+      '<div class="proj02-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="#5a90cc" stroke-width="2" style="width:16px;height:16px"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>' +
+      '<div><div class="proj02-num blue" data-countup="20" data-prefix="-">-0%</div><div class="proj02-mlabel">CPC DECREASE</div><div class="proj02-vsub">vs. previous period</div></div>' +
+    '</div>' +
+    '<div class="proj02-metric-card">' +
+      '<div class="proj02-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="#3aacbc" stroke-width="2" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>' +
+      '<div><div class="proj02-num teal" data-countup="39" data-prefix="+">+0%</div><div class="proj02-mlabel">CONVERSIONS</div><div class="proj02-vsub">vs. previous period</div></div>' +
+    '</div>' +
+  '</div>' +
+'</div>';
+
+ANIM.proj03 = '<div class="proj03-wrap" id="proj03anim" aria-hidden="true">' +
+  '<div class="proj03-cards">' +
+    '<div class="proj03-card"><div class="proj03-card-title">MARGIN<br><span style="color:#d4a84a">DROP</span></div><div class="proj03-card-body">Costs are up. Margins are down. Do you know why?</div><div class="proj03-card-cta"><span>Uncover what\'s driving your margin erosion.</span><span style="color:#d4a84a">&#8250;</span></div></div>' +
+    '<div class="proj03-card"><div class="proj03-card-title">CONFLICTING<br><span style="color:#d4a84a">NUMBERS</span></div><div class="proj03-card-body">Different reports. Different answers. Same business?</div><div class="proj03-card-cta"><span>Align your data. Trust your numbers.</span><span style="color:#d4a84a">&#8250;</span></div></div>' +
+    '<div class="proj03-card"><div class="proj03-card-title">BOARD<br><span style="color:#d4a84a">QUESTION</span></div><div class="proj03-card-body">When the board asks, you need clarity, not confusion.</div><div class="proj03-card-cta"><span>Deliver the insights the board can trust.</span><span style="color:#d4a84a">&#8250;</span></div></div>' +
+  '</div>' +
+  '<div class="proj03-lp">' +
+    '<div class="proj03-lp-top">' +
+      '<div><div class="proj03-lp-h">Turn Financial Complexity into Confident Decisions</div>' +
+        '<div class="proj03-lp-sub">Unify your data, understand what\'s driving performance, and deliver insights your leadership can trust.</div>' +
+      '</div>' +
+      '<div style="flex-shrink:0"><svg viewBox="0 0 60 40" width="60" height="40"><polyline points="4,30 12,24 20,26 28,18 36,20 44,12 52,8" fill="none" stroke="#2A8A9A" stroke-width="1.5" stroke-linecap="round"/><circle cx="52" cy="8" r="2.5" fill="#d4a84a"/></svg></div>' +
+    '</div>' +
+    '<div class="proj03-props">' +
+      '<div class="proj03-prop">Uncover What Drives Performance</div>' +
+      '<div class="proj03-prop">Align and Trust Your Data</div>' +
+      '<div class="proj03-prop">Make Confident Decisions</div>' +
+      '<div class="proj03-prop">Deliver Board-Ready Insights</div>' +
+    '</div>' +
+    '<div class="proj03-cta-bar"><div class="proj03-cta-text">Ready to bring clarity to your numbers?</div><div class="proj03-cta-btn">REQUEST A DEMO &#8594;</div></div>' +
+  '</div>' +
+'</div>';
+
+ANIM.proj04 = '<div class="proj04-wrap" id="proj04anim" aria-hidden="true">' +
+  '<div class="proj04-title">Operational Data Pipeline</div>' +
+  '<div class="proj04-pipeline">' +
+    '<div class="proj04-stage"><div class="proj04-stage-num">1</div><div class="proj04-stage-label">Input Data</div><div class="proj04-box"><div class="proj04-box-title">Raw Records</div><div class="proj04-box-row"><span>P-1001 Active</span><span class="proj04-val">Type A</span></div><div class="proj04-box-row"><span>P-1002 Pending</span><span class="proj04-val">Type B</span></div><div class="proj04-box-row"><span>P-1003 Active</span><span class="proj04-val">Type A</span></div><div class="proj04-box-row"><span>Total</span><span class="proj04-val info">1,248</span></div></div></div>' +
+    '<div class="proj04-stage"><div class="proj04-stage-num">2</div><div class="proj04-stage-label">Normalization</div><div class="proj04-box"><div class="proj04-box-title">Processing</div><div class="proj04-box-row"><span>Deduplication</span><span class="proj04-val warn">18</span></div><div class="proj04-box-row"><span>Missing fields</span><span class="proj04-val warn">32</span></div><div class="proj04-box-row"><span>Valid records</span><span class="proj04-val ok">1,248</span></div></div></div>' +
+    '<div class="proj04-stage"><div class="proj04-stage-num">3</div><div class="proj04-stage-label">Allocation</div><div class="proj04-box"><div class="proj04-box-title">Engine</div><div class="proj04-box-row"><span>Matched</span><span class="proj04-val ok">1,186</span></div><div class="proj04-box-row"><span>Exceptions</span><span class="proj04-val warn">62</span></div><div class="proj04-box-row"><span>Invalid</span><span class="proj04-val warn">14</span></div></div></div>' +
+    '<div class="proj04-stage"><div class="proj04-stage-num">4</div><div class="proj04-stage-label">Output Docs</div><div class="proj04-box"><div class="proj04-box-title">Results</div><div class="proj04-box-row"><span>P-1001</span><span class="proj04-val ok">READY</span></div><div class="proj04-box-row"><span>P-1002</span><span class="proj04-val ok">READY</span></div><div class="proj04-box-row"><span>P-1004</span><span class="proj04-val warn">REVIEW</span></div></div></div>' +
+  '</div>' +
+  '<div class="proj04-metrics">' +
+    '<div class="proj04-mcard"><div class="proj04-mnum" data-countup4="1248">0</div><div class="proj04-mlabel">Raw records normalized</div></div>' +
+    '<div class="proj04-mcard"><div class="proj04-mnum" data-countup4="1186">0</div><div class="proj04-mlabel">Rule-based allocation</div></div>' +
+    '<div class="proj04-mcard"><div class="proj04-mnum" data-countup4="1124">0</div><div class="proj04-mlabel">Ready-to-use outputs</div></div>' +
+    '<div class="proj04-mcard"><div class="proj04-mnum">100<span style="font-size:8px;color:#d4a84a">%</span></div><div class="proj04-mlabel">Zero manual reformatting</div></div>' +
+  '</div>' +
+'</div>';
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+function escHtml(s) {
+  return String(s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function safeFetch(url) {
+  return fetch(url)
+    .then(function(r) {
+      if (!r.ok) throw new Error("HTTP " + r.status + " loading " + url);
+      return r.json();
+    })
+    .catch(function(e) {
+      console.warn("[CMS] Failed to load", url, "—", e.message);
+      return {};
+    });
+}
+
+/* ============================================================
+   1. i18n
+   ============================================================ */
 function setLang(l) {
   var d = T[l]; if (!d) return;
   document.documentElement.lang = l;
@@ -1444,12 +1032,279 @@ function setLang(l) {
   });
 }
 document.querySelectorAll(".lang button").forEach(function(b) {
-  b.addEventListener("click", function() { setLang(b.getAttribute("data-lang")); });
+  b.addEventListener("click", function() {
+    setLang(b.getAttribute("data-lang"));
+    updateCvLinks(b.getAttribute("data-lang"));
+  });
 });
 
-/* ==================================================
+/* ============================================================
+   CV LINK UPDATER
+   ============================================================ */
+function updateCvLinks(l) {
+  var cvFile = (l === "de") ? CV_DE : CV_EN;
+  var nb = document.getElementById("navCvBtn");
+  var hb = document.getElementById("heroCvBtn");
+  if (nb) { nb.href = cvFile; nb.setAttribute("download", cvFile.split("/").pop()); }
+  if (hb) { hb.href = cvFile; hb.setAttribute("download", cvFile.split("/").pop()); }
+}
+
+/* ============================================================
+   APPLY GLOBAL SETTINGS
+   ============================================================ */
+function applyGlobal(data) {
+  if (!data || !Object.keys(data).length) return;
+  CV_EN = data.cvFileEn || CV_EN;
+  CV_DE = data.cvFileDe || CV_DE;
+
+  var photo = document.getElementById("aboutPhoto");
+  if (photo && data.photo) photo.src = data.photo;
+
+  if (data.email) {
+    document.querySelectorAll("a[href^=\"mailto:\"]").forEach(function(a) { a.href = "mailto:" + data.email; });
+    var meta = document.querySelector(".contact-meta");
+    if (meta) meta.textContent = (data.location || "") + " \u00b7 " + data.email;
+  }
+  if (data.linkedin) {
+    document.querySelectorAll("a[href*=\"linkedin.com\"]").forEach(function(a) { a.href = data.linkedin; });
+  }
+  if (data.footerYear || data.footerName) {
+    var yearEl = document.querySelector(".foot-inner p");
+    if (yearEl) yearEl.textContent = (data.footerYear || "2026") + " " + (data.footerName || "Mohammad Almumani");
+  }
+  updateCvLinks("en");
+}
+
+/* ============================================================
+   STAT STRIP
+   ============================================================ */
+function applyStats(statsValues) {
+  if (!statsValues || !statsValues.length) return;
+  document.querySelectorAll("[data-stat-val]").forEach(function(el) {
+    var i = parseInt(el.getAttribute("data-stat-val"), 10);
+    if (statsValues[i] !== undefined) el.textContent = statsValues[i];
+  });
+}
+
+/* ============================================================
+   RENDER PROJECTS
+   ============================================================ */
+function renderProjects(data) {
+  var list = (data && data.projects) ? data.projects : [];
+  var container = document.getElementById("projectsContainer");
+  if (!container) return;
+  container.innerHTML = "";
+
+  list.forEach(function(proj, idx) {
+    var n = idx + 1;
+    var en = proj.en || {};
+    var de = proj.de || {};
+
+    /* Populate T */
+    T.en["proj" + n + "Title"]   = en.title   || "";
+    T.de["proj" + n + "Title"]   = de.title   || "";
+    T.en["proj" + n + "Summary"] = en.summary || "";
+    T.de["proj" + n + "Summary"] = de.summary || "";
+    (en.bullets || []).forEach(function(b, bi) { T.en["proj" + n + "B" + bi] = b || ""; });
+    (de.bullets || []).forEach(function(b, bi) { T.de["proj" + n + "B" + bi] = b || ""; });
+    (proj.metrics || []).forEach(function(m, mi) {
+      T.en["proj" + n + "M" + mi] = m.enLabel || "";
+      T.de["proj" + n + "M" + mi] = m.deLabel || "";
+    });
+
+    /* Bullets HTML */
+    var bulletsHtml = (en.bullets || []).map(function(b, bi) {
+      return '<li data-i18n="proj' + n + 'B' + bi + '">' + escHtml(b) + '</li>';
+    }).join("");
+
+    /* Tools HTML */
+    var toolsHtml = (proj.tools || []).map(function(t) {
+      return '<span class="tool">' + escHtml(t) + '</span>';
+    }).join("");
+
+    /* Metric row HTML */
+    var metricHtml = (proj.metrics || []).map(function(m, mi) {
+      var valHtml = m.slot
+        ? '<div class="v" data-slot="' + escHtml(m.value) + '" data-slot-suffix="%">' + escHtml(m.value) + '</div>'
+        : '<div class="v">' + escHtml(m.value) + '</div>';
+      return '<div class="metric">' + valHtml + '<div class="k" data-i18n="proj' + n + 'M' + mi + '">' + escHtml(m.enLabel || "") + '</div></div>';
+    }).join("");
+
+    /* Animation visual */
+    var animHtml = ANIM[proj.animSlot]
+      ? ANIM[proj.animSlot]
+      : '<div class="media-ph"><span>Add a visual for this project.</span></div>';
+
+    var pid  = escHtml(proj.id || String(n).padStart(2, "0"));
+    var html =
+      '<div class="case" id="case' + pid + '"' +
+          ' style="--case-accent:' + (proj.accentVar || "var(--gold)") + ';--case-bg:' + (proj.bgVar || "transparent") + '">' +
+        '<div class="case-inner">' +
+          '<div>' +
+            '<span class="case-index">' + pid + '</span>' +
+            '<h3 data-i18n="proj' + n + 'Title">' + escHtml(en.title || "") + '</h3>' +
+            '<p class="summary" data-i18n="proj' + n + 'Summary">' + escHtml(en.summary || "") + '</p>' +
+            '<ul>' + bulletsHtml + '</ul>' +
+            '<div class="tools">' + toolsHtml + '</div>' +
+          '</div>' +
+          '<div class="media">' +
+            '<div class="metric-row">' + metricHtml + '</div>' +
+            animHtml +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    container.insertAdjacentHTML("beforeend", html);
+  });
+}
+
+/* ============================================================
+   RENDER CERTIFICATES
+   ============================================================ */
+var certToast = document.getElementById("cert-toast");
+var certToastTimer = null;
+
+function showCertToast() {
+  if (certToastTimer) clearTimeout(certToastTimer);
+  certToast.classList.add("show");
+  certToastTimer = setTimeout(function() { certToast.classList.remove("show"); }, 3000);
+}
+
+var GOOGLE_LOGO_SVG =
+  '<svg width="22" height="22" viewBox="0 0 48 48">' +
+    '<path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>' +
+    '<path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>' +
+    '<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>' +
+    '<path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>' +
+  '</svg>';
+
+function renderCertificates(data) {
+  var list = (data && data.certificates) ? data.certificates : [];
+  var container = document.getElementById("certsContainer");
+  if (!container) return;
+  container.innerHTML = "";
+
+  list.forEach(function(cert, i) {
+    var en = cert.en || {};
+    var de = cert.de || {};
+
+    /* Populate T */
+    T.en["cert" + i + "Title"]  = en.title  || "";
+    T.de["cert" + i + "Title"]  = de.title  || "";
+    T.en["cert" + i + "Issuer"] = en.issuer || "";
+    T.de["cert" + i + "Issuer"] = de.issuer || en.issuer || "";
+    T.en["cert" + i + "Badge"]  = en.badge  || "";
+    T.de["cert" + i + "Badge"]  = de.badge  || "";
+    if (en.viewLabel)    { T.en["cert" + i + "View"] = en.viewLabel; }
+    if (de.viewLabel)    { T.de["cert" + i + "View"] = de.viewLabel; }
+    if (en.issuerDetail) {
+      T.en["cert" + i + "IssuerDetail"] = en.issuerDetail;
+      T.de["cert" + i + "IssuerDetail"] = de.issuerDetail || en.issuerDetail;
+    }
+
+    var isProgress = cert.status === "progress";
+    var isTraining = cert.status === "training";
+    var badgeCls   = isProgress ? "progress" : (isTraining ? "training" : "done");
+
+    var logoInner = (cert.logoType === "google") ? GOOGLE_LOGO_SVG : escHtml(cert.logoText || "");
+
+    var issuerDetailHtml = en.issuerDetail
+      ? '<div class="issuer" data-i18n="cert' + i + 'IssuerDetail">' + escHtml(en.issuerDetail) + '</div>'
+      : "";
+
+    var viewBtnHtml = !isTraining
+      ? '<button class="cert-link" data-cert="' + escHtml(cert.certFile || "") + '" data-i18n="cert' + i + 'View">' + escHtml(en.viewLabel || "View certificate") + '</button>'
+      : "";
+
+    var html =
+      '<div class="cert' + (isProgress ? " progress-card" : "") + '">' +
+        '<span class="year">' + escHtml(cert.year || "") + '</span>' +
+        '<div class="cert-top">' +
+          '<div class="cert-logo" style="' + (cert.logoStyle || "") + '">' + logoInner + '</div>' +
+          '<span class="cert-badge ' + badgeCls + '" data-i18n="cert' + i + 'Badge">' + escHtml(en.badge || "") + '</span>' +
+        '</div>' +
+        '<h3 data-i18n="cert' + i + 'Title">' + escHtml(en.title || "") + '</h3>' +
+        '<div class="issuer" data-i18n="cert' + i + 'Issuer">' + escHtml(en.issuer || "") + '</div>' +
+        issuerDetailHtml +
+        viewBtnHtml +
+      '</div>';
+
+    container.insertAdjacentHTML("beforeend", html);
+  });
+
+  /* Event delegation for cert buttons */
+  container.addEventListener("click", function(e) {
+    var btn = e.target.closest(".cert-link");
+    if (!btn) return;
+    var file = btn.getAttribute("data-cert");
+    if (file && file.trim() !== "") { window.open(file, "_blank", "noopener"); }
+    else { showCertToast(); }
+  });
+}
+
+/* ============================================================
+   RENDER SKILLS
+   ============================================================ */
+function renderSkills(data) {
+  var grid = document.getElementById("skillGrid");
+  if (!grid) return;
+  grid.innerHTML = "";
+
+  /* Populate T for card titles */
+  (data.cards || []).forEach(function(card) {
+    T.en[card.titleKey] = card.titleEn || "";
+    T.de[card.titleKey] = card.titleDe || "";
+  });
+
+  /* Populate T for language names/levels */
+  (data.languages || []).forEach(function(lang) {
+    T.en[lang.nameKey]  = lang.nameEn  || "";
+    T.de[lang.nameKey]  = lang.nameDe  || "";
+    T.en[lang.levelKey] = lang.levelEn || "";
+    T.de[lang.levelKey] = lang.levelDe || "";
+  });
+
+  /* Skill cards */
+  (data.cards || []).forEach(function(card) {
+    var chipsHtml = (card.chips || []).map(function(chip) {
+      return '<span class="chip' + (chip.key ? " key" : "") + '">' + escHtml(chip.text) + '</span>';
+    }).join("");
+    var buildHtml = (card.building && card.building.length)
+      ? '<div class="build-row">' + card.building.map(function(b) {
+          return '<span class="build-tag">' + escHtml(b) + '</span>';
+        }).join("") + '</div>'
+      : "";
+    grid.insertAdjacentHTML("beforeend",
+      '<div class="skill-card">' +
+        '<h3 data-i18n="' + escHtml(card.titleKey) + '">' + escHtml(card.titleEn || "") + '</h3>' +
+        '<div class="chips">' + chipsHtml + '</div>' +
+        buildHtml +
+      '</div>'
+    );
+  });
+
+  /* Language card */
+  var langItemsHtml = (data.languages || []).map(function(lang) {
+    return '<div>' +
+      '<div class="lang-item">' +
+        '<span class="ln" data-i18n="' + escHtml(lang.nameKey)  + '">' + escHtml(lang.nameEn  || "") + '</span>' +
+        '<span class="ll" data-i18n="' + escHtml(lang.levelKey) + '">' + escHtml(lang.levelEn || "") + '</span>' +
+      '</div>' +
+      '<div class="lang-bar"><div class="lang-bar-fill" style="width:' + (lang.pct || 0) + '%"></div></div>' +
+    '</div>';
+  }).join("");
+
+  grid.insertAdjacentHTML("beforeend",
+    '<div class="skill-card lang-card wide reveal">' +
+      '<h3 data-i18n="skLang">' + escHtml(T.en.skLang || "Languages") + '</h3>' +
+      '<div class="lang-items">' + langItemsHtml + '</div>' +
+    '</div>'
+  );
+}
+
+/* ============================================================
    2. BIDIRECTIONAL SCROLL REVEALS
-   ================================================== */
+   ============================================================ */
 function initReveals() {
   if (REDUCE) {
     document.querySelectorAll(".reveal").forEach(function(el) { el.classList.add("in"); });
@@ -1464,267 +1319,192 @@ function initReveals() {
       if (e.isIntersecting) {
         e.target.classList.add("in");
       } else {
-        if (e.boundingClientRect.top > 0) {
-          e.target.classList.remove("in");
-        }
+        if (e.boundingClientRect.top > 0) e.target.classList.remove("in");
       }
     });
   }, { threshold: 0.13, rootMargin: "0px 0px -6% 0px" });
   document.querySelectorAll(".reveal").forEach(function(el) { obs.observe(el); });
 }
-initReveals();
 
-/* ==================================================
-   3. SYNC PANEL (bidirectional)
-   ================================================== */
-var panel = document.getElementById("syncPanel");
-if (panel && !REDUCE && "IntersectionObserver" in window) {
-  var pTimer = null;
-  new IntersectionObserver(function(entries) {
-    if (entries[0].isIntersecting) {
-      pTimer = setTimeout(function() { panel.classList.add("synced"); }, 200);
-    } else {
-      clearTimeout(pTimer);
-      panel.classList.remove("synced");
-    }
-  }, { threshold: 0.35 }).observe(panel);
-} else if (panel) {
-  panel.classList.add("synced");
-}
-
-/* ==================================================
-   4. CASE CARD ENTRANCE ANIMATIONS
-   Triggered only when the #projects section enters view
-   ================================================== */
-var cases = document.querySelectorAll(".case");
-if (!REDUCE && "IntersectionObserver" in window) {
-  var caseObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add("in");
+/* ============================================================
+   3. SYNC PANEL
+   ============================================================ */
+function initSyncPanel() {
+  var panel = document.getElementById("syncPanel");
+  if (panel && !REDUCE && "IntersectionObserver" in window) {
+    var pTimer = null;
+    new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        pTimer = setTimeout(function() { panel.classList.add("synced"); }, 200);
       } else {
-        if (e.boundingClientRect.top > 0) {
-          e.target.classList.remove("in");
-        }
+        clearTimeout(pTimer);
+        panel.classList.remove("synced");
       }
-    });
-  }, { threshold: 0.12 });
-  cases.forEach(function(c) { caseObs.observe(c); });
-} else {
-  cases.forEach(function(c) { c.classList.add("in"); });
+    }, { threshold: 0.35 }).observe(panel);
+  } else if (panel) {
+    panel.classList.add("synced");
+  }
 }
 
-/* ==================================================
-   5. SLOT MACHINE NUMBERS (Case 02 metrics)
-   ================================================== */
-var digits = "0123456789".split("");
+/* ============================================================
+   4. CASE CARD ENTRANCE ANIMATIONS
+   ============================================================ */
+function initCaseAnimations() {
+  var cases = document.querySelectorAll(".case");
+  if (!REDUCE && "IntersectionObserver" in window) {
+    var caseObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+        } else {
+          if (e.boundingClientRect.top > 0) e.target.classList.remove("in");
+        }
+      });
+    }, { threshold: 0.12 });
+    cases.forEach(function(c) { caseObs.observe(c); });
+  } else {
+    cases.forEach(function(c) { c.classList.add("in"); });
+  }
+}
+
+/* ============================================================
+   5. SLOT MACHINE NUMBERS
+   ============================================================ */
 function shuffleStr() {
-  return (Math.random() > 0.5 ? "+" : "") + (Math.floor(Math.random()*90)+10) + "." + Math.floor(Math.random()*9) + "%";
+  return (Math.random() > 0.5 ? "+" : "") + (Math.floor(Math.random() * 90) + 10) + "." + Math.floor(Math.random() * 9) + "%";
 }
-
 function runSlot(el) {
   if (REDUCE) return;
   var final = el.getAttribute("data-slot");
-  var steps = 12;
-  var interval = 120;
+  var steps = 12; var interval = 120;
   for (var i = 0; i < steps; i++) {
     (function(idx) {
       setTimeout(function() {
-        if (idx < steps - 1) {
-          el.textContent = shuffleStr();
-        } else {
-          el.textContent = final;
-        }
+        el.textContent = (idx < steps - 1) ? shuffleStr() : final;
       }, idx * interval);
     })(i);
   }
 }
-
-if ("IntersectionObserver" in window && !REDUCE) {
+function initSlotMachine() {
+  if (!("IntersectionObserver" in window) || REDUCE) return;
   var slotObs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        runSlot(e.target);
-      } else {
-        e.target.textContent = e.target.getAttribute("data-slot");
-      }
+      if (e.isIntersecting) { runSlot(e.target); }
+      else { e.target.textContent = e.target.getAttribute("data-slot"); }
     });
   }, { threshold: 0.8 });
   document.querySelectorAll("[data-slot]").forEach(function(el) { slotObs.observe(el); });
 }
 
-/* ==================================================
-   6. PIPELINE NODE AND TRAVELLING DOT (How I work)
-   A dot loops from node 1 to 2 to 3 along the
-   horizontal pipeline line. Each card gets a gold
-   border highlight when the dot arrives.
-   ================================================== */
-(function() {
+/* ============================================================
+   6. PIPELINE NODE AND TRAVELLING DOT (How I Work)
+   ============================================================ */
+function initPipeline() {
   if (REDUCE) return;
   var outer = document.getElementById("processOuter");
   var grid  = document.getElementById("processGrid");
   if (!outer || !grid) return;
-
   var cards = [
     document.getElementById("pc1"),
     document.getElementById("pc2"),
     document.getElementById("pc3")
   ];
-
-  /* Create the three nodes and one dot */
-  var nodes = [];
-  var dot = document.createElement("div");
-  dot.className = "pipeline-dot";
-  outer.appendChild(dot);
-
+  var nodes = []; var isVisible = false; var stepIndex = 0; var stepTimer = null;
+  var dot = document.createElement("div"); dot.className = "pipeline-dot"; outer.appendChild(dot);
   cards.forEach(function(card) {
-    var node = document.createElement("div");
-    node.className = "pipeline-node";
-    outer.appendChild(node);
-    nodes.push(node);
+    var node = document.createElement("div"); node.className = "pipeline-node";
+    outer.appendChild(node); nodes.push(node);
   });
-
-  var isVisible = false;
-  var stepIndex = 0;
-  var stepTimer = null;
-
   function getNodeXPercent(idx) {
     var card = cards[idx];
-    var outerRect = outer.getBoundingClientRect();
-    var cardRect  = card.getBoundingClientRect();
-    var cx = cardRect.left + cardRect.width / 2;
-    return ((cx - outerRect.left) / outerRect.width * 100).toFixed(2) + "%";
+    var outerRect = outer.getBoundingClientRect(); var cardRect = card.getBoundingClientRect();
+    return (((cardRect.left + cardRect.width / 2) - outerRect.left) / outerRect.width * 100).toFixed(2) + "%";
   }
-
-  function positionNodes() {
-    nodes.forEach(function(node, i) {
-      node.style.left = getNodeXPercent(i);
-    });
-  }
-
+  function positionNodes() { nodes.forEach(function(node, i) { node.style.left = getNodeXPercent(i); }); }
   function activateStep(idx) {
-    /* Remove active from all */
-    nodes.forEach(function(n, i) {
-      n.classList.toggle("active", i === idx);
-    });
-    cards.forEach(function(c, i) {
-      c.classList.toggle("node-active", i === idx);
-    });
-    /* Move dot */
+    nodes.forEach(function(n, i) { n.classList.toggle("active", i === idx); });
+    cards.forEach(function(c, i) { c.classList.toggle("node-active", i === idx); });
     dot.style.left = getNodeXPercent(idx);
   }
-
   function tick() {
     if (!isVisible) return;
-    activateStep(stepIndex);
-    stepIndex = (stepIndex + 1) % 3;
-    /* Pause at each node for 1.8s, travel time is in the CSS transition (0.9s) */
+    activateStep(stepIndex); stepIndex = (stepIndex + 1) % 3;
     stepTimer = setTimeout(tick, 1000);
   }
-
   function startLoop() {
-    if (stepTimer) clearTimeout(stepTimer);
-    stepIndex = 0;
-    positionNodes();
-    /* Start dot at node 0 instantly (no transition), then begin loop */
-    dot.style.transition = "none";
-    dot.style.left = getNodeXPercent(0);
-    setTimeout(function() {
-      dot.style.transition = "";
-      tick();
-    }, 50);
+    if (stepTimer) clearTimeout(stepTimer); stepIndex = 0; positionNodes();
+    dot.style.transition = "none"; dot.style.left = getNodeXPercent(0);
+    setTimeout(function() { dot.style.transition = ""; tick(); }, 50);
   }
-
   function stopLoop() {
     if (stepTimer) clearTimeout(stepTimer);
     nodes.forEach(function(n) { n.classList.remove("active"); });
     cards.forEach(function(c) { c.classList.remove("node-active"); });
   }
-
   window.addEventListener("resize", positionNodes);
-
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting) {
-        isVisible = true;
-        positionNodes();
-        startLoop();
-      } else {
-        isVisible = false;
-        stopLoop();
-      }
+      if (entries[0].isIntersecting) { isVisible = true; positionNodes(); startLoop(); }
+      else { isVisible = false; stopLoop(); }
     }, { threshold: 0.35 }).observe(outer);
-  } else {
-    isVisible = true;
-    positionNodes();
-    startLoop();
-  }
-})();
+  } else { isVisible = true; positionNodes(); startLoop(); }
+}
 
-
-/* ==================================================
+/* ============================================================
    7. LANGUAGE BAR ANIMATION
-   ================================================== */
-if ("IntersectionObserver" in window && !REDUCE) {
+   ============================================================ */
+function initLangBars() {
   var lc = document.querySelector(".lang-card");
-  if (lc) {
+  if (!lc) return;
+  if ("IntersectionObserver" in window && !REDUCE) {
     new IntersectionObserver(function(entries) {
       lc.classList.toggle("in", entries[0].isIntersecting);
     }, { threshold: 0.4 }).observe(lc);
+  } else {
+    lc.classList.add("in");
   }
-} else {
-  var lc = document.querySelector(".lang-card");
-  if (lc) lc.classList.add("in");
 }
 
-
-/* ==================================================
+/* ============================================================
    8. ABOUT TYPEWRITER EFFECT
-   ================================================== */
+   ============================================================ */
 var aboutDone = false;
 function typeWrite(el, text, speed) {
   el.textContent = "";
-  var cursor = document.createElement("span");
-  cursor.className = "typewriter-cursor";
-  el.appendChild(cursor);
+  var cursor = document.createElement("span"); cursor.className = "typewriter-cursor"; el.appendChild(cursor);
   var i = 0;
   var iv = setInterval(function() {
-    if (i < text.length) {
-      el.insertBefore(document.createTextNode(text[i]), cursor);
-      i++;
-    } else {
+    if (i < text.length) { el.insertBefore(document.createTextNode(text[i]), cursor); i++; }
+    else {
       clearInterval(iv);
-      setTimeout(function() {
-        if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
-      }, 2000);
+      setTimeout(function() { if (cursor.parentNode) cursor.parentNode.removeChild(cursor); }, 2000);
     }
   }, speed);
 }
-
-if ("IntersectionObserver" in window && !REDUCE) {
+function initTypewriter() {
+  if (!("IntersectionObserver" in window) || REDUCE) return;
   var aboutSection = document.getElementById("about");
   var aboutHeading = document.getElementById("aboutHeading");
-  if (aboutSection && aboutHeading) {
-    new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting && !aboutDone) {
-        aboutDone = true;
-        var txt = T.en[aboutHeading.getAttribute("data-i18n")] || aboutHeading.textContent;
-        typeWrite(aboutHeading, txt, 38);
-      }
-    }, { threshold: 0.4 }).observe(aboutSection);
-  }
+  if (!aboutSection || !aboutHeading) return;
+  new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !aboutDone) {
+      aboutDone = true;
+      var txt = T.en[aboutHeading.getAttribute("data-i18n")] || aboutHeading.textContent;
+      typeWrite(aboutHeading, txt, 38);
+    }
+  }, { threshold: 0.4 }).observe(aboutSection);
 }
 
-
-/* ==================================================
+/* ============================================================
    9. SCROLLSPY
-   ================================================== */
-var navMap = {};
-document.querySelectorAll(".nav-links a").forEach(function(a) {
-  var h = a.getAttribute("href");
-  if (h && h.startsWith("#")) navMap[h.slice(1)] = a;
-});
-if ("IntersectionObserver" in window) {
+   ============================================================ */
+function initScrollSpy() {
+  var navMap = {};
+  document.querySelectorAll(".nav-links a").forEach(function(a) {
+    var h = a.getAttribute("href");
+    if (h && h.startsWith("#")) navMap[h.slice(1)] = a;
+  });
+  if (!("IntersectionObserver" in window)) return;
   var spyObs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting && navMap[e.target.id]) {
@@ -1738,149 +1518,193 @@ if ("IntersectionObserver" in window) {
   });
 }
 
-/* CERT LINK HANDLER */
-var certToast=document.getElementById("cert-toast");
-var certToastTimer=null;
-function showCertToast(){
-  if(certToastTimer) clearTimeout(certToastTimer);
-  certToast.classList.add("show");
-  certToastTimer=setTimeout(function(){certToast.classList.remove("show");},3000);
+/* ============================================================
+   PROJECT 01 ANIMATION
+   ============================================================ */
+function initProj01Anim() {
+  if (REDUCE) return;
+  var anim = document.getElementById("proj01anim");
+  if (!anim || !("IntersectionObserver" in window)) return;
+  var rows = anim.querySelectorAll(".proj01-row");
+  var lines = anim.querySelectorAll(".proj01-ln");
+  var triggered = false;
+  function run() {
+    rows.forEach(function(r, i) { setTimeout(function() { r.classList.add("show"); }, i * 180); });
+    lines.forEach(function(l, i) { setTimeout(function() { l.classList.add("show"); }, i * 120 + 200); });
+  }
+  new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { if (!triggered) { triggered = true; run(); } }
+    else { if (entries[0].boundingClientRect.top > 0) { triggered = false; rows.forEach(function(r) { r.classList.remove("show"); }); lines.forEach(function(l) { l.classList.remove("show"); }); } }
+  }, { threshold: 0.3 }).observe(anim);
 }
-document.querySelectorAll(".cert-link").forEach(function(btn){
-  btn.addEventListener("click",function(){
-    var file=btn.getAttribute("data-cert");
-    if(file&&file.trim()!==""){window.open(file,"_blank","noopener");}
-    else{showCertToast();}
+
+/* ============================================================
+   PROJECT 02 ANIMATION
+   ============================================================ */
+function initProj02Anim() {
+  if (REDUCE) return;
+  var anim = document.getElementById("proj02anim");
+  if (!anim || !("IntersectionObserver" in window)) return;
+  var triggered = false;
+  function countup(el) {
+    var target = parseInt(el.getAttribute("data-countup"), 10);
+    var prefix = el.getAttribute("data-prefix") || "";
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var prog = Math.min((ts - startTime) / 1200, 1);
+      var e = 1 - Math.pow(1 - prog, 3);
+      el.textContent = prefix + Math.round(target * e) + "%";
+      if (prog < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function draw() {
+    var cr = document.getElementById("ctrClipRect"); var pr = document.getElementById("cpcClipRect");
+    if (cr) { cr.style.transition = "width 1.2s cubic-bezier(0.2,0.7,0.2,1)"; setTimeout(function() { cr.setAttribute("width", "200"); }, 80); }
+    if (pr) { pr.style.transition = "width 1.2s cubic-bezier(0.2,0.7,0.2,1) 0.15s"; setTimeout(function() { pr.setAttribute("width", "200"); }, 80); }
+    anim.querySelectorAll(".ctr-dot,.cpc-dot").forEach(function(d) { d.style.transition = "opacity 0.4s ease 0.8s"; d.style.opacity = "1"; });
+    setTimeout(function() { anim.querySelectorAll("[data-countup]").forEach(function(el) { countup(el); }); }, 600);
+  }
+  function reset() {
+    var cr = document.getElementById("ctrClipRect"); var pr = document.getElementById("cpcClipRect");
+    if (cr) { cr.style.transition = "none"; cr.setAttribute("width", "0"); }
+    if (pr) { pr.style.transition = "none"; pr.setAttribute("width", "0"); }
+    anim.querySelectorAll(".ctr-dot,.cpc-dot").forEach(function(d) { d.style.transition = "none"; d.style.opacity = "0"; });
+    anim.querySelectorAll("[data-countup]").forEach(function(el) { el.textContent = el.getAttribute("data-prefix") + "0%"; });
+  }
+  new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { if (!triggered) { triggered = true; draw(); } }
+    else { if (entries[0].boundingClientRect.top > 0) { triggered = false; reset(); } }
+  }, { threshold: 0.3 }).observe(anim);
+}
+
+/* ============================================================
+   PROJECT 03 ANIMATION
+   ============================================================ */
+function initProj03Anim() {
+  if (REDUCE) return;
+  var anim = document.getElementById("proj03anim");
+  if (!anim || !("IntersectionObserver" in window)) return;
+  var cards = anim.querySelectorAll(".proj03-card");
+  var lp = anim.querySelector(".proj03-lp");
+  var triggered = false;
+  new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      if (!triggered) { triggered = true; cards.forEach(function(c) { c.classList.add("show"); }); setTimeout(function() { if (lp) lp.classList.add("show"); }, 300); }
+    } else {
+      if (entries[0].boundingClientRect.top > 0) { triggered = false; cards.forEach(function(c) { c.classList.remove("show"); }); if (lp) lp.classList.remove("show"); }
+    }
+  }, { threshold: 0.3 }).observe(anim);
+}
+
+/* ============================================================
+   PROJECT 04 ANIMATION
+   ============================================================ */
+function initProj04Anim() {
+  if (REDUCE) return;
+  var anim = document.getElementById("proj04anim");
+  if (!anim || !("IntersectionObserver" in window)) return;
+  var stages = anim.querySelectorAll(".proj04-stage");
+  var mcards = anim.querySelectorAll(".proj04-mcard");
+  var triggered = false;
+  function countup4(el) {
+    var target = parseInt(el.getAttribute("data-countup4"), 10); if (isNaN(target)) return;
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var prog = Math.min((ts - startTime) / 1400, 1); var e = 1 - Math.pow(1 - prog, 3);
+      el.textContent = Math.round(target * e).toLocaleString(); if (prog < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function run() {
+    stages.forEach(function(s, i) { setTimeout(function() { s.classList.add("show"); }, i * 180); });
+    mcards.forEach(function(m, i) { setTimeout(function() { m.classList.add("show"); var n = m.querySelector("[data-countup4]"); if (n) countup4(n); }, i * 200 + 500); });
+  }
+  function reset() {
+    stages.forEach(function(s) { s.classList.remove("show"); });
+    mcards.forEach(function(m) { m.classList.remove("show"); var n = m.querySelector("[data-countup4]"); if (n) n.textContent = "0"; });
+  }
+  new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { if (!triggered) { triggered = true; run(); } }
+    else { if (entries[0].boundingClientRect.top > 0) { triggered = false; reset(); } }
+  }, { threshold: 0.3 }).observe(anim);
+}
+
+/* ============================================================
+   INIT ALL (called after rendering is complete)
+   ============================================================ */
+function initAll() {
+  initReveals();
+  initSyncPanel();
+  initCaseAnimations();
+  initSlotMachine();
+  initPipeline();
+  initLangBars();
+  initTypewriter();
+  initScrollSpy();
+  initProj01Anim();
+  initProj02Anim();
+  initProj03Anim();
+  initProj04Anim();
+}
+
+/* ============================================================
+   CONTENT LOADER  —  fetches all JSON and boots the page
+   ============================================================ */
+function loadContent() {
+  return Promise.all([
+    safeFetch("/cms/global.json"),
+    safeFetch("/cms/hero.json"),
+    safeFetch("/cms/projects.json"),
+    safeFetch("/cms/process.json"),
+    safeFetch("/cms/skills.json"),
+    safeFetch("/cms/certificates.json"),
+    safeFetch("/cms/about.json"),
+    safeFetch("/cms/contact.json")
+  ]).then(function(results) {
+    var globalData = results[0], heroData    = results[1], projectsData = results[2],
+        processData = results[3], skillsData  = results[4], certsData    = results[5],
+        aboutData   = results[6], contactData = results[7];
+
+    /* Populate T from flat JSON */
+    ["en", "de"].forEach(function(lang) {
+      [heroData, processData, skillsData, aboutData, contactData].forEach(function(src) {
+        if (src && src[lang]) Object.assign(T[lang], src[lang]);
+      });
+      if (globalData && globalData[lang]) Object.assign(T[lang], globalData[lang]);
+    });
+
+    /* Render dynamic sections (must happen BEFORE setLang & initAll) */
+    renderProjects(projectsData);
+    renderCertificates(certsData);
+    renderSkills(skillsData);
+
+    /* Apply stat strip values */
+    applyStats(heroData.statsValues);
+
+    /* Apply global settings (photo, CV paths, email, footer) */
+    applyGlobal(globalData);
+
+    /* Set initial language — updates all data-i18n elements including rendered ones */
+    setLang("en");
+
+    /* Start all interactions and animations */
+    initAll();
+
+  }).catch(function(err) {
+    console.error("[CMS] loadContent failed:", err);
+    setLang("en");
+    initAll();
   });
-});
-
-/* CV LANG SWITCH */
-function updateCvLinks(l){
-  var cvFile=(l==="de")?"Mohammad Almumani Lebenslauf.pdf":"Mohammad Almumani CV.pdf";
-  var nb=document.getElementById("navCvBtn");
-  var hb=document.getElementById("heroCvBtn");
-  if(nb){nb.href=cvFile;nb.setAttribute("download",cvFile);}
-  if(hb){hb.href=cvFile;hb.setAttribute("download",cvFile);}
 }
-document.querySelectorAll(".lang button").forEach(function(b){
-  b.addEventListener("click",function(){updateCvLinks(b.getAttribute("data-lang"));});
-});
 
-/* PROJECT 01 ANIMATION */
-(function(){
-  if(REDUCE) return;
-  var anim=document.getElementById("proj01anim");
-  if(!anim||!("IntersectionObserver" in window)) return;
-  var rows=anim.querySelectorAll(".proj01-row");
-  var lines=anim.querySelectorAll(".proj01-ln");
-  var triggered=false;
-  function run(){
-    rows.forEach(function(r,i){setTimeout(function(){r.classList.add("show");},i*180);});
-    lines.forEach(function(l,i){setTimeout(function(){l.classList.add("show");},i*120+200);});
-  }
-  new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting){if(!triggered){triggered=true;run();}}
-    else{if(entries[0].boundingClientRect.top>0){triggered=false;rows.forEach(function(r){r.classList.remove("show");});lines.forEach(function(l){l.classList.remove("show");});}}
-  },{threshold:0.3}).observe(anim);
-})();
-
-/* PROJECT 02 ANIMATION */
-(function(){
-  if(REDUCE) return;
-  var anim=document.getElementById("proj02anim");
-  if(!anim||!("IntersectionObserver" in window)) return;
-  var triggered=false;
-  function countup(el){
-    var target=parseInt(el.getAttribute("data-countup"),10);
-    var prefix=el.getAttribute("data-prefix")||"";
-    var startTime=null;
-    function step(ts){
-      if(!startTime) startTime=ts;
-      var prog=Math.min((ts-startTime)/1200,1);
-      var e=1-Math.pow(1-prog,3);
-      el.textContent=prefix+Math.round(target*e)+"%";
-      if(prog<1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  function draw(){
-    var cr=document.getElementById("ctrClipRect");
-    var pr=document.getElementById("cpcClipRect");
-    if(cr){cr.style.transition="width 1.2s cubic-bezier(0.2,0.7,0.2,1)";setTimeout(function(){cr.setAttribute("width","200");},80);}
-    if(pr){pr.style.transition="width 1.2s cubic-bezier(0.2,0.7,0.2,1) 0.15s";setTimeout(function(){pr.setAttribute("width","200");},80);}
-    anim.querySelectorAll(".ctr-dot,.cpc-dot").forEach(function(d){d.style.transition="opacity 0.4s ease 0.8s";d.style.opacity="1";});
-    setTimeout(function(){anim.querySelectorAll("[data-countup]").forEach(function(el){countup(el);});},600);
-  }
-  function reset(){
-    var cr=document.getElementById("ctrClipRect");var pr=document.getElementById("cpcClipRect");
-    if(cr){cr.style.transition="none";cr.setAttribute("width","0");}
-    if(pr){pr.style.transition="none";pr.setAttribute("width","0");}
-    anim.querySelectorAll(".ctr-dot,.cpc-dot").forEach(function(d){d.style.transition="none";d.style.opacity="0";});
-    anim.querySelectorAll("[data-countup]").forEach(function(el){el.textContent=el.getAttribute("data-prefix")+"0%";});
-  }
-  new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting){if(!triggered){triggered=true;draw();}}
-    else{if(entries[0].boundingClientRect.top>0){triggered=false;reset();}}
-  },{threshold:0.3}).observe(anim);
-})();
-
-/* PROJECT 03 ANIMATION */
-(function(){
-  if(REDUCE) return;
-  var anim=document.getElementById("proj03anim");
-  if(!anim||!("IntersectionObserver" in window)) return;
-  var cards=anim.querySelectorAll(".proj03-card");
-  var lp=anim.querySelector(".proj03-lp");
-  var triggered=false;
-  new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting){
-      if(!triggered){triggered=true;cards.forEach(function(c){c.classList.add("show");});setTimeout(function(){if(lp)lp.classList.add("show");},300);}
-    }else{
-      if(entries[0].boundingClientRect.top>0){triggered=false;cards.forEach(function(c){c.classList.remove("show");});if(lp)lp.classList.remove("show");}
-    }
-  },{threshold:0.3}).observe(anim);
-})();
-
-/* PROJECT 04 ANIMATION */
-(function(){
-  if(REDUCE) return;
-  var anim=document.getElementById("proj04anim");
-  if(!anim||!("IntersectionObserver" in window)) return;
-  var stages=anim.querySelectorAll(".proj04-stage");
-  var mcards=anim.querySelectorAll(".proj04-mcard");
-  var triggered=false;
-  function countup4(el){
-    var target=parseInt(el.getAttribute("data-countup4"),10);
-    if(isNaN(target)) return;
-    var startTime=null;
-    function step(ts){
-      if(!startTime) startTime=ts;
-      var prog=Math.min((ts-startTime)/1400,1);
-      var e=1-Math.pow(1-prog,3);
-      el.textContent=Math.round(target*e).toLocaleString();
-      if(prog<1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  function run(){
-    stages.forEach(function(s,i){setTimeout(function(){s.classList.add("show");},i*180);});
-    mcards.forEach(function(m,i){setTimeout(function(){m.classList.add("show");var n=m.querySelector("[data-countup4]");if(n)countup4(n);},i*200+500);});
-  }
-  function reset(){
-    stages.forEach(function(s){s.classList.remove("show");});
-    mcards.forEach(function(m){m.classList.remove("show");var n=m.querySelector("[data-countup4]");if(n)n.textContent="0";});
-  }
-  new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting){if(!triggered){triggered=true;run();}}
-    else{if(entries[0].boundingClientRect.top>0){triggered=false;reset();}}
-  },{threshold:0.3}).observe(anim);
-})();
-
-/* Init */
-setLang("en");
+loadContent();
 
 })();
-</script>
+
+
 
 <!-- Toast popup -->
 <div id="cert-toast">Coming soon, check back shortly.</div>
