@@ -1,3 +1,22 @@
+# ================================================================
+# DECAP CMS CONFIGURATION — controls what you see/edit at /admin
+# ================================================================
+# This file defines every field you see in the CMS editor. It does
+# NOT contain your actual content (that's in the cms/*.json files,
+# edited through the CMS itself) — this file only defines the FORM,
+# what fields exist, their labels, and what JSON file each
+# collection reads/writes to.
+#
+# --------------------------------------------------------------
+# backend: (below) — DO NOT change these unless you're
+# intentionally reconfiguring the login system. These five lines
+# connect the CMS to your GitHub repo via the OAuth functions in
+# functions/api/auth.js and functions/api/callback.js.
+#   - repo: must exactly match your GitHub repo (owner/name)
+#   - base_url: must exactly match your live site's URL
+#   - auth_endpoint: must match the path of your auth function
+#     (api/auth, since the function lives at functions/api/auth.js)
+# --------------------------------------------------------------
 backend:
   name: github
   repo: mohammadalmumani/portfolio
@@ -5,9 +24,18 @@ backend:
   base_url: https://mohammadalmumaniportfolio.pages.dev
   auth_endpoint: api/auth
 
+# Where uploaded files (photos, PDFs, certificates) get stored/served from.
 media_folder: "uploads"
 public_folder: "/uploads"
 
+# ================================================================
+# COLLECTIONS — each block below becomes one editable screen in
+# the CMS sidebar. To add a brand-new collection (a new editable
+# screen), copy the pattern of an existing one, give it a unique
+# "name", and point "file" at a NEW file under cms/. Then add a
+# matching safeFetch(...) call and render function in index.html
+# (see the "CONTENT LOADER" comment there for exact steps).
+# ================================================================
 collections:
 
   # ──────────────────────────────────────────────────────────────
