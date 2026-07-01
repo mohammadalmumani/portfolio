@@ -615,7 +615,7 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 </head>
 
 <body>
-<div id="cert-toast">Coming soon, check back shortly.</div>
+<div id="cert-toast" data-i18n="certToast">In progress, certificate coming soon.</div>
 
 <!-- ============================================================
      NAVIGATION
@@ -858,6 +858,8 @@ var CV_DE = "Mohammad Almumani Lebenslauf.pdf";
 
 /* i18n store — populated from JSON on load */
 var T = { en: {}, de: {} };
+T.en.certToast = "In progress, certificate coming soon.";
+T.de.certToast = "In Bearbeitung, Zertifikat folgt in Kürze.";
 
 /* ============================================================
    ANIMATION HTML TEMPLATES (decorative visuals, not content)
