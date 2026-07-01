@@ -1,4 +1,46 @@
 <!DOCTYPE html>
+<!--
+================================================================================
+ MOHAMMAD ALMUMANI — PORTFOLIO SITE
+================================================================================
+ This is the ONE file that controls the entire look, structure, and behaviour
+ of the site. Actual TEXT CONTENT (headlines, project descriptions, skills,
+ certificates, etc.) does NOT live here — it lives in the /cms/*.json files
+ and is normally edited through the CMS at /admin, not by hand.
+
+ You only need to open THIS file for things the CMS can't do:
+   - Changing colours, fonts, spacing (design)
+   - Changing layout / adding a new section
+   - Adding a brand-new animated project visual
+   - Anything structural, as opposed to "what does it say"
+
+--------------------------------------------------------------------------------
+ QUICK MAP — "I want to change ___, where do I go?"
+--------------------------------------------------------------------------------
+   Colours (site-wide)........... <style> -> ":root" block, very top (below)
+   Fonts.......................... <style> -> ":root" block, "Typography"
+   Any section's layout/spacing... <style> -> find that section's banner
+                                    e.g. "PROJECTS SECTION", "SKILLS SECTION"
+   Nav bar links / structure...... <body> -> "NAVIGATION" block
+   Hero layout..................... <body> -> "HERO" block
+   Add a brand-new animated
+     project visual (proj05+)..... <script> -> "ANIMATION HTML TEMPLATES",
+                                    then register it in admin/config.yml too
+                                    (see note above the ANIM object below)
+   How content gets loaded......... <script> -> "CONTENT LOADER" near the
+                                    bottom, look for loadContent()
+   Certificate "coming soon"
+     popup text (EN/DE)........... <script> -> search "certToast"
+   CV file / photo fallback
+     defaults........................ <script> -> search "CV_EN"
+
+ For anything text-based (headlines, bios, project copy, certificate names,
+ skills, etc.) — don't edit this file. Use the CMS at /admin instead.
+
+ A full plain-language walkthrough for every routine update lives in the
+ separate guide document kept alongside this project.
+================================================================================
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -11,6 +53,11 @@
 <style>
 /* ============================================================
    DESIGN TOKENS - Edit here to retheme the whole site
+   ------------------------------------------------------------
+   These are the only colour/font/spacing values you should
+   need to touch for a general look change. Every other CSS
+   rule below refers back to these via var(--name), so changing
+   one value here updates it EVERYWHERE it's used automatically.
    ============================================================ */
 :root {
   /* Backgrounds */
@@ -601,7 +648,12 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 .proj04-mnum{font-size:14px;font-weight:700;color:#0f2040;line-height:1;}
 .proj04-mlabel{font-size:6.5px;color:#6080a0;margin-top:3px;line-height:1.3;}
 
-/* TOAST */
+/* TOAST — "certificate coming soon" popup.
+   Colour/size: edit the values below (background, color, font-size).
+   How long it stays visible: search "certToastTimer" further down
+   in the <script> section (currently 4000ms = 4 seconds).
+   The text itself (EN/DE): search "certToast" near the top of
+   the <script> section. */
 #cert-toast{position:fixed;bottom:56px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);border:1px solid rgba(203,160,82,0.6);color:var(--navy);font-family:var(--mono);font-size:13px;font-weight:600;padding:13px 26px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,0.5);opacity:0;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease;z-index:999;white-space:nowrap;}
 #cert-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
@@ -619,7 +671,10 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 
 <!-- ============================================================
      NAVIGATION
-     To add CV: replace href="#" on the CV button with "cv-mohammad.pdf"
+     CV file/download link is controlled by the CMS
+     (Site Settings -> Global -> "CV file – English/German"),
+     not by editing href here directly. The href below is just
+     a fallback used before the CMS data loads.
      ============================================================ -->
 <header class="nav">
   <div class="wrap nav-inner">
@@ -784,7 +839,10 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 <section id="about" class="about-section on-light">
   <div class="wrap about-grid">
 
-    <!-- Photo: drop CV_pic.JPG in the same Netlify folder as index.html -->
+    <!-- Photo: the src below is just a fallback shown before the CMS
+         data loads. The real photo is set via the CMS
+         (Site Settings -> Global -> "Profile photo") and is
+         swapped in automatically once the page loads. -->
     <div class="photo-wrap reveal">
       <img src="CV_pic.JPG" id="aboutPhoto" alt="Mohammad Almumani" class="photo-actual" width="260" height="340"/>
     </div>
@@ -852,17 +910,54 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 
 var REDUCE = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* CV file references — overwritten from global.json */
+/* CV file references — overwritten from global.json
+   NOTE: these are just fallback filenames used before the CMS data
+   loads. The REAL CV files are set in the CMS under
+   Site Settings -> Global -> "CV file – English" / "CV file – German".
+   Changing them here does nothing once the CMS data has loaded. */
 var CV_EN = "Mohammad Almumani CV.pdf";
 var CV_DE = "Mohammad Almumani Lebenslauf.pdf";
 
-/* i18n store — populated from JSON on load */
+/* ------------------------------------------------------------
+   i18n store (EN + DE text), populated at runtime.
+   Almost all of T.en / T.de gets filled automatically from the
+   CMS JSON files further down (see loadContent()). The two
+   lines below are an EXCEPTION: this one small UI string (the
+   certificate "coming soon" popup) isn't part of any CMS
+   collection, so its English and German text are hardcoded
+   here directly. If you ever want another small popup/label
+   like this that ISN'T worth adding a whole CMS field for,
+   this is the pattern to copy: one T.en.xxx line + one
+   T.de.xxx line, then data-i18n="xxx" on the element.
+   ------------------------------------------------------------ */
 var T = { en: {}, de: {} };
 T.en.certToast = "In progress, certificate coming soon.";
 T.de.certToast = "In Bearbeitung, Zertifikat folgt in Kürze.";
 
 /* ============================================================
    ANIMATION HTML TEMPLATES (decorative visuals, not content)
+   ------------------------------------------------------------
+   Each of these (proj01 - proj04) is a fully custom, hand-built
+   animated illustration for one specific project card. They are
+   NOT editable through the CMS — the CMS can only let you pick
+   WHICH of these four existing animations a project uses (or
+   "none"), via the "Animation slot" dropdown.
+
+   TO ADD A FIFTH ANIMATION (proj05):
+     1. Design and write its HTML/CSS here, following the same
+        pattern as proj01-04 below (a template string assigned
+        to ANIM.proj05).
+     2. Write a matching initProj05Anim() function further down,
+        near initProj01Anim() etc., to control its entrance
+        animation.
+     3. Call initProj05Anim() inside initAll() (search "INIT ALL"
+        below).
+     4. Add "proj05" as a new option in the "Animation slot"
+        dropdown inside admin/config.yml so it's selectable from
+        the CMS.
+   This is genuine front-end/code work each time, not a
+   CMS-only task — happy to help build a new one together
+   whenever you have a project that needs it.
    ============================================================ */
 var ANIM = {};
 
@@ -1052,6 +1147,13 @@ function updateCvLinks(l) {
 
 /* ============================================================
    APPLY GLOBAL SETTINGS
+   ------------------------------------------------------------
+   Takes whatever was set in the CMS under Site Settings ->
+   Global (photo, CV files, email, LinkedIn, footer text) and
+   applies it to the actual page elements. This is what makes
+   the CMS "Global" screen actually take effect, if you're
+   wondering where a CMS field's value ends up being used,
+   it's almost certainly here.
    ============================================================ */
 function applyGlobal(data) {
   if (!data || !Object.keys(data).length) return;
@@ -1089,6 +1191,13 @@ function applyStats(statsValues) {
 
 /* ============================================================
    RENDER PROJECTS
+   ------------------------------------------------------------
+   Reads cms/projects.json (edited via the CMS "Projects"
+   collection) and builds each project card. The "animSlot"
+   field chosen in the CMS (proj01/proj02/proj03/proj04/none)
+   is matched against the ANIM object above — if you ever add
+   a proj05 animation, this function needs no changes, it will
+   pick it up automatically as long as the name matches.
    ============================================================ */
 function renderProjects(data) {
   var list = (data && data.projects) ? data.projects : [];
@@ -1653,6 +1762,23 @@ function initAll() {
 
 /* ============================================================
    CONTENT LOADER  —  fetches all JSON and boots the page
+   ------------------------------------------------------------
+   This is the single place that connects the CMS to the page.
+   It fetches every cms/*.json file, merges the EN/DE text into
+   the T store, then calls the render/apply functions above.
+
+   TO ADD A WHOLE NEW CMS-EDITABLE SECTION (not just a new
+   field on an existing one):
+     1. Add a new safeFetch("/cms/yourfile.json") line below.
+     2. Add a new collection block in admin/config.yml pointing
+        at cms/yourfile.json with its own fields.
+     3. Write a render function for it (copy the pattern of
+        renderProjects/renderCertificates/renderSkills above).
+     4. Call your new render function inside the .then() below,
+        alongside the existing renderProjects/renderCertificates
+        /renderSkills calls.
+   This is a code-level change, not something to attempt via
+   the CMS alone, best done together.
    ============================================================ */
 function loadContent() {
   return Promise.all([
