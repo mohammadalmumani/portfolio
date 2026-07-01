@@ -5,13 +5,29 @@
       "accentVar": "var(--c1-accent)",
       "bgVar": "var(--c1-bg)",
       "animSlot": "proj01",
-      "tools": ["Google Apps Script", "Google Sheets", "n8n", "Asana", "AI brief generation"],
+      "tools": [
+        "Google Apps Script",
+        "Google Sheets",
+        "n8n",
+        "Asana",
+        "AI brief generation"
+      ],
       "metrics": [
-        { "value": "60-day",     "slot": false, "enLabel": "Auto-planned",  "deLabel": "Automatisch geplant" },
-        { "value": "Hours to sec","slot": false, "enLabel": "Time saved",    "deLabel": "Zeitersparnis" }
+        {
+          "value": "60-day",
+          "slot": false,
+          "enLabel": "Auto-planned",
+          "deLabel": "Automatisch geplant"
+        },
+        {
+          "value": "Hours to sec",
+          "slot": false,
+          "enLabel": "Time saved",
+          "deLabel": "Zeitersparnis"
+        }
       ],
       "en": {
-        "title":   "Marketing automation engine: 60-day self-updating content system",
+        "title": "Marketing automation engine: 60-day self-updating content system",
         "summary": "Designed and built a content operations system that automatically pulls campaigns, calculates priority scores, generates a 60-day calendar, avoids repetitive patterns, and distributes tasks. Core logic in Apps Script; full architecture designed for n8n.",
         "bullets": [
           "Daily trigger: pulls data, normalizes, calculates days-until-deadline and priority score",
@@ -22,7 +38,7 @@
         ]
       },
       "de": {
-        "title":   "Marketing-Automatisierungs-Engine: 60-Tage-Content-System",
+        "title": "Marketing-Automatisierungs-Engine: 60-Tage-Content-System",
         "summary": "Entwicklung eines Content-Operations-Systems das automatisch Kampagnen abruft, Prioritäten berechnet, einen 60-Tage-Kalender erstellt und Aufgaben verteilt.",
         "bullets": [
           "Täglicher Trigger: Daten abrufen, bereinigen, Tage bis Deadline und Priorität berechnen",
@@ -38,14 +54,35 @@
       "accentVar": "var(--c2-accent)",
       "bgVar": "var(--c2-bg)",
       "animSlot": "proj02",
-      "tools": ["Meta Ads", "Google Ads", "GA4", "Google Tag Manager", "Google Sheets"],
+      "tools": [
+        "Meta Ads",
+        "Google Ads",
+        "GA4",
+        "Google Tag Manager",
+        "Google Sheets"
+      ],
       "metrics": [
-        { "value": "+64.3%", "slot": true, "enLabel": "Link CTR",        "deLabel": "Link-CTR" },
-        { "value": "-20.1%", "slot": true, "enLabel": "Cost per click",   "deLabel": "Kosten pro Klick" },
-        { "value": "+39.1%", "slot": true, "enLabel": "Daily clicks",     "deLabel": "Tägliche Klicks" }
+        {
+          "value": "+64.3%",
+          "slot": true,
+          "enLabel": "Link CTR",
+          "deLabel": "Link-CTR"
+        },
+        {
+          "value": "-20.1%",
+          "slot": true,
+          "enLabel": "Cost per click",
+          "deLabel": "Kosten pro Klick"
+        },
+        {
+          "value": "+39.1%",
+          "slot": true,
+          "enLabel": "Daily clicks",
+          "deLabel": "Tägliche Klicks"
+        }
       ],
       "en": {
-        "title":   "Paid channel performance: measurement, optimization and expansion",
+        "title": "Paid channel performance: measurement, optimization and expansion",
         "summary": "Rebuilt paid campaign measurement from scratch, diversified beyond a single channel, and delivered consistent year-over-year efficiency gains tracked in a custom reporting dashboard.",
         "bullets": [
           "Reporting framework: CTR, CPC, link clicks, reach, spend with year-over-year view",
@@ -55,7 +92,7 @@
         ]
       },
       "de": {
-        "title":   "Paid-Kanal-Performance: Messung, Optimierung und Erweiterung",
+        "title": "Paid-Kanal-Performance: Messung, Optimierung und Erweiterung",
         "summary": "Paid-Kampagnen-Messung neu aufgebaut, Kanal-Mix diversifiziert und konsistente Jahresverbesserungen erzielt.",
         "bullets": [
           "Reporting-Framework mit CTR, CPC, Klicks, Reichweite, Ausgaben im Jahresvergleich",
@@ -70,13 +107,29 @@
       "accentVar": "var(--c3-accent)",
       "bgVar": "var(--c3-bg)",
       "animSlot": "proj03",
-      "tools": ["B2B strategy", "Funnel design", "Canva", "Loom", "AI-assisted"],
+      "tools": [
+        "B2B strategy",
+        "Funnel design",
+        "Canva",
+        "Loom",
+        "AI-assisted"
+      ],
       "metrics": [
-        { "value": "3 + 3", "slot": false, "enLabel": "Ads and landing pages", "deLabel": "Anzeigen und Landing-Pages" },
-        { "value": "CFO",   "slot": false, "enLabel": "Target persona",         "deLabel": "Ziel-Persona" }
+        {
+          "value": "3 + 3",
+          "slot": false,
+          "enLabel": "Ads and landing pages",
+          "deLabel": "Anzeigen und Landing-Pages"
+        },
+        {
+          "value": "CFO",
+          "slot": false,
+          "enLabel": "Target persona",
+          "deLabel": "Ziel-Persona"
+        }
       ],
       "en": {
-        "title":   "B2B funnel strategy: CFO-audience campaign and landing page system",
+        "title": "B2B funnel strategy: CFO-audience campaign and landing page system",
         "summary": "Built a full B2B campaign package for a BI and analytics company targeting CFOs: three ad concepts, three funnel-mapped landing pages, a video ad and a Loom walkthrough, all written in finance language.",
         "bullets": [
           "Persona research: margin pressure, board reporting pain, month-end stress",
@@ -87,7 +140,7 @@
         ]
       },
       "de": {
-        "title":   "B2B-Funnel-Strategie: Kampagnen- und Landing-Page-System für CFO-Zielgruppe",
+        "title": "B2B-Funnel-Strategie: Kampagnen- und Landing-Page-System für CFO-Zielgruppe",
         "summary": "Vollständiges B2B-Kampagnenpaket für ein BI-Unternehmen mit CFO-Zielgruppe: drei Anzeigenkonzepte, drei Landing-Pages, Video und Loom-Walkthrough in Finanzsprache.",
         "bullets": [
           "Persona: Margen-Druck, Board-Reporting-Schmerz, Monatsabschluss-Stress",
@@ -103,13 +156,28 @@
       "accentVar": "var(--c4-accent)",
       "bgVar": "var(--c4-bg)",
       "animSlot": "proj04",
-      "tools": ["Google Apps Script", "Google Sheets", "Data validation", "Process automation"],
+      "tools": [
+        "Google Apps Script",
+        "Google Sheets",
+        "Data validation",
+        "Process automation"
+      ],
       "metrics": [
-        { "value": "800 lines",  "slot": false, "enLabel": "Core script", "deLabel": "Hauptskript" },
-        { "value": "Hours to sec","slot": false, "enLabel": "Per run",     "deLabel": "Pro Durchlauf" }
+        {
+          "value": "800 lines",
+          "slot": false,
+          "enLabel": "Core script",
+          "deLabel": "Hauptskript"
+        },
+        {
+          "value": "Hours to sec",
+          "slot": false,
+          "enLabel": "Per run",
+          "deLabel": "Pro Durchlauf"
+        }
       ],
       "en": {
-        "title":   "Operational data pipeline: automated participant and resource allocation system",
+        "title": "Operational data pipeline: automated participant and resource allocation system",
         "summary": "Replaced a fully manual multi-step data process with an Apps Script pipeline: ingests participant records, applies allocation logic, validates outputs and generates ready-to-use documents across 60 to 85 operational projects per year.",
         "bullets": [
           "Normalizes raw records: deduplication, missing fields, status flags",
@@ -119,13 +187,43 @@
         ]
       },
       "de": {
-        "title":   "Operative Datenpipeline: automatisiertes Zuteilungssystem",
+        "title": "Operative Datenpipeline: automatisiertes Zuteilungssystem",
         "summary": "Manuellen Mehrstufen-Prozess durch Apps-Script-Pipeline ersetzt: liest Datensätze ein, wendet Zuteilungslogik an und generiert fertige Dokumente.",
         "bullets": [
           "Normalisiert Rohdaten: Deduplizierung, fehlende Felder, Status-Flags",
           "Regelbasierte Zuteilungslogik bei Kapazitätsgrenzen und Attributen",
           "Strukturierte Ausgabedokumente ohne manuelles Nachformatieren",
           "Hauptskript ca. 800 Zeilen; Hilfsskript ca. 200 Zeilen"
+        ]
+      }
+    },
+    {
+      "animSlot": "none",
+      "id": "test",
+      "accentVar": "var(--gold)",
+      "bgVar": "var(--c2-bg)",
+      "tools": [
+        "test",
+        "test2"
+      ],
+      "metrics": [
+        {
+          "slot": false,
+          "value": "100009"
+        }
+      ],
+      "en": {
+        "title": "test english",
+        "summary": "test english",
+        "bullets": [
+          "aaaa"
+        ]
+      },
+      "de": {
+        "title": "test german",
+        "summary": "test german",
+        "bullets": [
+          "aaaaa"
         ]
       }
     }
