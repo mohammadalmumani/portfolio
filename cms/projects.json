@@ -196,36 +196,6 @@
           "Hauptskript ca. 800 Zeilen; Hilfsskript ca. 200 Zeilen"
         ]
       }
-    },
-    {
-      "animSlot": "none",
-      "id": "test",
-      "accentVar": "var(--gold)",
-      "bgVar": "var(--c2-bg)",
-      "tools": [
-        "test",
-        "test2"
-      ],
-      "metrics": [
-        {
-          "slot": false,
-          "value": "100009"
-        }
-      ],
-      "en": {
-        "title": "test english",
-        "summary": "test english",
-        "bullets": [
-          "aaaa"
-        ]
-      },
-      "de": {
-        "title": "test german",
-        "summary": "test german",
-        "bullets": [
-          "aaaaa"
-        ]
-      }
     }
   ]
 }
