@@ -38,12 +38,13 @@
         {
           "text": "Marketing calendars",
           "key": false
+        },
+        {
+          "key": false,
+          "text": "HubSpot"
         }
       ],
-      "building": [
-        "HubSpot",
-        "Test"
-      ]
+      "building": []
     },
     {
       "titleEn": "Paid media and campaigns",
