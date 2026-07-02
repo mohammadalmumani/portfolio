@@ -210,7 +210,7 @@
       ],
       "metrics": [
         {
-          "slot": true,
+          "slot": false,
           "value": "8 ",
           "enLabel": "Custom events built",
           "deLabel": "Maßgeschneiderte Lösungen"
@@ -222,7 +222,7 @@
           "deLabel": "Transparenz des Trichters"
         },
         {
-          "slot": true,
+          "slot": false,
           "value": "0 to 1",
           "enLabel": "Conversion tracking from scratch",
           "deLabel": "Conversion-Tracking von Grund auf"
