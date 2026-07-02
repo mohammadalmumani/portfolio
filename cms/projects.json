@@ -196,6 +196,60 @@
           "Hauptskript ca. 800 Zeilen; Hilfsskript ca. 200 Zeilen"
         ]
       }
+    },
+    {
+      "animSlot": "proj01",
+      "id": "05",
+      "accentVar": "var(--c1-accent)",
+      "bgVar": "var(--c1-bg)",
+      "tools": [
+        "Google Tag Manager",
+        " GA4",
+        "Google Ads",
+        "Event architecture"
+      ],
+      "metrics": [
+        {
+          "slot": true,
+          "value": "8 ",
+          "enLabel": "Custom events built",
+          "deLabel": "Maßgeschneiderte Lösungen"
+        },
+        {
+          "slot": true,
+          "value": "100%",
+          "enLabel": "Funnel visibility",
+          "deLabel": "Transparenz des Trichters"
+        },
+        {
+          "slot": true,
+          "value": "0 to 1",
+          "enLabel": "Conversion tracking from scratch",
+          "deLabel": "Conversion-Tracking von Grund auf"
+        }
+      ],
+      "en": {
+        "title": "Measurement infrastructure: click-to-booking conversion tracking with GTM and GA4",
+        "summary": "For years our paid campaigns were optimized on clicks, because the booking site had no conversion tracking at all. Nobody could say which ad produced an actual booking. I decided to fix the measurement layer itself: I coordinated the GTM snippet deployment with our external IT partner, then designed and built the full event architecture myself.",
+        "bullets": [
+          "Defined the tracking plan: navigation clicks, trip page views, scroll depth at four levels, and booking completion",
+          "Coordinated snippet implementation on the booking backend with the external IT company",
+          "Built all triggers and tags in GTM, feeding clean events into GA4",
+          "Booking completion event closes the loop: paid campaigns can now be judged on bookings, not clicks",
+          "Same conversion data feeds back into Meta and Google Ads for smarter bidding"
+        ]
+      },
+      "de": {
+        "bullets": [
+          "Festlegung des Tracking-Plans: Navigationsklicks, Seitenaufrufe der Reiseseite, Scrolltiefe auf vier Ebenen und Abschluss der Buchung",
+          "Koordination der Snippet-Implementierung im Buchungs-Backend mit dem externen IT-Unternehmen",
+          "Einrichtung aller Trigger und Tags in GTM, um bereinigte Ereignisse an GA4 zu übermitteln",
+          "Das Ereignis „Abschluss der Buchung“ schließt den Kreis: Bezahlte Kampagnen können nun anhand von Buchungen und nicht mehr anhand von Klicks bewertet werden",
+          "Dieselben Conversion-Daten werden an Meta und Google Ads zurückgemeldet, um intelligentere Gebote zu ermöglichen"
+        ],
+        "summary": "Jahrelang wurden unsere bezahlten Kampagnen auf Klicks optimiert, da die Buchungsseite überhaupt kein Conversion-Tracking hatte. Niemand konnte sagen, welche Anzeige zu einer tatsächlichen Buchung geführt hatte. Ich beschloss, die Messebene selbst zu überarbeiten: Ich koordinierte die Implementierung des GTM-Snippets mit unserem externen IT-Partner und entwarf und erstellte anschließend die gesamte Event-Architektur selbst.",
+        "title": "Messinfrastruktur: Nachverfolgung der Konversionsrate vom Klick bis zur Buchung mit GTM und GA4"
+      }
     }
   ]
 }
