@@ -586,6 +586,24 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 .proj01-lcode{font-size:7.5px;white-space:nowrap;}
 .co-comment{color:#3d5a6a;}.co-keyword{color:#C792EA;}.co-fn{color:#82AAFF;}.co-str{color:#C3E88D;}.co-num{color:#F78C6C;}.co-plain{color:#8aabb8;}
 .proj01-cursor{display:inline-block;width:5px;height:10px;background:var(--gold);animation:blink 1s step-end infinite;vertical-align:text-bottom;}
+ /* PROJECT 05  (GTM / GA4 event tracking) */
+.proj05-wrap{background:#0d1a17;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 12px 40px -12px rgba(0,0,0,0.6);font-family:var(--mono);}
+.proj05-topbar{background:#0a1512;padding:8px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.proj05-dots span{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;}
+.proj05-dots span:nth-child(1){background:#ff5f57;}.proj05-dots span:nth-child(2){background:#febc2e;}.proj05-dots span:nth-child(3){background:#28c840;}
+.proj05-title{font-size:10px;color:#5a8a7a;letter-spacing:0.05em;}
+.proj05-body{padding:12px 14px;}
+.proj05-datalayer{font-size:8px;color:#4a7060;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:9px;display:flex;align-items:center;gap:6px;}
+.proj05-live{width:6px;height:6px;border-radius:50%;background:#28c840;display:inline-block;box-shadow:0 0 0 0 rgba(40,200,64,0.5);animation:p5pulse 1.6s infinite;}
+@keyframes p5pulse{0%{box-shadow:0 0 0 0 rgba(40,200,64,0.5);}70%{box-shadow:0 0 0 5px rgba(40,200,64,0);}100%{box-shadow:0 0 0 0 rgba(40,200,64,0);}}
+.proj05-row{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:6px 8px;margin-bottom:5px;background:#0f211c;border:1px solid rgba(255,255,255,0.05);border-radius:6px;opacity:0;transform:translateX(-8px);transition:opacity 0.4s ease,transform 0.4s ease;}
+.proj05-row.show{opacity:1;transform:none;}
+.proj05-ev{font-size:9px;color:#7ac0a8;}
+.proj05-tag{font-size:8px;color:#4a6a60;text-align:left;}
+.proj05-pill{font-size:7.5px;padding:2px 6px;border-radius:4px;display:inline-block;font-weight:500;white-space:nowrap;}
+.proj05-pill.fired{background:rgba(100,140,180,0.15);color:#7aabcc;}
+.proj05-pill.conv{background:rgba(80,190,120,0.2);color:#5dc890;font-weight:600;}
+.proj05-row.convrow{border-color:rgba(80,190,120,0.35);background:rgba(80,190,120,0.06);}
 
 /* PROJECT 02 */
 .proj02-wrap{background:#0d1526;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 12px 40px -12px rgba(0,0,0,0.6);padding:14px;}
@@ -1074,6 +1092,21 @@ ANIM.proj03 = '<div class="proj03-wrap" id="proj03anim" aria-hidden="true">' +
   '</div>' +
 '</div>';
 
+ ANIM.proj05 = '<div class="proj05-wrap" id="proj05anim" aria-hidden="true">' +
+  '<div class="proj05-topbar">' +
+    '<div class="proj05-dots"><span></span><span></span><span></span></div>' +
+    '<span class="proj05-title">Google Tag Manager &nbsp;|&nbsp; GA4 DataLayer</span>' +
+  '</div>' +
+  '<div class="proj05-body">' +
+    '<div class="proj05-datalayer"><span class="proj05-live"></span> dataLayer &nbsp;&#183;&nbsp; events firing</div>' +
+    '<div class="proj05-row"><span class="proj05-ev">nav_trips_click</span><span class="proj05-tag">navigation</span><span class="proj05-pill fired">FIRED</span></div>' +
+    '<div class="proj05-row"><span class="proj05-ev">view_trip</span><span class="proj05-tag">page view</span><span class="proj05-pill fired">FIRED</span></div>' +
+    '<div class="proj05-row"><span class="proj05-ev">scroll_50</span><span class="proj05-tag">scroll depth</span><span class="proj05-pill fired">FIRED</span></div>' +
+    '<div class="proj05-row"><span class="proj05-ev">scroll_100</span><span class="proj05-tag">scroll depth</span><span class="proj05-pill fired">FIRED</span></div>' +
+    '<div class="proj05-row convrow"><span class="proj05-ev">booking_complete</span><span class="proj05-tag">conversion</span><span class="proj05-pill conv">CONVERSION</span></div>' +
+  '</div>' +
+'</div>';
+ 
 ANIM.proj04 = '<div class="proj04-wrap" id="proj04anim" aria-hidden="true">' +
   '<div class="proj04-title">Operational Data Pipeline</div>' +
   '<div class="proj04-pipeline">' +
@@ -1708,6 +1741,27 @@ function initProj03Anim() {
   }, { threshold: 0.3 }).observe(anim);
 }
 
+ /* ============================================================
+   PROJECT 05 ANIMATION  (GTM / GA4 events)
+   ============================================================ */
+function initProj05Anim() {
+  if (REDUCE) return;
+  var anim = document.getElementById("proj05anim");
+  if (!anim || !("IntersectionObserver" in window)) return;
+  var rows = anim.querySelectorAll(".proj05-row");
+  var triggered = false;
+  function run() {
+    rows.forEach(function(r, i) { setTimeout(function() { r.classList.add("show"); }, i * 260); });
+  }
+  function reset() {
+    rows.forEach(function(r) { r.classList.remove("show"); });
+  }
+  new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { if (!triggered) { triggered = true; run(); } }
+    else { if (entries[0].boundingClientRect.top > 0) { triggered = false; reset(); } }
+  }, { threshold: 0.3 }).observe(anim);
+}
+
 /* ============================================================
    PROJECT 04 ANIMATION
    ============================================================ */
@@ -1758,6 +1812,7 @@ function initAll() {
   initProj02Anim();
   initProj03Anim();
   initProj04Anim();
+  initProj05Anim();
 }
 
 /* ============================================================
