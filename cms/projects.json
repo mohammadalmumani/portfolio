@@ -107,7 +107,7 @@
       "id": "03",
       "accentVar": "var(--c2-accent)",
       "bgVar": "var(--c2-bg)",
-      "animSlot": "proj03",
+      "animSlot": "proj02",
       "tools": [
         "Meta Ads",
         "Google Ads",
@@ -160,7 +160,7 @@
       "id": "04",
       "accentVar": "var(--c3-accent)",
       "bgVar": "var(--c3-bg)",
-      "animSlot": "proj04",
+      "animSlot": "proj03",
       "tools": [
         "B2B strategy",
         "Funnel design",
