@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-      "animSlot": "proj01",
+      "animSlot": "proj05",
       "id": "01",
       "accentVar": "var(--c1-accent)",
       "bgVar": "var(--c1-bg)",
@@ -107,7 +107,7 @@
       "id": "03",
       "accentVar": "var(--c2-accent)",
       "bgVar": "var(--c2-bg)",
-      "animSlot": "proj02",
+      "animSlot": "proj03",
       "tools": [
         "Meta Ads",
         "Google Ads",
