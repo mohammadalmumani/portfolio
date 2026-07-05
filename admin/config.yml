@@ -326,7 +326,7 @@ collections:
               - label: "Animation slot"
                 name: "animSlot"
                 widget: "select"
-                options: ["proj01", "proj02", "proj03", "proj04", "none"]
+                options: ["proj01", "proj02", "proj03", "proj04", "proj05", "none"]
                 default: "none"
                 hint: "proj01–proj04 use built-in animated visuals. New projects use 'none' (generic placeholder)."
               - label: "Accent colour variable"
