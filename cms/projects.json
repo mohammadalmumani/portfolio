@@ -16,13 +16,13 @@
           "slot": false,
           "value": "8 ",
           "enLabel": "Custom events built",
-          "deLabel": "Maßgeschneiderte Lösungen"
+          "deLabel": "Custom-Events erstellt"
         },
         {
           "slot": true,
           "value": "100%",
           "enLabel": "Funnel visibility",
-          "deLabel": "Transparenz des Trichters"
+          "deLabel": "Funnel-Transparenz"
         },
         {
           "slot": false,
@@ -51,7 +51,7 @@
           "Dieselben Conversion-Daten werden an Meta und Google Ads zurückgemeldet, um intelligentere Gebote zu ermöglichen"
         ],
         "summary": "Jahrelang wurden unsere bezahlten Kampagnen auf Klicks optimiert, da die Buchungsseite überhaupt kein Conversion-Tracking hatte. Niemand konnte sagen, welche Anzeige zu einer tatsächlichen Buchung geführt hatte. Ich beschloss, die Messebene selbst zu überarbeiten: Ich koordinierte die Implementierung des GTM-Snippets mit unserem externen IT-Partner und entwarf und erstellte anschließend die gesamte Event-Architektur selbst.",
-        "title": "Messinfrastruktur: Nachverfolgung der Konversionsrate vom Klick bis zur Buchung mit GTM und GA4"
+        "title": "Messinfrastruktur: Conversion-Tracking vom Klick bis zur Buchung mit GTM und GA4"
       }
     },
     {
@@ -93,11 +93,11 @@
       },
       "de": {
         "title": "Marketing-Automatisierungs-Engine: 60-Tage-Content-System",
-        "summary": "Entwicklung eines Content-Operations-Systems das automatisch Kampagnen abruft, Prioritäten berechnet, einen 60-Tage-Kalender erstellt und Aufgaben verteilt.",
+        "summary": "Entwicklung eines Content-Operations-Systems, das automatisch Kampagnen abruft, Prioritäten berechnet, einen 60-Tage-Kalender erstellt und Aufgaben verteilt.",
         "bullets": [
           "Täglicher Trigger: Daten abrufen, bereinigen, Tage bis Deadline und Priorität berechnen",
           "Feste Reel- und Story-Taxonomie verhindert Wiederholungen",
-          "60-Tage-Generator respektiert Regeln für keine Wiederholung von Trip oder Inhaltstyp",
+          "60-Tage-Generator berücksichtigt Regeln gegen die Wiederholung derselben Kampagne oder desselben Inhaltstyps",
           "KI-Brief pro Aufgabe: Hook, Caption, CTA und Asset-Notizen in Asana",
           "Wiederkehrende Planung von Stunden auf Sekunden reduziert"
         ]
@@ -197,7 +197,7 @@
         "title": "B2B-Funnel-Strategie: Kampagnen- und Landing-Page-System für CFO-Zielgruppe",
         "summary": "Vollständiges B2B-Kampagnenpaket für ein BI-Unternehmen mit CFO-Zielgruppe: drei Anzeigenkonzepte, drei Landing-Pages, Video und Loom-Walkthrough in Finanzsprache.",
         "bullets": [
-          "Persona: Margen-Druck, Board-Reporting-Schmerz, Monatsabschluss-Stress",
+          "Persona: Margendruck, Schwierigkeiten beim Board-Reporting, Monatsabschluss-Stress",
           "Drei Meta-Anzeigenkonzepte: Margin Drop, Conflicting Numbers, Board Question",
           "Drei Landing-Pages nach Funnel-Stufen mit passenden Botschaften",
           "9:16-Video-Mockup (5 Szenen, 16 Sekunden) und Loom-Strategie-Walkthrough",
