@@ -114,7 +114,9 @@ body {
   line-height: 1.65;
   font-size: 16.5px;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;   /* clip (not hidden) so it doesn't create a scroll
+                         container, which would break the sticky stacking
+                         cards in the Projects section */
 }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -262,8 +264,36 @@ section { padding-top: clamp(60px,8.5vw,112px); padding-bottom: clamp(60px,8.5vw
 .case { position: relative; }
 .case.in::before { height: 100%; }
 
-.case-inner { display: grid; grid-template-columns: 1fr 0.88fr; gap: clamp(20px,4vw,52px); align-items: start; }
+.case-inner { display: grid; grid-template-columns: 1fr 0.88fr; gap: clamp(20px,4vw,52px); align-items: center; }
 @media (max-width: 840px) { .case-inner { grid-template-columns: 1fr; } .case .media { order: -1; } }
+
+/* Wider container just for this section (rest of the site keeps --maxw) */
+#projects .wrap { max-width: 1320px; }
+
+/* ------------------------------------------------------------
+   STACKING CARDS ("scrollytelling") - desktop/tablet only.
+   Each card pins near the top of the viewport as you scroll,
+   then the next card scrolls up and covers it, leaving a strip
+   of the previous card peeking out above (like a dealt hand of
+   cards). Disabled below 900px: on small screens a sticky stack
+   feels cramped, so mobile keeps the simple fade-in list.
+   To change how much of each card peeks out, adjust the "top"
+   step between the nth-child rules below (currently 32px).
+   ------------------------------------------------------------ */
+@media (min-width: 900px) {
+  #projectsContainer { padding-bottom: 38vh; }
+  .case {
+    position: sticky;
+    margin-bottom: 0;
+    background: #fff;
+    box-shadow: 0 24px 60px -20px rgba(20,30,45,0.25);
+  }
+  .case:nth-child(1) { top: 84px; }
+  .case:nth-child(2) { top: 116px; }
+  .case:nth-child(3) { top: 148px; }
+  .case:nth-child(4) { top: 180px; }
+  .case:nth-child(5) { top: 212px; }
+}
 
 .case-index { font-family: var(--mono); font-size: 18px; letter-spacing: 0.1em; color: var(--case-accent, var(--gold)); font-weight: 500; }
 .case h3 { font-size: clamp(20px,2.6vw,30px); margin: 9px 0 0; color: var(--case-accent, var(--ink)); line-height: 1.15; }
@@ -1409,8 +1439,17 @@ function renderSkills(data) {
 
   /* Skill cards */
   (data.cards || []).forEach(function(card) {
-    var chipsHtml = (card.chips || []).map(function(chip) {
-      return '<span class="chip' + (chip.key ? " key" : "") + '">' + escHtml(chip.text) + '</span>';
+    var chipsHtml = (card.chips || []).map(function(chip, ci) {
+      /* Chips are bilingual: register EN/DE into T and tag with data-i18n
+         so they swap when the language toggles. Tool names use the same
+         string for both languages. Falls back to chip.text if an older
+         single-language chip is ever present. */
+      var chipKey = (card.titleKey || "sk") + "_c" + ci;
+      var chipEn = chip.textEn || chip.text || "";
+      var chipDe = chip.textDe || chip.textEn || chip.text || "";
+      T.en[chipKey] = chipEn;
+      T.de[chipKey] = chipDe;
+      return '<span class="chip' + (chip.key ? " key" : "") + '" data-i18n="' + chipKey + '">' + escHtml(chipEn) + '</span>';
     }).join("");
     var buildHtml = (card.building && card.building.length)
       ? '<div class="build-row">' + card.building.map(function(b) {
