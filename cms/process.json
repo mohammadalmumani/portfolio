@@ -13,10 +13,10 @@
     "procEye": "Wie ich arbeite",
     "procH2": "Erkennen. Bauen. Messen.",
     "p1h": "Reibung finden",
-    "p1b": "Ich erkenne wenn ein Prozess manuell, langsam oder datenleckend ist, und mache es sichtbar.",
+    "p1b": "Ich erkenne, wenn ein Prozess manuell oder langsam ist oder Daten verliert, und mache das sichtbar.",
     "p2h": "Das System bauen",
     "p2b": "Ich designe die Lösung als wiederholbaren Workflow. Was auch immer passt und ohne mich läuft.",
     "p3h": "Messen und übergeben",
-    "p3b": "Ich messe ob es funktioniert, dokumentiere klar und stelle sicher dass das Team es selbst nutzen kann."
+    "p3b": "Ich messe, ob es funktioniert, dokumentiere klar und stelle sicher, dass das Team es selbst nutzen kann."
   }
 }
