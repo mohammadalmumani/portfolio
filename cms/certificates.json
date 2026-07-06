@@ -7,8 +7,18 @@
       "logoType": "text",
       "status": "progress",
       "certFile": "",
-      "en": { "title": "Revenue Operations Certification", "issuer": "HubSpot Academy", "badge": "In progress", "viewLabel": "View certificate" },
-      "de": { "title": "Revenue Operations Zertifizierung",   "issuer": "HubSpot Academy", "badge": "In Bearbeitung", "viewLabel": "Zertifikat ansehen" }
+      "en": {
+        "title": "Revenue Operations Certification",
+        "issuer": "HubSpot Academy",
+        "badge": "In progress",
+        "viewLabel": "View certificate"
+      },
+      "de": {
+        "title": "Revenue Operations Zertifizierung",
+        "issuer": "HubSpot Academy",
+        "badge": "In Bearbeitung",
+        "viewLabel": "Zertifikat ansehen"
+      }
     },
     {
       "year": "2026",
@@ -17,8 +27,18 @@
       "logoType": "text",
       "status": "progress",
       "certFile": "",
-      "en": { "title": "Reporting Certification", "issuer": "HubSpot Academy", "badge": "In progress", "viewLabel": "View certificate" },
-      "de": { "title": "Reporting Zertifizierung",  "issuer": "HubSpot Academy", "badge": "In Bearbeitung", "viewLabel": "Zertifikat ansehen" }
+      "en": {
+        "title": "Reporting Certification",
+        "issuer": "HubSpot Academy",
+        "badge": "In progress",
+        "viewLabel": "View certificate"
+      },
+      "de": {
+        "title": "Reporting Zertifizierung",
+        "issuer": "HubSpot Academy",
+        "badge": "In Bearbeitung",
+        "viewLabel": "Zertifikat ansehen"
+      }
     },
     {
       "year": "2026",
@@ -27,8 +47,18 @@
       "logoType": "text",
       "status": "progress",
       "certFile": "",
-      "en": { "title": "AI Agents for Marketing and Automation", "issuer": "Princess Sumaya University for Technology", "badge": "In progress", "viewLabel": "View certificate" },
-      "de": { "title": "KI-Agenten für Marketing und Automatisierung", "issuer": "Princess Sumaya University for Technology", "badge": "In Bearbeitung", "viewLabel": "Zertifikat ansehen" }
+      "en": {
+        "title": "AI Agents for Marketing and Automation",
+        "issuer": "Princess Sumaya University for Technology",
+        "badge": "In progress",
+        "viewLabel": "View certificate"
+      },
+      "de": {
+        "title": "KI-Agenten für Marketing und Automatisierung",
+        "issuer": "Princess Sumaya University for Technology",
+        "badge": "In Bearbeitung",
+        "viewLabel": "Zertifikat ansehen"
+      }
     },
     {
       "year": "2026",
@@ -37,8 +67,18 @@
       "logoType": "text",
       "status": "progress",
       "certFile": "",
-      "en": { "title": "Fundamentals of Project Planning and Management", "issuer": "University of Virginia", "badge": "In progress", "viewLabel": "View certificate" },
-      "de": { "title": "Grundlagen des Projektplanens und -managements",  "issuer": "University of Virginia", "badge": "In Bearbeitung", "viewLabel": "Zertifikat ansehen" }
+      "en": {
+        "title": "Fundamentals of Project Planning and Management",
+        "issuer": "University of Virginia",
+        "badge": "In progress",
+        "viewLabel": "View certificate"
+      },
+      "de": {
+        "title": "Grundlagen der Projektplanung und des Projektmanagements",
+        "issuer": "University of Virginia",
+        "badge": "In Bearbeitung",
+        "viewLabel": "Zertifikat ansehen"
+      }
     },
     {
       "year": "2026",
@@ -47,8 +87,18 @@
       "logoType": "text",
       "status": "done",
       "certFile": "/uploads/Conflict_Management_Strategies.pdf",
-      "en": { "title": "Conflict Management Strategies", "issuer": "LearnKartS", "badge": "Completed", "viewLabel": "View certificate" },
-      "de": { "title": "Konfliktmanagement-Strategien",   "issuer": "LearnKartS", "badge": "Abgeschlossen", "viewLabel": "Zertifikat ansehen" }
+      "en": {
+        "title": "Conflict Management Strategies",
+        "issuer": "LearnKartS",
+        "badge": "Completed",
+        "viewLabel": "View certificate"
+      },
+      "de": {
+        "title": "Konfliktmanagement-Strategien",
+        "issuer": "LearnKartS",
+        "badge": "Abgeschlossen",
+        "viewLabel": "Zertifikat ansehen"
+      }
     },
     {
       "year": "2025",
@@ -57,8 +107,18 @@
       "logoType": "google",
       "status": "done",
       "certFile": "/uploads/Google_Data_Analytics.pdf",
-      "en": { "title": "Google Data Analytics: Foundations, Data Preparation & Decision-Making", "issuer": "Google", "badge": "Completed", "viewLabel": "View certificate" },
-      "de": { "title": "Google Data Analytics: Grundlagen, Datenvorbereitung & Entscheidungsfindung", "issuer": "Google", "badge": "Abgeschlossen", "viewLabel": "Zertifikat ansehen" }
+      "en": {
+        "title": "Google Data Analytics: Foundations, Data Preparation & Decision-Making",
+        "issuer": "Google",
+        "badge": "Completed",
+        "viewLabel": "View certificate"
+      },
+      "de": {
+        "title": "Google Data Analytics: Grundlagen, Datenvorbereitung & Entscheidungsfindung",
+        "issuer": "Google",
+        "badge": "Abgeschlossen",
+        "viewLabel": "Zertifikat ansehen"
+      }
     },
     {
       "year": "Since 2022",
@@ -67,8 +127,20 @@
       "logoType": "text",
       "status": "training",
       "certFile": "",
-      "en": { "title": "Meta Ads Specialist Training", "issuer": "Meta", "issuerDetail": "Monthly sessions, Meta marketing specialist", "badge": "Ongoing", "viewLabel": "" },
-      "de": { "title": "Meta Ads Spezialist Training",  "issuer": "Meta", "issuerDetail": "Monatliche Sessions, Meta Marketing Spezialist", "badge": "Laufend", "viewLabel": "" }
+      "en": {
+        "title": "Meta Ads Specialist Training",
+        "issuer": "Meta",
+        "issuerDetail": "Monthly sessions, Meta marketing specialist",
+        "badge": "Ongoing",
+        "viewLabel": ""
+      },
+      "de": {
+        "title": "Meta Ads Spezialist Training",
+        "issuer": "Meta",
+        "issuerDetail": "Monatliche Sessions, Meta Marketing Spezialist",
+        "badge": "Laufend",
+        "viewLabel": ""
+      }
     }
   ]
 }
