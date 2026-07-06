@@ -16,32 +16,39 @@
       "titleKey": "sk1",
       "chips": [
         {
-          "text": "Google Apps Script",
+          "textEn": "Google Apps Script",
+          "textDe": "Google Apps Script",
           "key": true
         },
         {
-          "text": "Google Sheets",
+          "textEn": "Google Sheets",
+          "textDe": "Google Sheets",
           "key": true
         },
         {
-          "text": "n8n",
+          "textEn": "n8n",
+          "textDe": "n8n",
           "key": true
         },
         {
-          "text": "Google Forms",
+          "textEn": "Google Forms",
+          "textDe": "Google Forms",
           "key": false
         },
         {
-          "text": "Workflow building",
+          "textEn": "Workflow building",
+          "textDe": "Workflow-Aufbau",
           "key": false
         },
         {
-          "text": "Marketing calendars",
+          "textEn": "Marketing calendars",
+          "textDe": "Marketing-Kalender",
           "key": false
         },
         {
-          "key": false,
-          "text": "HubSpot"
+          "textEn": "HubSpot",
+          "textDe": "HubSpot",
+          "key": false
         }
       ],
       "building": []
@@ -52,23 +59,28 @@
       "titleKey": "sk2",
       "chips": [
         {
-          "text": "Meta Ads",
+          "textEn": "Meta Ads",
+          "textDe": "Meta Ads",
           "key": true
         },
         {
-          "text": "Google Ads",
+          "textEn": "Google Ads",
+          "textDe": "Google Ads",
           "key": true
         },
         {
-          "text": "GA4",
+          "textEn": "GA4",
+          "textDe": "GA4",
           "key": false
         },
         {
-          "text": "Google Tag Manager",
+          "textEn": "Google Tag Manager",
+          "textDe": "Google Tag Manager",
           "key": false
         },
         {
-          "text": "Budget management",
+          "textEn": "Budget management",
+          "textDe": "Budget-Management",
           "key": false
         }
       ],
@@ -80,23 +92,28 @@
       "titleKey": "sk3",
       "chips": [
         {
-          "text": "Team lead",
+          "textEn": "Team lead",
+          "textDe": "Teamleitung",
           "key": true
         },
         {
-          "text": "25-35 people trained",
+          "textEn": "25-35 people trained",
+          "textDe": "25-35 Personen geschult",
           "key": true
         },
         {
-          "text": "Cross-functional coordination",
+          "textEn": "Cross-functional coordination",
+          "textDe": "Bereichsübergreifende Koordination",
           "key": false
         },
         {
-          "text": "Asana",
+          "textEn": "Asana",
+          "textDe": "Asana",
           "key": false
         },
         {
-          "text": "Process documentation",
+          "textEn": "Process documentation",
+          "textDe": "Prozessdokumentation",
           "key": false
         }
       ],
@@ -108,28 +125,34 @@
       "titleKey": "sk4",
       "chips": [
         {
-          "text": "ChatGPT",
+          "textEn": "ChatGPT",
+          "textDe": "ChatGPT",
           "key": true
         },
         {
-          "text": "Claude",
+          "textEn": "Claude",
+          "textDe": "Claude",
           "key": true
         },
         {
-          "text": "Gemini",
+          "textEn": "Gemini",
+          "textDe": "Gemini",
           "key": false
         },
         {
-          "text": "Kimi AI",
+          "textEn": "Kimi AI",
+          "textDe": "Kimi AI",
           "key": false
         },
         {
-          "text": "AI content systems",
+          "textEn": "AI content systems",
+          "textDe": "KI-Content-Systeme",
           "key": false
         },
         {
-          "key": true,
-          "text": "AI agents"
+          "textEn": "AI agents",
+          "textDe": "KI-Agenten",
+          "key": true
         }
       ],
       "building": []
