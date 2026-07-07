@@ -131,15 +131,57 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-bright); o
   font-family: var(--mono);
   font-size: 18px;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
   display: inline-block;
 }
 h1, h2, h3 { font-family: var(--display); color: #fff; line-height: 1.05; letter-spacing: -0.01em; font-weight: 700; }
-.section-title { font-size: clamp(36px, 5.5vw, 62px); margin-top: 12px; }
+.section-title { font-size: clamp(36px, 5.5vw, 62px); margin-top: 16px; }
 .on-light h2, .on-light h3 { color: var(--ink); }
 .on-light .eyebrow { color: #8a6a25; }
+
+
+/* ============================================================
+   FILM GRAIN
+   A faint, always-moving grayscale noise laid over the dark
+   sections only (via the .grainy class). It gives the flat
+   dark backgrounds a matte, textured depth instead of looking
+   like painted walls. The noise is an inline SVG (no image
+   files, no network requests). The flicker is a stepped
+   background-position animation, so it reads like real film
+   grain rather than a smooth slide. Disabled for anyone with
+   reduced-motion turned on.
+   To make it stronger/weaker, change the opacity below.
+   ============================================================ */
+.grainy { position: relative; }
+.grainy > .wrap { position: relative; z-index: 1; }
+.grainy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+  background-repeat: repeat;
+  animation: grainMove 0.7s steps(8) infinite;
+}
+@keyframes grainMove {
+  0%   { background-position:   0px    0px; }
+  12%  { background-position: -22px  -31px; }
+  25%  { background-position: -48px   21px; }
+  37%  { background-position:  31px  -42px; }
+  50%  { background-position: -29px   39px; }
+  62%  { background-position:  41px   11px; }
+  75%  { background-position: -39px  -19px; }
+  87%  { background-position:  22px   29px; }
+  100% { background-position:   0px    0px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grainy::before { animation: none; }
+}
 
 
 /* ============================================================
@@ -222,7 +264,7 @@ header.nav {
 /* ============================================================
    SCROLL REVEAL (bidirectional)
    ============================================================ */
-section { padding-top: clamp(60px,8.5vw,112px); padding-bottom: clamp(60px,8.5vw,112px); }
+section { padding-top: clamp(76px,10vw,140px); padding-bottom: clamp(76px,10vw,140px); }
 .light { background: var(--light); color: var(--body-dark); }
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.2,0.7,0.2,1); }
 .reveal.in { opacity: 1; transform: none; }
@@ -232,43 +274,45 @@ section { padding-top: clamp(60px,8.5vw,112px); padding-bottom: clamp(60px,8.5vw
    PROJECTS SECTION
    Each case gets its own accent colour via CSS variables
    ============================================================ */
-.projects-section { background: var(--light); }
+.projects-section { background: linear-gradient(180deg, var(--ink) 0%, var(--navy) 52%, var(--ink) 100%); }
 
-/* Case wrapper - accent colour set inline via style attribute */
+/* Case wrapper - white card with a gold glowing border (matches the
+   "How I work" cards). The per-project accent colours have been retired
+   in favour of the brand gold + ink only. */
 .case {
-  border-left: 4px solid var(--case-accent, var(--gold));
-  background: var(--case-bg, transparent);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  padding: clamp(24px,3.5vw,40px);
-  margin-bottom: 28px;
-  /* entrance animation */
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(203,160,82,0.30);
+  border-radius: 18px;
+  padding: clamp(30px,4vw,54px);
+  margin-bottom: 22px;
+  box-shadow:
+    0 0 0 1px rgba(203,160,82,0.10),
+    0 18px 46px -18px rgba(0,0,0,0.55),
+    0 0 34px -10px rgba(203,160,82,0.22);
+  /* entrance: opacity only. transform is reserved for the JS scale
+     effect (initCardStack), so the two never fight over transform. */
   opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2,0.7,0.2,1), border-color 0.3s;
+  transition: opacity 0.6s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
-.case.in { opacity: 1; transform: translateX(0); }
-.case:nth-child(2) { transition-delay: 80ms; }
-.case:nth-child(3) { transition-delay: 160ms; }
-.case:nth-child(4) { transition-delay: 240ms; }
-
-/* Border draw animation: the left border grows from top */
-.case::before {
-  content: "";
-  position: absolute;
-  left: -4px; top: 0;
-  width: 4px; height: 0;
-  background: var(--case-accent, var(--gold));
-  border-radius: 4px 0 0 4px;
-  transition: height 0.6s cubic-bezier(0.2,0.7,0.2,1) 0.1s;
+.case.in { opacity: 1; }
+/* Hover "lift" done with light rather than movement, so it stays
+   compatible with the scale animation that owns transform. */
+.case:hover {
+  border-color: rgba(203,160,82,0.55);
+  box-shadow:
+    0 0 0 1px rgba(203,160,82,0.28),
+    0 26px 60px -20px rgba(0,0,0,0.6),
+    0 0 52px -8px rgba(203,160,82,0.40);
 }
-.case { position: relative; }
-.case.in::before { height: 100%; }
 
 .case-inner { display: grid; grid-template-columns: 1fr 0.88fr; gap: clamp(20px,4vw,52px); align-items: center; }
 @media (max-width: 840px) { .case-inner { grid-template-columns: 1fr; } .case .media { order: -1; } }
 
 /* Wider container just for this section (rest of the site keeps --maxw) */
-#projects .wrap { max-width: 1320px; }
+#projects .wrap { max-width: 1440px; }
+/* Extra breathing room between the section title and the first card */
+#projectsContainer { margin-top: clamp(40px,5vw,66px); }
 
 /* ------------------------------------------------------------
    STACKING CARDS ("scrollytelling") - desktop/tablet only.
@@ -278,35 +322,36 @@ section { padding-top: clamp(60px,8.5vw,112px); padding-bottom: clamp(60px,8.5vw
    cards). Disabled below 900px: on small screens a sticky stack
    feels cramped, so mobile keeps the simple fade-in list.
    To change how much of each card peeks out, adjust the "top"
-   step between the nth-child rules below (currently 32px).
+   step between the nth-child rules below (currently 52px).
+   The shrink-behind effect is driven by JS (initCardStack).
    ------------------------------------------------------------ */
 @media (min-width: 900px) {
-  #projectsContainer { padding-bottom: 38vh; }
+  #projectsContainer { padding-bottom: 42vh; }
   .case {
     position: sticky;
     margin-bottom: 0;
-    background: #fff;
-    box-shadow: 0 24px 60px -20px rgba(20,30,45,0.25);
+    transform-origin: center top;
+    will-change: transform;
   }
-  .case:nth-child(1) { top: 84px; }
-  .case:nth-child(2) { top: 116px; }
-  .case:nth-child(3) { top: 148px; }
-  .case:nth-child(4) { top: 180px; }
-  .case:nth-child(5) { top: 212px; }
+  .case:nth-child(1) { top: 90px; }
+  .case:nth-child(2) { top: 142px; }
+  .case:nth-child(3) { top: 194px; }
+  .case:nth-child(4) { top: 246px; }
+  .case:nth-child(5) { top: 298px; }
 }
 
-.case-index { font-family: var(--mono); font-size: 18px; letter-spacing: 0.1em; color: var(--case-accent, var(--gold)); font-weight: 500; }
-.case h3 { font-size: clamp(20px,2.6vw,30px); margin: 9px 0 0; color: var(--case-accent, var(--ink)); line-height: 1.15; }
+.case-index { font-family: var(--mono); font-size: 18px; letter-spacing: 0.1em; color: var(--gold); font-weight: 500; }
+.case h3 { font-size: clamp(20px,2.6vw,30px); margin: 9px 0 0; color: var(--ink); line-height: 1.15; }
 .case .summary { margin-top: 12px; color: var(--body-dark); max-width: 48ch; font-size: 15px; line-height: 1.65; }
 .case ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
 .case ul li { position: relative; padding-left: 18px; font-size: 14.5px; color: var(--body-dark); }
-.case ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 7px; height: 2px; background: var(--case-accent, var(--gold)); }
+.case ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 7px; height: 2px; background: var(--gold); }
 .tools { margin-top: 18px; display: flex; gap: 7px; flex-wrap: wrap; }
 .tool { font-family: var(--mono); font-size: 10.5px; color: #5d6e7c; border: 1px solid var(--line-light); border-radius: 999px; padding: 3px 9px; }
 
 /* Metrics */
 .metric-row { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 18px; }
-.metric .v { font-family: var(--mono); font-weight: 500; font-size: clamp(22px,2.8vw,34px); color: var(--case-accent, var(--ink)); line-height: 1; }
+.metric .v { font-family: var(--mono); font-weight: 500; font-size: clamp(22px,2.8vw,34px); color: var(--ink); line-height: 1; }
 .metric .k { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #7a8898; margin-top: 6px; }
 
 /* Image placeholder */
@@ -761,7 +806,7 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 <!-- ============================================================
      HERO
      ============================================================ -->
-<section class="hero">
+<section class="hero grainy">
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow" data-i18n="heroEye">Marketing Operations · RevOps · Automation</span>
@@ -795,10 +840,12 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 
 <!-- ============================================================
      PROJECTS
-     Each .case has --case-accent and --case-bg set inline
-     to give per-project colour theming.
+     Cards are white with a gold glowing border on a dark
+     background. The old per-project accent colours have been
+     retired; the render code still injects --case-accent/
+     --case-bg inline but no CSS rule reads them anymore.
      ============================================================ -->
-<section id="projects" class="projects-section on-light">
+<section id="projects" class="projects-section grainy">
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow" data-i18n="projEye">Selected projects</span>
@@ -814,7 +861,7 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 <!-- ============================================================
      HOW I WORK - pipeline with nodes and travelling dot
      ============================================================ -->
-<section id="how-i-work">
+<section id="how-i-work" class="grainy">
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow" data-i18n="procEye">How I work</span>
@@ -866,7 +913,7 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 <!-- ============================================================
      CERTIFICATIONS - staggered masonry, logos
      ============================================================ -->
-<section id="certificates" class="certs-section">
+<section id="certificates" class="certs-section grainy">
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow" data-i18n="certsEye">Certifications and training</span>
@@ -911,7 +958,7 @@ footer { border-top: 1px solid var(--line-dark); padding: 24px 0; }
 <!-- ============================================================
      CONTACT
      ============================================================ -->
-<section id="contact">
+<section id="contact" class="grainy">
   <div class="wrap">
     <div class="contact-wrap reveal">
       <span class="eyebrow" data-i18n="contactEye">Contact</span>
@@ -1838,10 +1885,68 @@ function initProj04Anim() {
 /* ============================================================
    INIT ALL (called after rendering is complete)
    ============================================================ */
+/* ============================================================
+   CARD STACK SCALE  —  the "shrink behind" effect
+   ------------------------------------------------------------
+   As each card is covered by the next one, it scales down a
+   little and dims, so it looks like it is receding into the
+   stack (see the reference screenshots). Runs on desktop only
+   (>= 900px, where the sticky stacking is active) and is fully
+   skipped for reduced-motion. Uses one rAF-throttled scroll
+   listener. transform is owned entirely by this function; the
+   card entrance uses opacity only, so nothing fights over it.
+   Tunables: SHRINK (how much it scales down) and DIM (how much
+   it darkens) at the bottom of the loop.
+   ============================================================ */
+function initCardStack() {
+  var container = document.getElementById("projectsContainer");
+  if (!container) return;
+  var STEP = 52;      // must match the sticky "top" step in the CSS
+  var SHRINK = 0.055; // 1 -> 0.945 at full cover
+  var DIM = 0.10;     // brightness 1 -> 0.90 at full cover
+  var cards = [];
+  function collect() {
+    cards = Array.prototype.slice.call(container.querySelectorAll(".case"));
+  }
+  collect();
+  if (cards.length < 2) return;
+
+  var ticking = false;
+  function clearAll() {
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].style.transform = "";
+      cards[i].style.filter = "";
+    }
+  }
+  function update() {
+    ticking = false;
+    if (REDUCE || window.innerWidth < 900) { clearAll(); return; }
+    for (var i = 0; i < cards.length; i++) {
+      var card = cards[i], next = cards[i + 1];
+      if (!next) { card.style.transform = ""; card.style.filter = ""; continue; }
+      var cardRect = card.getBoundingClientRect();
+      var nextRect = next.getBoundingClientRect();
+      var cardH = cardRect.height || 1;
+      var delta = nextRect.top - cardRect.top;         // large when next is far below, ~STEP when stacked
+      var p = (cardH - delta) / (cardH - STEP);         // 0 -> 1 as the next card rises and covers
+      p = p < 0 ? 0 : (p > 1 ? 1 : p);
+      card.style.transform = "scale(" + (1 - p * SHRINK).toFixed(4) + ")";
+      card.style.filter = "brightness(" + (1 - p * DIM).toFixed(3) + ")";
+    }
+  }
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", function() { collect(); onScroll(); }, { passive: true });
+  update();
+}
+
 function initAll() {
   initReveals();
   initSyncPanel();
   initCaseAnimations();
+  initCardStack();
   initSlotMachine();
   initPipeline();
   initLangBars();
