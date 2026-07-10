@@ -66,7 +66,7 @@
       "logoStyle": "background:#232D4B;color:#E57200;font-size:9px",
       "logoType": "text",
       "status": "progress",
-      "certFile": "",
+      "certFile": "/uploads/fundamentals-of-project-planning-and-management.pdf",
       "en": {
         "title": "Fundamentals of Project Planning and Management",
         "issuer": "University of Virginia",
@@ -102,7 +102,7 @@
     },
     {
       "year": "2025",
-      "logoText": "",
+      "logoText": "G",
       "logoStyle": "background:#fff;padding:3px;",
       "logoType": "google",
       "status": "done",
